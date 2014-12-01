@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20141201193700) do
     t.string   "name"
     t.datetime "date"
     t.string   "lat"
-    t.string   "lon"
+    t.string   "long"
     t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"

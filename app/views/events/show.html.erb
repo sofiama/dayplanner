@@ -1,0 +1,12 @@
+<h1>event#show</h1>
+<%= @event.name %>
+
+Choose one: 
+<br/>
+<% @event.get_results.each do |e| %>
+<%= e[:title] %> on <%= e[:day] %>
+<%= link_to 'Select this one', event_path, :method => 'PATCH' %>
+<br/>
+<% end %>
+<%= @event.id %>
+<br/>
