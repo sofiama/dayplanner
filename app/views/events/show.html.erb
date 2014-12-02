@@ -12,30 +12,22 @@ Your search was: <br/>
 <br/>
 
 <h2>The results from SeatGeek are:</h2>
-Select one:
+<b>Select one:</b>
 <br/><br/>
 <% @event.get_results.each do |e| %>
   
   <%= form_tag event_path, :method => 'patch' do |f| %>
-  <%= label_tag :name %>
+  <%= e[:title]  %>
   <br/>
-  <%= text_field_tag :name, value = e[:title] %>
+  <%= hidden_field_tag :name, value = e[:title] %>
+  <%= e[:date] %> at <%= e[:local_time] %>
+  <%= hidden_field_tag :datetime, value = e[:datetime_local] %>
   <br/>
-  <%= label_tag :datetime %>
-  <br/>
-  <%= text_field_tag :datetime, value = e[:datetime_local] %>
-  <br/>
-  <%= label_tag :lat %>
-  <br/>
-  <%= text_field_tag :lat, value = e[:lat] %>
-  <br/>
-  <%= label_tag :long %>
-  <br/>
-  <%= text_field_tag :long, value = e[:long] %>
-  <br/>
+  <%= e[:venue_name] %> - <%= e[:venue_loc] %>
+  <%= hidden_field_tag :lat, value = e[:lat] %>
+  <%= hidden_field_tag :long, value = e[:long] %>
+  <br>
   <%= submit_tag 'Choose this one' %>
   <% end %>
   <br/><br/>
 <% end %>
-<br/>
-<%= @event.id %>
