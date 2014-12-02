@@ -27,9 +27,9 @@ class Event < ActiveRecord::Base
 
     @results["events"].each do |e|
       event = {}
-      
+
       event[:title] = e["title"]
-    
+
       event[:datetime_local] = e["datetime_local"]
       # date in sun dec 7, 2014 format
       date = Date.parse(e["datetime_local"])
@@ -39,13 +39,14 @@ class Event < ActiveRecord::Base
       event[:local_time] = Time.parse(e["datetime_local"]).strftime('%l:%M %p')
 
       #lat and long
+      #binding.pry
       event[:lat] = e["venue"]["location"]["lat"]
       event[:long] = e["venue"]["location"]["lon"]
-      
+
       #venue name and loc
       event[:venue_name] = e["venue"]["name"]
       event[:venue_loc] = e["venue"]["display_location"]
-      
+
       #event type in an array
       event[:taxonomies] = []
       e["taxonomies"].each do |e|
@@ -57,5 +58,12 @@ class Event < ActiveRecord::Base
 
     all_events
   end
+
+  def get_foursquare_results
+    ll = "#{self.lat},#{self.long}"
+    FoursquareApi.new.search(ll)
+  end
+
+
 
 end
