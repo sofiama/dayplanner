@@ -18,7 +18,7 @@ class Event < ActiveRecord::Base
   def get_seatgeek_info
     url = "http://api.seatgeek.com/2/events?q=#{self.name_normalizer}+on+#{self.date_normalizer}"
     @results = JSON.load(open(url))
-    binding.pry
+    # binding.pry
   end
 
   def get_results
@@ -28,7 +28,7 @@ class Event < ActiveRecord::Base
     @results["events"].each do |e|
       event = {}
       event[:title] = e["title"]
-      event[:day] = e["datetime_local"]
+      event[:datetime_local] = e["datetime_local"]
       event[:lat] = e["venue"]["location"]["lat"]
       event[:long] = e["venue"]["location"]["lon"]
       all_events << event

@@ -1,12 +1,41 @@
 <h1>event#show</h1>
-<%= @event.name %>
 
-Choose one: 
+<h3>event id <%= @event.id %></h3>
+<b>This is the stuff that has will change</b>
+<br/><br/>
+<%= @event.name %>
+<%= @event.date %>
+<br/><br/>
+Your search was: <br/>
+<%= @event.name %>
 <br/>
+<br/>
+
+<h2>The results from SeatGeek are:</h2>
+Select one:
+<br/><br/>
 <% @event.get_results.each do |e| %>
-<%= e[:title] %> on <%= e[:day] %>
-<%= link_to 'Select this one', event_path, :method => 'PATCH' %>
-<br/>
+  
+  <%= form_tag event_path, :method => 'patch' do |f| %>
+  <%= label_tag :name %>
+  <br/>
+  <%= text_field_tag :name, value = e[:title] %>
+  <br/>
+  <%= label_tag :datetime %>
+  <br/>
+  <%= text_field_tag :datetime, value = e[:datetime_local] %>
+  <br/>
+  <%= label_tag :lat %>
+  <br/>
+  <%= text_field_tag :lat, value = e[:lat] %>
+  <br/>
+  <%= label_tag :long %>
+  <br/>
+  <%= text_field_tag :long, value = e[:long] %>
+  <br/>
+  <%= submit_tag 'Choose this one' %>
+  <% end %>
+  <br/><br/>
 <% end %>
-<%= @event.id %>
 <br/>
+<%= @event.id %>

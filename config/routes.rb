@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  root 'events#index'
+  resources :search, :only =>[:index]
+
+  root 'events#new'
   resources :events#, :only => [:index]
   
   # The priority is based upon order of creation: first created -> highest priority.
