@@ -14,6 +14,12 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    if @event.get_results.count == 0
+      flash[:notice] = 'no results found'
+      redirect_to root_path
+    else
+      @event = Event.find(params[:id])
+    end
   end
 
   def edit

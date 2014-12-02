@@ -4,15 +4,14 @@
 <b>This is the stuff that has will change</b>
 <br/><br/>
 <%= @event.name %>
+<br/>
 <%= @event.date %>
+<br/>
 <%= @event.lat %>
 <%= @event.long %>
+<br/>
 <%= @event.taxonomies %>
 <br/><br/>
-Your search was: <br/>
-<%= @event.name %>
-<br/>
-<br/>
 
 <h2>The results from SeatGeek are:</h2>
 <b>Select one:</b>
@@ -33,7 +32,7 @@ Your search was: <br/>
   <%= e[:taxonomies].join(', ') %>
   <%= hidden_field_tag :taxonomies, value = e[:taxonomies] %>
   <br>
-  <%= submit_tag 'Choose this one' %>
+  <%= submit_tag 'This is the EVENT' %>
   <% end %>
   <br/><br/>
 <% end %>

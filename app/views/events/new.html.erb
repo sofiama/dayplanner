@@ -1,4 +1,7 @@
 <h1>events#new</h1>
+<% if flash[:notice] %>
+<div class='notice'><%= flash[:notice] %></div>
+<% end %>
 <%= form_for @event do |f| %>
 <%= f.label :name %>
 <%= f.text_field :name %><br/>
