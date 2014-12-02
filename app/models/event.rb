@@ -2,9 +2,6 @@ require 'open-uri'
 require 'json'
 
 class Event < ActiveRecord::Base
-  # attr_accessor :name, :date
-  # attr_accessor :results
-
   def name_normalizer
     self.name.gsub(' ', '+')
   end
@@ -73,11 +70,12 @@ class Event < ActiveRecord::Base
   end
 
   def get_yelp_restaurants
+    # binding.pry
     result = yelp_api.search_restaurants(self.lat, self.long)
     all_venues = []
-    venue = {}
+    
     result.businesses.each do |r|
-      # binding.pry
+      venue = {}
       venue[:name] = r.name
       venue[:url] = r.url
       venue[:address] = r.location.display_address
@@ -97,9 +95,8 @@ class Event < ActiveRecord::Base
     result = yelp_api.search_nightlife(self.lat, self.long)
     all_venues = []
     # binding.pry
-    venue = {}
     result.businesses.each do |r|
-      # binding.pry
+      venue = {}
       venue[:name] = r.name
       venue[:url] = r.url
       venue[:address] = r.location.display_address
