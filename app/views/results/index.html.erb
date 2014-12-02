@@ -1,1 +1,27 @@
 <h1>results#index</h1>
+
+<h2>YELP RESULTS</h2>
+<h3>Food Option</h3>
+
+<% @food.each do |f| %>
+<ul>
+  <li><b><%= f[:name] %></b></li>
+  <li><%= f[:address][0] %></li>
+  <li>Distance in meters: <%= f[:distance] %></li>
+  <li><%= link_to f[:url], f[:url], :target => "_blank" %></li>
+</ul>
+<% end %>
+
+<h3>Night Option</h3>
+<% @night.each do |f| %>
+<ul>
+  <li><b><%= f[:name] %></b></li>
+  <li><%= f[:address][0] %></li>
+  <li>Distance in meters: <%= f[:distance] %></li>
+  <li><%= link_to f[:url], f[:url], :target => "_blank" %></li>
+</ul>
+<% end %>
+
+<hr/>
+
+<h2>FOURSQUARE RESULTS</h2>
