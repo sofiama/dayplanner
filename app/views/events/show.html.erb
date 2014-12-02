@@ -5,6 +5,9 @@
 <br/><br/>
 <%= @event.name %>
 <%= @event.date %>
+<%= @event.lat %>
+<%= @event.long %>
+<%= @event.taxonomies %>
 <br/><br/>
 Your search was: <br/>
 <%= @event.name %>
@@ -26,6 +29,9 @@ Your search was: <br/>
   <%= e[:venue_name] %> - <%= e[:venue_loc] %>
   <%= hidden_field_tag :lat, value = e[:lat] %>
   <%= hidden_field_tag :long, value = e[:long] %>
+  <br/>
+  <%= e[:taxonomies].join(', ') %>
+  <%= hidden_field_tag :taxonomies, value = e[:taxonomies] %>
   <br>
   <%= submit_tag 'Choose this one' %>
   <% end %>

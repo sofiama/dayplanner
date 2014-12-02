@@ -38,12 +38,20 @@ class Event < ActiveRecord::Base
       # in 12hr AM:PM format
       event[:local_time] = Time.parse(e["datetime_local"]).strftime('%l:%M %p')
 
+      #lat and long
       event[:lat] = e["venue"]["location"]["lat"]
       event[:long] = e["venue"]["location"]["lon"]
       
+      #venue name and loc
       event[:venue_name] = e["venue"]["name"]
       event[:venue_loc] = e["venue"]["display_location"]
       
+      #event type in an array
+      event[:taxonomies] = []
+      e["taxonomies"].each do |e|
+        event[:taxonomies] << e["name"]
+      end
+
       all_events << event
     end
 

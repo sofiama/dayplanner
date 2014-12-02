@@ -24,6 +24,9 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @event.update(:name => params[:name])
     @event.update(:date => params[:datetime])
+    @event.update(:lat => params[:lat])
+    @event.update(:long => params[:long])
+    @event.update(:taxonomies => params[:taxonomies])
     # raise params
     redirect_to @event#showpage
   end

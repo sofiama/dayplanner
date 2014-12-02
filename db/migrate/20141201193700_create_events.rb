@@ -5,7 +5,7 @@ class CreateEvents < ActiveRecord::Migration
       t.datetime :date
       t.string :lat
       t.string :long
-      t.string :type
+      t.string :taxonomies
       t.timestamps
     end
   end

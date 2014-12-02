@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :search, :only =>[:index]
 
   root 'events#new'
   resources :events#, :only => [:index]
