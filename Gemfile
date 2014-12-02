@@ -45,3 +45,5 @@ gem 'json'
 gem 'figaro'
 
 gem 'foursquare2'
+
+gem 'yelp', require: 'yelp'

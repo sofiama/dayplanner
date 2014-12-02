@@ -3,7 +3,7 @@ require 'json'
 
 class Event < ActiveRecord::Base
   # attr_accessor :name, :date
-  attr_accessor :results
+  # attr_accessor :results
 
   def name_normalizer
     self.name.gsub(' ', '+')
@@ -59,6 +59,7 @@ class Event < ActiveRecord::Base
     all_events
   end
 
+  # foursquare stuff !!!
   def get_foursquare_results
     ll = "#{self.lat},#{self.long}"
     FoursquareApi.new.search(ll)
@@ -66,4 +67,53 @@ class Event < ActiveRecord::Base
 
 
 
+  # YELP stuff !!!
+  def yelp_api
+    @yelp_api ||= YelpApi.new
+  end
+
+  def get_yelp_restaurants
+    result = yelp_api.search_restaurants(self.lat, self.long)
+    all_venues = []
+    venue = {}
+    result.businesses.each do |r|
+      # binding.pry
+      venue[:name] = r.name
+      venue[:url] = r.url
+      venue[:address] = r.location.display_address
+      venue[:phone] = r.phone
+      venue[:cats] = r.categories
+      venue[:rating] = r.rating
+      venue[:review_count] = r.review_count
+      venue[:descr] = r.snippet_text
+      venue[:is_closed] = r.is_closed
+      venue[:distance] = r.distance #in meters
+      all_venues << venue
+    end
+    all_venues
+  end
+
+  def get_yelp_nightlife
+    result = yelp_api.search_nightlife(self.lat, self.long)
+    all_venues = []
+    # binding.pry
+    venue = {}
+    result.businesses.each do |r|
+      # binding.pry
+      venue[:name] = r.name
+      venue[:url] = r.url
+      venue[:address] = r.location.display_address
+      venue[:phone] = r.phone
+      venue[:cats] = r.categories
+      venue[:rating] = r.rating
+      venue[:review_count] = r.review_count
+      venue[:descr] = r.snippet_text
+      venue[:is_closed] = r.is_closed
+      venue[:distance] = r.distance #in meters
+      # binding.pry
+      all_venues << venue
+    end
+   all_venues
+  end
+  
 end
