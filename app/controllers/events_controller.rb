@@ -34,7 +34,7 @@ class EventsController < ApplicationController
     @event.update(:long => params[:long])
     @event.update(:taxonomies => params[:taxonomies])
     # raise params
-    redirect_to @event#showpage
+    redirect_to event_results_path(@event)
   end
 
   private

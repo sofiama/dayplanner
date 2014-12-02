@@ -40,4 +40,6 @@ gem 'spring',        group: :development
 
 gem 'pry'
 
-gem 'json'
+gem 'figaro'
+
+gem 'yelp', require: 'yelp'
