@@ -6,25 +6,32 @@
 
 <hr/>
 
-<h3>YELP RESULTS</h3>
+<%= button_to 'pick for me' ,event_results_path, :method => 'get' %>
 
 <h4>yelp random</h4>
-<% @random.each do |f| %>
+<% @random.each do |r| %>
+<b><%= r[:title] %></b>
 <ul>
-  <li><b><%= f[:name] %></b></li>
-  <li><%= f[:address][0] %></li>
-  <li><%= f[:cats].join(', ') %></li>
-  <li>Distance in meters: <%= f[:distance] %></li>
-  <li><%= link_to f[:url], f[:url], :target => "_blank" %></li>
+  <li><b><%= r[:name] %></b></li>
+  <li><%= r[:address].first %></li>
+  <li><%= r[:address].last %></li>
+  <li><%= r[:cats].join(', ') %></li>
+  <li>Distance in meters: <%= r[:distance] %></li>
+  <li><%= link_to r[:url], r[:url], :target => "_blank" %></li>
 </ul>
 <% end %>
+
+<hr/>
+
+<h3>YELP RESULTS</h3>
 
 <h4>Food Option</h4>
 
 <% @food.each do |f| %>
 <ul>
   <li><b><%= f[:name] %></b></li>
-  <li><%= f[:address][0] %></li>
+  <li><%= f[:address].first %></li>
+  <li><%= f[:address].last %></li>
   <li><%= f[:cats].join(', ') %></li>
   <li>Distance in meters: <%= f[:distance] %></li>
   <li><%= link_to f[:url], f[:url], :target => "_blank" %></li>
@@ -35,7 +42,8 @@
 <% @night.each do |f| %>
 <ul>
   <li><b><%= f[:name] %></b></li>
-  <li><%= f[:address][0] %></li>
+  <li><%= f[:address].first %></li>
+  <li><%= f[:address].last %></li>
   <li><%= f[:cats].join(', ') %></li>
   <li>Distance in meters: <%= f[:distance] %></li>
   <li><%= link_to f[:url], f[:url], :target => "_blank" %></li>

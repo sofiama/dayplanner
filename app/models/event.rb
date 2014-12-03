@@ -107,10 +107,13 @@ class Event < ActiveRecord::Base
   end
 
   # 
-  def get_yelp_rand_options
+  def get_rand_options
     options = []
     options << get_yelp_restaurants.sample
+    options.last[:title] = 'Food'
     options << get_yelp_nightlife.sample
+    options.last[:title] = 'Nightlife'
+    options
   end
   
 end
