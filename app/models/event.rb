@@ -72,15 +72,19 @@ class Event < ActiveRecord::Base
   end
 
 
-
   # YELP stuff !!!
-  def yelp_api
-    @yelp_api ||= YelpApi.new
-  end
 
   def get_yelp_restaurants
-    # binding.pry
-    result = yelp_api.search_restaurants(self.lat, self.long)
+    result = YelpApi.search_venues('restaurants', 5, self.lat, self.long)
+    get_yelp_venue_results(result)
+  end
+
+  def get_yelp_nightlife
+    result = YelpApi.search_venues('nightlife', 3, self.lat, self.long)
+    get_yelp_venue_results(result)
+  end
+
+  def get_yelp_venue_results(result)
     all_venues = []
     
     result.businesses.each do |r|
@@ -88,11 +92,13 @@ class Event < ActiveRecord::Base
       venue[:name] = r.name
       venue[:url] = r.url
       venue[:address] = r.location.display_address
-      # venue[:phone] = r.phone
-      venue[:cats] = r.categories
+      venue[:phone] = r.phone if r.keys.include?(:phone)
+      venue[:lat] = r.location.coordinate.latitude
+      venue[:long] = r.location.coordinate.longitude
+      venue[:cats] = r.categories.map{|i| i.first}
+      # binding.pry
       venue[:rating] = r.rating
       venue[:review_count] = r.review_count
-      venue[:descr] = r.snippet_text
       venue[:is_closed] = r.is_closed
       venue[:distance] = r.distance #in meters
       all_venues << venue
@@ -100,26 +106,14 @@ class Event < ActiveRecord::Base
     all_venues
   end
 
-  def get_yelp_nightlife
-    result = yelp_api.search_nightlife(self.lat, self.long)
-    all_venues = []
-    # binding.pry
-    result.businesses.each do |r|
-      venue = {}
-      venue[:name] = r.name
-      venue[:url] = r.url
-      venue[:address] = r.location.display_address
-      # venue[:phone] = r.phone
-      venue[:cats] = r.categories
-      venue[:rating] = r.rating
-      venue[:review_count] = r.review_count
-      venue[:descr] = r.snippet_text
-      venue[:is_closed] = r.is_closed
-      venue[:distance] = r.distance #in meters
-      # binding.pry
-      all_venues << venue
-    end
-   all_venues
+  # 
+  def get_rand_options
+    options = []
+    options << get_yelp_restaurants.sample
+    options.last[:title] = 'Food'
+    options << get_yelp_nightlife.sample
+    options.last[:title] = 'Nightlife'
+    options
   end
   
 end
