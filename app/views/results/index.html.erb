@@ -1,7 +1,13 @@
 <h1>results#index</h1>
 
-<h2>YELP RESULTS</h2>
-<h3>Food Option</h3>
+<p>Results for</p>
+<p><b><%= @event.name %></b></p>
+<p> on <b><%= @event.date_display %></b> at <b><%= @event.time_display %></b>
+
+<hr/>
+
+<h3>YELP RESULTS</h3>
+<h4>Food Option</h4>
 
 <% @food.each do |f| %>
 <ul>
@@ -24,4 +30,4 @@
 
 <hr/>
 
-<h2>FOURSQUARE RESULTS</h2>
+<h3>FOURSQUARE RESULTS</h3>

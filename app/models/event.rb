@@ -56,6 +56,15 @@ class Event < ActiveRecord::Base
     all_events
   end
 
+  def date_display
+    date = Date.parse(self.date.to_s)
+    date.strftime('%a') + ' ' + date.strftime('%b') + ' ' + date.strftime('%-d') + ', ' + date.strftime('%Y')
+  end
+
+  def time_display
+    Time.parse(self.date.to_s).strftime('%l:%M %p')
+  end
+
   # foursquare stuff !!!
   def get_foursquare_results
     ll = "#{self.lat},#{self.long}"
@@ -79,7 +88,7 @@ class Event < ActiveRecord::Base
       venue[:name] = r.name
       venue[:url] = r.url
       venue[:address] = r.location.display_address
-      venue[:phone] = r.phone
+      # venue[:phone] = r.phone
       venue[:cats] = r.categories
       venue[:rating] = r.rating
       venue[:review_count] = r.review_count
@@ -100,7 +109,7 @@ class Event < ActiveRecord::Base
       venue[:name] = r.name
       venue[:url] = r.url
       venue[:address] = r.location.display_address
-      venue[:phone] = r.phone
+      # venue[:phone] = r.phone
       venue[:cats] = r.categories
       venue[:rating] = r.rating
       venue[:review_count] = r.review_count
