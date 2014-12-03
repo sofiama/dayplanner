@@ -7,12 +7,13 @@
 <hr/>
 
 <h3>YELP RESULTS</h3>
-<h4>Food Option</h4>
+<h4>Food       Option</h4>
 
 <% @food.each do |f| %>
 <ul>
   <li><b><%= f[:name] %></b></li>
   <li><%= f[:address][0] %></li>
+  <li><%= f[:cats] %></li>
   <li>Distance in meters: <%= f[:distance] %></li>
   <li><%= link_to f[:url], f[:url], :target => "_blank" %></li>
 </ul>
@@ -23,6 +24,7 @@
 <ul>
   <li><b><%= f[:name] %></b></li>
   <li><%= f[:address][0] %></li>
+  <li><%= f[:cats] %></li>
   <li>Distance in meters: <%= f[:distance] %></li>
   <li><%= link_to f[:url], f[:url], :target => "_blank" %></li>
 </ul>

@@ -1,17 +1,15 @@
 class YelpApi
-  attr_reader :client
 
-  def initialize
-    Yelp.client.configure do |config|
-      config.consumer_key = ENV['yelp_id']
-      config.consumer_secret = ENV['yelp_secret']
-      config.token = ENV['yelp_token']
-      config.token_secret = ENV['yelp_token_secret']
-    end
-    @client = Yelp.client
+  def self.yelp_client
+    client ||= Yelp::Client.new ({
+      consumer_key: ENV['yelp_id'],
+      consumer_secret: ENV['yelp_secret'],
+      token: ENV['yelp_token'],
+      token_secret: ENV['yelp_token_secret']
+      })
   end
 
-  def search_venues(category, limit, lat, long)
+  def self.search_venues(category, limit, lat, long)
     params = {
       limit: limit,
       category_filter: category,
@@ -22,7 +20,7 @@ class YelpApi
       latitude: lat,
       longitude: long
     }
-    client.search_by_coordinates(coordinates, params)
+    self.yelp_client.search_by_coordinates(coordinates, params)
   end
 
 end

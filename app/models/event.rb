@@ -73,17 +73,15 @@ class Event < ActiveRecord::Base
 
 
   # YELP stuff !!!
-  def yelp_api
-    @yelp_api ||= YelpApi.new
-  end
 
   def get_yelp_restaurants
-    result = yelp_api.search_venues('restaurants', 5, self.lat, self.long)
+    result = YelpApi.search_venues('restaurants', 5, self.lat, self.long)
     get_yelp_venue_results(result)
   end
 
   def get_yelp_nightlife
-    result = yelp_api.search_venues('nightlife', 3, self.lat, self.long)
+    result = YelpApi.search_venues('nightlife', 3, self.lat, self.long)
+    # binding.pry
     get_yelp_venue_results(result)
   end
 
@@ -95,11 +93,14 @@ class Event < ActiveRecord::Base
       venue[:name] = r.name
       venue[:url] = r.url
       venue[:address] = r.location.display_address
-      # venue[:phone] = r.phone
+      # binding.pryi 
+      venue[:phone] = r.phone if r.keys.include?(:phone)
+      venue[:lat] = r.location.coordinate.latitude
+      venue[:long] = r.location.coordinate.longitude
       venue[:cats] = r.categories
       venue[:rating] = r.rating
       venue[:review_count] = r.review_count
-      venue[:descr] = r.snippet_text
+      # venue[:descr] = r.snippet_text
       venue[:is_closed] = r.is_closed
       venue[:distance] = r.distance #in meters
       all_venues << venue
