@@ -1,33 +1,18 @@
 <h1>results#index</h1>
 
-<p>Results for</p>
-<p><b><%= @event.name %></b></p>
-<p> on <b><%= @event.date_display %></b> at <b><%= @event.time_display %></b>
 
-<hr/>
-
-<h3>YELP RESULTS</h3>
-<h4>Food Option</h4>
-
-<% @food.each do |f| %>
-<ul>
-  <li><b><%= f[:name] %></b></li>
-  <li><%= f[:address][0] %></li>
-  <li>Distance in meters: <%= f[:distance] %></li>
-  <li><%= link_to f[:url], f[:url], :target => "_blank" %></li>
-</ul>
-<% end %>
-
-<h3>Night Option</h3>
-<% @night.each do |f| %>
-<ul>
-  <li><b><%= f[:name] %></b></li>
-  <li><%= f[:address][0] %></li>
-  <li>Distance in meters: <%= f[:distance] %></li>
-  <li><%= link_to f[:url], f[:url], :target => "_blank" %></li>
-</ul>
-<% end %>
 
 <hr/>
 
 <h3>FOURSQUARE RESULTS</h3>
+<h3>Sights Option</h3>
+<%#= binding.pry %>
+<% @sights.each do |f| %>
+<ul>
+  <li><b><%= f[:name] %></b></li>
+  <li><%= f[:address][0] %></li>
+  <li><%= f[:cats] %></li>
+  <li>Distance in meters: <%= f[:distance] %></li>
+  <li><%= link_to f[:url], f[:url], :target => "_blank" %></li>
+</ul>
+<% end %>

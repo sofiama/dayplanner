@@ -66,60 +66,83 @@ class Event < ActiveRecord::Base
   end
 
   # foursquare stuff !!!
-  def get_foursquare_results
+  def get_foursquare_sights
     ll = "#{self.lat},#{self.long}"
-    FoursquareApi.new.search(ll)
-  end
-
-
-
-  # YELP stuff !!!
-  def yelp_api
-    @yelp_api ||= YelpApi.new
-  end
-
-  def get_yelp_restaurants
-    # binding.pry
-    result = yelp_api.search_restaurants(self.lat, self.long)
+    result = FoursquareApi.new.search(ll)
     all_venues = []
-    
-    result.businesses.each do |r|
+
+    result["response"]["venues"].each do |r|
+      #binding.pry
       venue = {}
-      venue[:name] = r.name
-      venue[:url] = r.url
-      venue[:address] = r.location.display_address
-      # venue[:phone] = r.phone
-      venue[:cats] = r.categories
-      venue[:rating] = r.rating
-      venue[:review_count] = r.review_count
-      venue[:descr] = r.snippet_text
-      venue[:is_closed] = r.is_closed
-      venue[:distance] = r.distance #in meters
+      venue[:name] = r["name"] if r.keys.include?("name")
+
+      ### STORES ADDRESS AS AN ARRAY ###
+      venue[:address] = r["location"]["formattedAddress"] if r["location"].keys.include?("formattedAddress")
+
+      #venue[:phone] = r["contact"]["phone"] if r.keys.include?("phone")
+      venue[:cats] = r["categories"][0]["name"] if r["categories"][0].keys.include?("name")
+      #venue[:rating] = r["rating"] if r.keys.include?("rating")
+      #venue[:review_count] = r["review_count"] if r.keys.include?("review_count")
+      #venue[:descr] = r["descr"] if r.keys.include?("descr")
+      venue[:distance] = r["location"]["distance"]  if r["location"].keys.include?("distance") #in meters
+      venue[:lat] = r["location"]["lat"] if r["location"].keys.include?("lat")
+      venue[:long] = r["location"]["lng"] if r["location"].keys.include?("lng")
+      venue[:here_now] = r["hereNow"]["summary"] if r["hereNow"].keys.include?("summary")
+      venue[:url] = r["shortUrl"] if r.keys.include?("url")
       all_venues << venue
+         #binding.pry
     end
     all_venues
   end
 
-  def get_yelp_nightlife
-    result = yelp_api.search_nightlife(self.lat, self.long)
-    all_venues = []
-    # binding.pry
-    result.businesses.each do |r|
-      venue = {}
-      venue[:name] = r.name
-      venue[:url] = r.url
-      venue[:address] = r.location.display_address
-      # venue[:phone] = r.phone
-      venue[:cats] = r.categories
-      venue[:rating] = r.rating
-      venue[:review_count] = r.review_count
-      venue[:descr] = r.snippet_text
-      venue[:is_closed] = r.is_closed
-      venue[:distance] = r.distance #in meters
-      # binding.pry
-      all_venues << venue
-    end
-   all_venues
-  end
-  
+
+  # YELP stuff !!!
+  # def yelp_api
+  #   @yelp_api ||= YelpApi.new
+  # end
+
+  # def get_yelp_restaurants
+  #   # binding.pry
+  #   result = yelp_api.search_restaurants(self.lat, self.long)
+  #   all_venues = []
+
+  #   result.businesses.each do |r|
+  #     venue = {}
+  #     venue[:name] = r.name
+  #     venue[:url] = r.url
+  #     venue[:address] = r.location.display_address
+  #     # venue[:phone] = r.phone
+  #     venue[:cats] = r.categories
+  #     venue[:rating] = r.rating
+  #     venue[:review_count] = r.review_count
+  #     venue[:descr] = r.snippet_text
+  #     venue[:is_closed] = r.is_closed
+  #     venue[:distance] = r.distance #in meters
+  #     all_venues << venue
+  #   end
+  #   all_venues
+  # end
+
+  # def get_yelp_nightlife
+  #   result = yelp_api.search_nightlife(self.lat, self.long)
+  #   all_venues = []
+  #   # binding.pry
+  #   result.businesses.each do |r|
+  #     venue = {}
+  #     venue[:name] = r.name
+  #     venue[:url] = r.url
+  #     venue[:address] = r.location.display_address
+  #     # venue[:phone] = r.phone
+  #     venue[:cats] = r.categories
+  #     venue[:rating] = r.rating
+  #     venue[:review_count] = r.review_count
+  #     venue[:descr] = r.snippet_text
+  #     venue[:is_closed] = r.is_closed
+  #     venue[:distance] = r.distance #in meters
+  #     # binding.pry
+  #     all_venues << venue
+  #   end
+  #  all_venues
+  # end
+
 end
