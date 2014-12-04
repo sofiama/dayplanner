@@ -13,6 +13,7 @@
   <li><%= f[:address][0] %></li>
   <li><%= f[:cats] %></li>
   <li>Distance in meters: <%= f[:distance] %></li>
-  <li><%= link_to f[:url], f[:url], :target => "_blank" %></li>
+  <li><%= f[:here_now] %></li>
+  <li><%= link_to "link", f[:url], :target => "_blank" %></li>
 </ul>
 <% end %>

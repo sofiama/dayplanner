@@ -1,5 +1,6 @@
 require 'open-uri'
 require 'json'
+include Slug
 
 class Event < ActiveRecord::Base
   def name_normalizer
@@ -16,6 +17,7 @@ class Event < ActiveRecord::Base
     url = "http://api.seatgeek.com/2/events?q=#{self.name_normalizer}+on+#{self.date_normalizer}"
     @results = JSON.load(open(url))
     # binding.pry
+
   end
 
   def get_results
@@ -70,9 +72,9 @@ class Event < ActiveRecord::Base
     ll = "#{self.lat},#{self.long}"
     result = FoursquareApi.new.search(ll)
     all_venues = []
-
-    result["response"]["venues"].each do |r|
       #binding.pry
+    result["response"]["venues"].each do |r|
+
       venue = {}
       venue[:name] = r["name"] if r.keys.include?("name")
 
@@ -81,6 +83,7 @@ class Event < ActiveRecord::Base
 
       #venue[:phone] = r["contact"]["phone"] if r.keys.include?("phone")
       venue[:cats] = r["categories"][0]["name"] if r["categories"][0].keys.include?("name")
+      venue[:hours] = r["hours"] if r.keys.include?("hours")
       #venue[:rating] = r["rating"] if r.keys.include?("rating")
       #venue[:review_count] = r["review_count"] if r.keys.include?("review_count")
       #venue[:descr] = r["descr"] if r.keys.include?("descr")
@@ -88,7 +91,8 @@ class Event < ActiveRecord::Base
       venue[:lat] = r["location"]["lat"] if r["location"].keys.include?("lat")
       venue[:long] = r["location"]["lng"] if r["location"].keys.include?("lng")
       venue[:here_now] = r["hereNow"]["summary"] if r["hereNow"].keys.include?("summary")
-      venue[:url] = r["shortUrl"] if r.keys.include?("url")
+      #venue[:url] = r["shortUrl"] if r.keys.include?("shortUrl") #never provided so...
+      venue[:url] = "https://foursquare.com/v/#{r["name"].downcase.gsub(" ","-")}/#{r["id"]}"
       all_venues << venue
          #binding.pry
     end
