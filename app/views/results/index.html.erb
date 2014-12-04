@@ -85,3 +85,40 @@
 <% end %>
 
 <hr/>
+
+<!-- Form for Custom Block that creates a drag and drop block via AJAX -->
+<h3>CUSTOM BLOCK</h3>
+<h3>Fill fields below</h3>
+
+<%= form_tag(event_results_path, :method=>'get') do %>
+<p>
+   Title:<br />
+   <%= text_field_tag "c_title" %>
+ </p>
+
+ <p>
+   Location: <br />
+   <%= text_field_tag "c_location" %>
+  <!-- Future TODO: Look up address and calculate distance from Main Event and add as field -->
+ </p>
+
+ <p>
+   Description:<br />
+   <%= text_area_tag "c_description", "", :size=>"20x10" %>
+ </p>
+
+ <p>
+   <%= submit_tag 'Submit' %>
+ </p>
+<% end %>
+
+<!-- Appears after form is submitted and page is refreshed. -->
+<% if params[:c_title].present? %>
+    <div class='activity ui-widget-content'>
+    <ul>
+      <li><b><%= params[:c_title] %></b></li>
+      <li><%= params[:c_location] %></li>
+      <li><%= params[:c_description] %></li>
+    </ul>
+    </div>
+<% end %>
