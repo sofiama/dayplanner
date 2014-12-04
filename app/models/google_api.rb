@@ -1,2 +1,0 @@
-class GoogleApi
-end
