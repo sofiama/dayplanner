@@ -1,10 +1,10 @@
 class YelpApi
 
   @@client ||= Yelp::Client.new ({
-      consumer_key: ENV['yelp_id'],
-      consumer_secret: ENV['yelp_secret'],
-      token: ENV['yelp_token'],
-      token_secret: ENV['yelp_token_secret']
+      consumer_key: ENV['YELP_ID'],
+      consumer_secret: ENV['YELP_SECRET'],
+      token: ENV['YELP_TOKEN'],
+      token_secret: ENV['YELP_TOKEN_SECRET']
       })
 
   def self.search_venues(category, limit, lat, long)

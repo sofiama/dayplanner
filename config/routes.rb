@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
 
   root 'events#new'
+  
   resources :events do
     resources :results, :only => [:index]
   end
   
+  resources :sessions, :only => [:index, :new]
+  get 'auth/:provider/callback' => 'sessions#create'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
