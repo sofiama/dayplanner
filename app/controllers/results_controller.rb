@@ -4,5 +4,6 @@ class ResultsController < ApplicationController
     @random = @event.get_rand_options
     @food =  @event.get_yelp_restaurants
     @night = @event.get_yelp_nightlife
+    @sights = @event.get_foursquare_sights
   end
 end

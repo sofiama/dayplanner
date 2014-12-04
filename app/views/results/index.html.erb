@@ -58,12 +58,25 @@
   <li><%= f[:address].first %></li>
   <li><%= f[:address].last %></li>
   <li><%= f[:cats].join(', ') %></li>
+</ul>
+</div>
+<% end %>
+<hr/>
+
+<h3>FOURSQUARE RESULTS</h3>
+<h3>Sights Option</h3>
+<%#= binding.pry %>
+<% @sights.each do |f| %>
+<div class='activity ui-widget-content'>
+<ul>
+  <li><b><%= f[:name] %></b></li>
+  <li><%= f[:address][0] %></li>
+  <li><%= f[:cats] %></li>
   <li>Distance in meters: <%= f[:distance] %></li>
-  <li><%= link_to f[:url], f[:url], :target => "_blank" %></li>
+  <li><%= f[:here_now] %></li>
+  <li><%= link_to "link", f[:url], :target => "_blank" %></li>
 </ul>
 </div>
 <% end %>
 
 <hr/>
-
-<h3>FOURSQUARE RESULTS</h3>
