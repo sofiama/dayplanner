@@ -40,7 +40,7 @@ gem 'spring',        group: :development
 
 gem 'pry'
 
-gem 'json'
+# gem 'json'
 
 gem 'figaro'
 
@@ -49,3 +49,7 @@ gem 'foursquare2'
 gem 'yelp', require: 'yelp'
 
 gem 'jquery-ui-rails'
+
+gem 'google-api-client', :require => 'google/api_client'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
