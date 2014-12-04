@@ -2,8 +2,7 @@ class SessionsController < ApplicationController
   def new
   end
 
-  def create     
-    @event = Event.find(params[:event_id])    
+  def create
     @auth = request.env["omniauth.auth"]
     # binding.pry
     @token = Token.create(
