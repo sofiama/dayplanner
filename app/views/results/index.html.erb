@@ -5,12 +5,20 @@
 <p> on <b><%= @event.date_display %></b> at <b><%= @event.time_display %></b>
 
 <hr/>
+<h4>Calendar</h4>
+<div class='time-slot'></div>
+<div class='time-slot'></div>
+<div class='time-slot'></div>
+<div class='time-slot'></div>
+
+<hr/>
 
 <%= button_to 'pick for me' ,event_results_path, :method => 'get' %>
 
 <h4>yelp random</h4>
 <% @random.each do |r| %>
 <b><%= r[:title] %></b>
+<div class='activity ui-widget-content'>
 <ul>
   <li><b><%= r[:name] %></b></li>
   <li><%= r[:address].first %></li>
@@ -18,7 +26,9 @@
   <li><%= r[:cats].join(', ') %></li>
   <li>Distance in meters: <%= r[:distance] %></li>
   <li><%= link_to r[:url], r[:url], :target => "_blank" %></li>
+  
 </ul>
+</div>
 <% end %>
 
 <hr/>
@@ -28,6 +38,7 @@
 <h4>Food Option</h4>
 
 <% @food.each do |f| %>
+<div class='activity ui-widget-content'>
 <ul>
   <li><b><%= f[:name] %></b></li>
   <li><%= f[:address].first %></li>
@@ -36,10 +47,12 @@
   <li>Distance in meters: <%= f[:distance] %></li>
   <li><%= link_to f[:url], f[:url], :target => "_blank" %></li>
 </ul>
+</div>
 <% end %>
 
 <h3>Night Option</h3>
 <% @night.each do |f| %>
+<div class='activity ui-widget-content'>
 <ul>
   <li><b><%= f[:name] %></b></li>
   <li><%= f[:address].first %></li>
@@ -48,6 +61,7 @@
   <li>Distance in meters: <%= f[:distance] %></li>
   <li><%= link_to f[:url], f[:url], :target => "_blank" %></li>
 </ul>
+</div>
 <% end %>
 
 <hr/>
