@@ -15,7 +15,7 @@
 
 <%= button_to 'pick for me' ,event_results_path, :method => 'get' %>
 
-<h4>yelp random</h4>
+<h4>Random Picks</h4>
 <% @random.each do |r| %>
 <b><%= r[:title] %></b>
 <div class='activity ui-widget-content'>
@@ -23,10 +23,15 @@
   <li><b><%= r[:name] %></b></li>
   <li><%= r[:address].first %></li>
   <li><%= r[:address].last %></li>
-  <li><%= r[:cats].join(', ') %></li>
+  <li><% if r[:cats] == Array %>
+        <%= r[:cats].join(', ') %>
+      <% else %>
+         <%= (r[:cats]) %>
+      <% end %>
+  </li>
   <li>Distance in meters: <%= r[:distance] %></li>
   <li><%= link_to r[:url], r[:url], :target => "_blank" %></li>
-  
+
 </ul>
 </div>
 <% end %>
