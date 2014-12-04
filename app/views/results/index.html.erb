@@ -4,6 +4,8 @@
 <p><b><%= @event.name %></b></p>
 <p> on <b><%= @event.date_display %></b> at <b><%= @event.time_display %></b>
 
+<%= link_to "Sign in with Google", "/auth/google_oauth2" %>
+
 <hr/>
 <h4>Calendar</h4>
 <div class='time-slot'></div>
