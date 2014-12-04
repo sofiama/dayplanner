@@ -49,3 +49,5 @@ gem 'foursquare2'
 gem 'yelp', require: 'yelp'
 
 gem 'jquery-ui-rails'
+
+gem 'omniauth-facebook'

@@ -5,6 +5,5 @@ class ResultsController < ApplicationController
     @food =  @event.get_yelp_restaurants
     @night = @event.get_yelp_nightlife
     @sights = @event.get_foursquare_sights
-    #@custom = CustomEvent.new
   end
 end
