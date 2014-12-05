@@ -1,4 +1,8 @@
-<%= @user %>
+<%= @user.find_main_gcal %>
+
+<hr/>
+
+<%= @user.get_main_gcal_id %>
 
 <% @auth.each do |key, value| %>
   <h1><%= key %> </h1>

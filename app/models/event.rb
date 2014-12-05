@@ -3,6 +3,8 @@ require 'json'
 include Slug
 
 class Event < ActiveRecord::Base
+  has_one :user
+
   def name_normalizer
     self.name.gsub(' ', '+')
   end
@@ -16,8 +18,6 @@ class Event < ActiveRecord::Base
   def get_seatgeek_info
     url = "http://api.seatgeek.com/2/events?q=#{self.name_normalizer}+on+#{self.date_normalizer}"
     @results = JSON.load(open(url))
-    # binding.pry
-
   end
 
   def get_results

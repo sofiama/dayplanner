@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141205004322) do
+ActiveRecord::Schema.define(version: 20141205184849) do
 
   create_table "events", force: true do |t|
     t.string   "name"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20141205004322) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "google_event_id"
+    t.integer  "user_id"
   end
 
   create_table "users", force: true do |t|
@@ -30,6 +31,8 @@ ActiveRecord::Schema.define(version: 20141205004322) do
     t.datetime "expires_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "event_id"
+    t.string   "email"
   end
 
 end

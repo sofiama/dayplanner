@@ -2,6 +2,8 @@ require 'net/http'
 require 'json'
 
 class User < ActiveRecord::Base
+  belongs_to :event
+
   def to_params
     {'refresh_token' => refresh_token,
     'client_id' => ENV['GOOGLE_ID'],
@@ -31,15 +33,26 @@ class User < ActiveRecord::Base
     access_token
   end
 
-  # def get_google_calendar
-  #   client = Google::APIClient.new
-  #   client.authorization.refresh_token = app.carer.google_auth_refresh_token
-  #   client.authorization.access_token = app.carer.google_auth_token
-  #   if client.authorization.refresh_token && client.authorization.expired?
-  #     client.authorization.fetch_access_token!
-  #   end
-  #   service = client.discovered_api('calendar', 'v3')
-  #   @result = client.execute(:api_method => service.calendar_list.list)
-  # end
+  def find_main_gcal
+    client = Google::APIClient.new
+    client.authorization.access_token = self.access_token
+    service = client.discovered_api('calendar', 'v3')
+    result = client.execute(
+      :api_method => service.calendar_list.list,
+      :parameters => {'calendarId' => @calendar},
+      :headers => {'Content-Type' => 'application/json'})
+    @parsed = JSON.parse(result.data.to_json)
+    
+    @parsed["items"].each do |item|
+      if item["id"] == self.email
+        return item
+      end
+    end
+  end
+
+  def get_main_gcal_id
+    find_main_gcal["id"]
+  end
+
   
 end

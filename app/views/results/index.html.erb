@@ -4,15 +4,32 @@
 <p><b><%= @event.name %></b></p>
 <p> on <b><%= @event.date_display %></b> at <b><%= @event.time_display %></b>
 
-<%= link_to "Sign in with Google", "/auth/google_oauth2" %>
-
+Google user_id <%= @event.user_id %>
 <hr/>
-<h4>Calendar</h4>
-<div class='time-slot'></div>
-<div class='time-slot'></div>
-<div class='time-slot'></div>
-<div class='time-slot'></div>
+<% if @event.user_id != nil %>
+<%= @user.get_main_gcal_id %>
+<% end %>
 
+<h4>Calendar</h4>
+<%= form_tag '/auth/google_oauth2', :method => 'get' do |f| %>
+<%= hidden_field_tag :event_id, value = @event.id %>
+<%= submit_tag 'Export to Google Calendar' %>
+<% end %>
+<p></p>
+
+<%= button_to "Export to Google Calendar", "/auth/google_oauth2", :class => 'google' %>
+<p></p>
+<div class = 'calendar'>
+<div class='time-slot'></div>
+<div class='time-slot'></div>
+<div class='event'>
+  <ul>
+    <li><b><%= @event.name %></b></li>
+    <li><%= @event.time_display %></li>
+  </ul>
+</div>
+<div class='time-slot'></div>
+</div>
 <hr/>
 
 <%= button_to 'pick for me' ,event_results_path, :method => 'get' %>
