@@ -30,4 +30,16 @@ class User < ActiveRecord::Base
     refresh! if expired?
     access_token
   end
+
+  # def get_google_calendar
+  #   client = Google::APIClient.new
+  #   client.authorization.refresh_token = app.carer.google_auth_refresh_token
+  #   client.authorization.access_token = app.carer.google_auth_token
+  #   if client.authorization.refresh_token && client.authorization.expired?
+  #     client.authorization.fetch_access_token!
+  #   end
+  #   service = client.discovered_api('calendar', 'v3')
+  #   @result = client.execute(:api_method => service.calendar_list.list)
+  # end
+  
 end
