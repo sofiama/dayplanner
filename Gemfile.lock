@@ -55,6 +55,11 @@ GEM
       faraday (~> 0.8)
       faraday_middleware (>= 0.8)
       hashie (>= 1.0, < 3.0.0)
+    gon (5.2.3)
+      actionpack (>= 2.3.0)
+      json
+      multi_json
+      request_store (>= 1.0.5)
     google-api-client (0.7.1)
       addressable (>= 2.3.2)
       autoparse (>= 0.3.3)
@@ -132,6 +137,7 @@ GEM
     rake (10.4.2)
     rdoc (4.1.2)
       json (~> 1.4)
+    request_store (1.1.0)
     retriable (1.4.1)
     sass (3.2.19)
     sass-rails (4.0.5)
@@ -183,6 +189,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   figaro
   foursquare2
+  gon
   google-api-client
   jbuilder (~> 2.0)
   jquery-rails
