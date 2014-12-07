@@ -20,20 +20,33 @@ class SessionsController < ApplicationController
     
     if @event.save
       render :nothing => true
-      google_event = {
-        'summary' => @event.name,
-        # 'location' => @event.location,
-        'start' => @event.date
-      }
+      # google_event = {
+      #   'summary' => @event.name,
+      #   # 'location' => @event.location,
+      #   'start' => {'dateTime' => '2014-12-30T10:00:00.000-07:00'},
+      #   'end' => {'dateTime' => '2014-12-30T10:00:00.000-08:00'}
+      # }
       client = Google::APIClient.new
       client.authorization.access_token = @user.access_token
       service = client.discovered_api('calendar', 'v3')
 
-      result = client.execute(
-        :api_method => service.events.insert,
-        :parameters => {'calendarId' => @user.email, 'sendNotifications' => true},
-        :body => JSON.dump(google_event),
-        :headers => {'Content-Type' => 'application/json'})
+      @event.date.to_s
+
+      # hash = {
+      #   :api_method => service.events.insert,
+      #   :parameters => {'calendarId' => 'sofia.ma@gmail.com', 'sendNotifications' => true},
+      #   :body => JSON.dump(google_event),
+      #   :headers => {'Content-Type' => 'application/json'}
+      # }
+      hash_quickAdd = {
+        :api_method => service.events.quick_add,
+        :parameters => 
+          { 'calendarId' => 'primary',
+            'text' => "#{@event.name} #{@event.date}"}
+      }
+
+      result = client.execute(hash_quickAdd
+        )
       @event.google_event_id = result.data.id
       @event.save
       # redirect_to(@origin)
