@@ -15,3 +15,5 @@
 //= require jquery-ui
 //= require turbolinks
 //= require_tree .
+//= require html2canvas
+//= require canvas2image

@@ -1,19 +1,37 @@
+
+
 <h1>results#index</h1>
 
 <p>Results for</p>
 <p><b><%= @event.name %></b></p>
 <p> on <b><%= @event.date_display %></b> at <b><%= @event.time_display %></b>
 
-<%= link_to "Sign in with Google", "/auth/google_oauth2" %>
+<%= link_to "Sign in with Google", "/auth/google_oauth2" %><br>
+
+<% if current_user %>
+    Signed in as <strong><%= current_user.name %></strong>!
+    <%= link_to "Sign out", signout_path, id: "sign_out" %>
+<% else %>
+    <%= link_to "Sign in with Facebook", "/auth/facebook" %>
+<% end %>
+
+<!-- DIV -> IMG creating -->
 
 <hr/>
+<div class="calendar">
 <h4>Calendar</h4>
 <div class='time-slot'></div>
 <div class='time-slot'></div>
 <div class='time-slot'></div>
 <div class='time-slot'></div>
-
+</div>
 <hr/>
+
+<input type="button" id="btnSave" value="Save PNG"/>
+
+<!-- <div id="img-out"></div> -->
+
+<!-- DIV -> IMG creating -->
 
 <%= button_to 'pick for me' ,event_results_path, :method => 'get' %>
 
