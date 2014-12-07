@@ -4,6 +4,7 @@ include Slug
 
 class Event < ActiveRecord::Base
   has_one :user
+  has_many :activities
 
   def name_normalizer
     self.name.gsub(' ', '+')
@@ -80,13 +81,8 @@ class Event < ActiveRecord::Base
 
       ### STORES ADDRESS AS AN ARRAY ###
       venue[:address] = r["location"]["formattedAddress"] if r["location"].keys.include?("formattedAddress")
-
-      #venue[:phone] = r["contact"]["phone"] if r.keys.include?("phone")
       venue[:cats] = r["categories"][0]["name"] if r["categories"][0].keys.include?("name")
       venue[:hours] = r["hours"] if r.keys.include?("hours")
-      #venue[:rating] = r["rating"] if r.keys.include?("rating")
-      #venue[:review_count] = r["review_count"] if r.keys.include?("review_count")
-      #venue[:descr] = r["descr"] if r.keys.include?("descr")
       venue[:distance] = r["location"]["distance"]  if r["location"].keys.include?("distance") #in meters
       venue[:lat] = r["location"]["lat"] if r["location"].keys.include?("lat")
       venue[:long] = r["location"]["lng"] if r["location"].keys.include?("lng")
@@ -104,11 +100,13 @@ class Event < ActiveRecord::Base
   def get_yelp_restaurants
     result = YelpApi.search_venues('restaurants', 5, self.lat, self.long)
     get_yelp_venue_results(result)
+    # get_yelp_venue_r(result)
   end
 
   def get_yelp_nightlife
     result = YelpApi.search_venues('nightlife', 3, self.lat, self.long)
     get_yelp_venue_results(result)
+    # get_yelp_venue_r(result)
   end
 
   def get_yelp_venue_results(result)
@@ -134,6 +132,26 @@ class Event < ActiveRecord::Base
     end
     all_venues
   end
+
+
+  # def get_yelp_into_ar
+  #   result = YelpApi.search_venues('restaurants', 5, self.lat, self.long)
+  #   get_yelp_venue_r(result)
+  # end
+
+  # def get_yelp_venue_r(result)
+  #   result.businesses.each do |r|
+  #     self.activities.create(
+  #       :event_id => self.id,
+  #       :name => r.name, 
+  #       :address => r.location.display_address,
+  #       :lat => r.location.coordinate.latitude,
+  #       :long => r.location.coordinate.longitude,
+  #       :url => r.url
+  #     )
+  #   end
+  #   binding.pry
+  # end
 
   #
   def get_rand_options

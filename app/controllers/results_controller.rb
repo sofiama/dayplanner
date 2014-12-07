@@ -9,6 +9,6 @@ class ResultsController < ApplicationController
     if @event.user_id != nil
       @user = User.find(@event.user_id)
     end
-    
+
   end
 end

@@ -1,5 +1,11 @@
 $(function(){
 
+  $('.random').hide();
+  $('.google').on('click', function(){
+    $('.random').show();
+  });
+
+
   $('.activity').draggable({
     snap: '.time-slot',
     // revert: 'invalid'
@@ -13,12 +19,12 @@ $(function(){
 
   $('.google').on('click', function(){
     var calendarId = $('#calendarId');
-    $.ajax({
-      type: 'POST'
-      url: 'https://www.googleapis.com/calendar/v3/calendars/'+ calendarId + '/events'
-    }).success(function(result){
-      console.log(result);
-    });
+    // $.ajax({
+    //   type: 'POST'
+    //   url: 'https://www.googleapis.com/calendar/v3/calendars/'+ calendarId + '/events'
+    // }).success(function(result){
+    //   console.log(result);
+    // });
 
   });
 

@@ -4,11 +4,8 @@ class SessionsController < ApplicationController
   end
 
   def create
-    # binding.pry
     @auth = request.env["omniauth.auth"]
-    # binding.pry
-
-    
+    @origin = request.env["omniauth.origin"]
 
     @user = User.create(
       access_token: @auth['credentials']['token'],
@@ -18,13 +15,33 @@ class SessionsController < ApplicationController
       event_id: request.env["omniauth.origin"].split('/')[4]
       )
 
-    @event = Event.find(request.env["omniauth.origin"].split('/')[4])
+    @event = Event.find(@origin.split('/')[4])
     @event.user_id = @user.id
-    @event.save
+    
+    if @event.save
+      render :nothing => true
+      google_event = {
+        'summary' => @event.name,
+        # 'location' => @event.location,
+        'start' => @event.date
+      }
+      client = Google::APIClient.new
+      client.authorization.access_token = @user.access_token
+      service = client.discovered_api('calendar', 'v3')
+
+      result = client.execute(
+        :api_method => service.events.insert,
+        :parameters => {'calendarId' => @user.email, 'sendNotifications' => true},
+        :body => JSON.dump(google_event),
+        :headers => {'Content-Type' => 'application/json'})
+      @event.google_event_id = result.data.id
+      @event.save
+      # redirect_to(@origin)
+    else
+      render :nothing => true
+    end
   
-    # @event_id = @user.id
-    redirect_to(request.env["omniauth.origin"])
-    # redirect_to event_results_path(@user.id)
+    # redirect_to(@origin)
   end
 
 end

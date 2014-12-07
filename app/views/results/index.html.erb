@@ -13,7 +13,7 @@ Google user_id <%= @event.user_id %>
 <h4>Calendar</h4>
 <%= form_tag '/auth/google_oauth2', :method => 'get' do |f| %>
 <%= hidden_field_tag :event_id, value = @event.id %>
-<%= submit_tag 'Export to Google Calendar' %>
+<%= submit_tag 'Export to Google Calendar', :class => 'google' %>
 <% end %>
 <p></p>
 
@@ -34,26 +34,28 @@ Google user_id <%= @event.user_id %>
 
 <%= button_to 'pick for me' ,event_results_path, :method => 'get' %>
 
-<h4>Random Picks</h4>
-<% @random.each do |r| %>
-<b><%= r[:title] %></b>
-<div class='activity ui-widget-content'>
-<ul>
-  <li><b><%= r[:name] %></b></li>
-  <li><%= r[:address].first %></li>
-  <li><%= r[:address].last %></li>
-  <li><% if r[:cats] == Array %>
-        <%= r[:cats].join(', ') %>
-      <% else %>
-         <%= (r[:cats]) %>
-      <% end %>
-  </li>
-  <li>Distance in meters: <%= r[:distance] %></li>
-  <li><%= link_to r[:url], r[:url], :target => "_blank" %></li>
+<div class='random'>
+  <h4>Random Picks</h4>
+  <% @random.each do |r| %>
+  <b><%= r[:title] %></b>
+  <div class='activity ui-widget-content'>
+  <ul>
+    <li><b><%= r[:name] %></b></li>
+    <li><%= r[:address].first %></li>
+    <li><%= r[:address].last %></li>
+    <li><% if r[:cats] == Array %>
+          <%= r[:cats].join(', ') %>
+        <% else %>
+           <%= (r[:cats]) %>
+        <% end %>
+    </li>
+    <li>Distance in meters: <%= r[:distance] %></li>
+    <li><%= link_to r[:url], r[:url], :target => "_blank" %></li>
 
-</ul>
+  </ul>
+  </div>
+  <% end %>
 </div>
-<% end %>
 
 <hr/>
 
@@ -82,6 +84,7 @@ Google user_id <%= @event.user_id %>
   <li><%= f[:address].first %></li>
   <li><%= f[:address].last %></li>
   <li><%= f[:cats].join(', ') %></li>
+  <li><%= link_to f[:url], f[:url], :target => "_blank" %></li>
 </ul>
 </div>
 <% end %>
