@@ -11,7 +11,7 @@ Google user_id <%= @event.user_id %>
 <% end %>
 
 <h4>Calendar</h4>
-<%= form_tag '/auth/google_oauth2', :method => 'get' do |f| %>
+<%= form_tag '/auth/google_oauth2', :method => 'get', :class => 'google-form' do |f| %>
 <%= hidden_field_tag :event_id, value = @event.id %>
 <%= submit_tag 'Export to Google Calendar', :class => 'google' %>
 <% end %>

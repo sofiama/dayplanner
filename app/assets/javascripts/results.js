@@ -13,7 +13,21 @@ $(function(){
 
   $('.time-slot').droppable({
     drop: function(event, ui){
-      // console.log($('.calendar .activity'));
+      var target = $(event.target);
+
+      $(ui.draggable).appendTo(target);
+
+      var calendarChild = $('.calendar').children();
+      
+      calendarChild.each(function(){
+        console.log($(this).last().children().find('b').text());
+      });
+
+
+
+      var name = $('.calendar').children().last().children().find('b').text()
+
+      $('<input id="act1_name" name="act1_name" type="hidden" value="' + name + '">').insertBefore($('.google:last-child'));
     }
   });
 

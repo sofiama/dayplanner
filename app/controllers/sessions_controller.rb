@@ -6,7 +6,9 @@ class SessionsController < ApplicationController
   def create
     @auth = request.env["omniauth.auth"]
     @origin = request.env["omniauth.origin"]
-
+    @testparams = request.env["omniauth.params"]
+    @act1 = @testparams["act1_name"]
+    # binding.pry
     @user = User.create(
       access_token: @auth['credentials']['token'],
       refresh_token: @auth['refresh_token'],
@@ -45,8 +47,19 @@ class SessionsController < ApplicationController
             'text' => "#{@event.name} #{@event.date}"}
       }
 
+      hash_quickAdd1 = {
+        :api_method => service.events.quick_add,
+        :parameters => 
+          { 'calendarId' => 'primary',
+            'text' => "#{@act1} on Dec 29 10pm"}
+      }
+
       result = client.execute(hash_quickAdd
         )
+
+      result = client.execute(hash_quickAdd1
+        )
+
       @event.google_event_id = result.data.id
       @event.save
       # redirect_to(@origin)
