@@ -10,6 +10,9 @@ Google user_id <%= @event.user_id %>
 <%= @user.get_main_gcal_id %>
 <% end %>
 
+
+<div id="map"></div>
+
 <h4>Calendar</h4>
 <%= form_tag '/auth/google_oauth2', :method => 'get' do |f| %>
 <%= hidden_field_tag :event_id, value = @event.id %>
@@ -20,15 +23,15 @@ Google user_id <%= @event.user_id %>
 <%= button_to "Export to Google Calendar", "/auth/google_oauth2", :class => 'google' %>
 <p></p>
 <div class = 'calendar'>
-<div class='time-slot'></div>
-<div class='time-slot'></div>
+<div id='ts-1' class='time-slot'></div>
+<div id='ts-2' class='time-slot'></div>
 <div class='event'>
   <ul>
     <li><b><%= @event.name %></b></li>
     <li><%= @event.time_display %></li>
   </ul>
 </div>
-<div class='time-slot'></div>
+<div id='ts-3' class='time-slot'></div>
 </div>
 <hr/>
 
@@ -62,9 +65,10 @@ Google user_id <%= @event.user_id %>
 <h3>YELP RESULTS</h3>
 
 <h4>Food Option</h4>
-
+<% i = 0 %>
 <% @food.each do |f| %>
-<div class='activity ui-widget-content'>
+<% i += 1 %>
+<div id='f-<%= i %>' class='activity ui-widget-content'>
 <ul>
   <li><b><%= f[:name] %></b></li>
   <li><%= f[:address].first %></li>
@@ -77,8 +81,10 @@ Google user_id <%= @event.user_id %>
 <% end %>
 
 <h3>Night Option</h3>
+<% i = 0 %>
 <% @night.each do |f| %>
-<div class='activity ui-widget-content'>
+<% i += 1 %>
+<div id='n-<%= i %>' class='activity ui-widget-content'>
 <ul>
   <li><b><%= f[:name] %></b></li>
   <li><%= f[:address].first %></li>
@@ -91,10 +97,11 @@ Google user_id <%= @event.user_id %>
 <hr/>
 
 <h3>FOURSQUARE RESULTS</h3>
+<% i = 0 %>
 <h3>Sights Option</h3>
-<%#= binding.pry %>
 <% @sights.each do |f| %>
-<div class='activity ui-widget-content'>
+<% i += 1 %>
+<div id='s-<%= i %>' class='activity ui-widget-content'>
 <ul>
   <li><b><%= f[:name] %></b></li>
   <li><%= f[:address][0] %></li>

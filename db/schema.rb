@@ -40,9 +40,11 @@ ActiveRecord::Schema.define(version: 20141207063252) do
     t.string   "access_token"
     t.string   "refresh_token"
     t.datetime "expires_at"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "event_id"
     t.string   "email"
   end
 
