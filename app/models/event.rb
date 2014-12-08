@@ -61,11 +61,12 @@ class Event < ActiveRecord::Base
 
   def date_display
     date = Date.parse(self.date.to_s)
-    date.strftime('%a') + ' ' + date.strftime('%b') + ' ' + date.strftime('%-d') + ', ' + date.strftime('%Y')
+    # date.strftime('%a') + ' ' + date.strftime('%b') + ' ' + date.strftime('%-d') + ', ' + date.strftime('%Y')
   end
 
   def time_display
-    Time.parse(self.date.to_s).strftime('%l:%M %p')
+    # Time.parse(self.date.to_s).strftime('%l:%M %p')
+    DateTime.parse(self.date.to_s).strftime('%Y-%m-%dT%H:%M:%S%z')
   end
 
   # foursquare stuff !!!
@@ -134,26 +135,29 @@ class Event < ActiveRecord::Base
   end
 
 
-  # def get_yelp_into_ar
-  #   result = YelpApi.search_venues('restaurants', 5, self.lat, self.long)
-  #   get_yelp_venue_r(result)
-  # end
+  def get_yelp_restaurants_ar
+    result = YelpApi.search_venues('restaurants', 5, self.lat, self.long)
+    get_yelp_venue_ar(result)
+  end
 
-  # def get_yelp_venue_r(result)
-  #   result.businesses.each do |r|
-  #     self.activities.create(
-  #       :event_id => self.id,
-  #       :name => r.name, 
-  #       :address => r.location.display_address,
-  #       :lat => r.location.coordinate.latitude,
-  #       :long => r.location.coordinate.longitude,
-  #       :url => r.url
-  #     )
-  #   end
-  #   binding.pry
-  # end
+  def get_yelp_nightlife_ar
+    result = YelpApi.search_venues('nightlife', 3, self.lat, self.long)
+    get_yelp_venue_ar(result)
+  end
 
-  #
+  def get_yelp_venue_ar(result)
+    result.businesses.each do |r|
+      self.activities.create(
+        :event_id => self.id,
+        :name => r.name, 
+        :address => r.location.display_address.join('/'),
+        :lat => r.location.coordinate.latitude,
+        :long => r.location.coordinate.longitude,
+        :url => r.url
+      )
+    end
+  end
+
   def get_rand_options
     options = []
 

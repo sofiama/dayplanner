@@ -6,6 +6,9 @@ class ResultsController < ApplicationController
     @night = @event.get_yelp_nightlife
     @sights = @event.get_foursquare_sights
 
+    # @food = @event.get_yelp_restaurants_ar
+    # @night = @event.get_yelp_nightlife_ar
+
     if @event.user_id != nil
       @user = User.find(@event.user_id)
     end

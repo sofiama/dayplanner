@@ -1,8 +1,9 @@
 <h1>results#index</h1>
 
 <p>Results for</p>
-<p><b><%= @event.name %></b></p>
-<p> on <b><%= @event.date_display %></b> at <b><%= @event.time_display %></b>
+<p><b class='event-name'><%= @event.name %></b></p>
+<p> on <b class='event-date'><%= @event.date_display %></b>
+   at <b class='event-time'><%= @event.time_display %></b> <b class='event-utc'><%=@event.date %></b>
 
 Google user_id <%= @event.user_id %>
 <hr/>
@@ -15,46 +16,34 @@ Google user_id <%= @event.user_id %>
 <%= hidden_field_tag :event_id, value = @event.id %>
 <%= submit_tag 'Export to Google Calendar', :class => 'google' %>
 <% end %>
-<p></p>
 
-<%= button_to "Export to Google Calendar", "/auth/google_oauth2", :class => 'google' %>
-<p></p>
-<div class = 'calendar'>
-<div class='time-slot'></div>
-<div class='time-slot'></div>
-<div class='event'>
-  <ul>
-    <li><b><%= @event.name %></b></li>
-    <li><%= @event.time_display %></li>
-  </ul>
-</div>
-<div class='time-slot'></div>
-</div>
 <hr/>
 
 <%= button_to 'pick for me' ,event_results_path, :method => 'get' %>
 
-<div class='random'>
-  <h4>Random Picks</h4>
-  <% @random.each do |r| %>
-  <b><%= r[:title] %></b>
-  <div class='activity ui-widget-content'>
-  <ul>
-    <li><b><%= r[:name] %></b></li>
-    <li><%= r[:address].first %></li>
-    <li><%= r[:address].last %></li>
-    <li><% if r[:cats] == Array %>
-          <%= r[:cats].join(', ') %>
-        <% else %>
-           <%= (r[:cats]) %>
-        <% end %>
-    </li>
-    <li>Distance in meters: <%= r[:distance] %></li>
-    <li><%= link_to r[:url], r[:url], :target => "_blank" %></li>
+<div id='calendar'></div>
 
-  </ul>
-  </div>
-  <% end %>
+<div class='random'>
+<h4>Random Picks</h4>
+<% @random.each do |r| %>
+<b><%= r[:title] %></b>
+<div class='activity' data-event='{"title":"<%= r[:name] %>"}'>
+<ul>
+  <li><b><%= r[:name] %></b></li>
+  <li><%= r[:address].first %></li>
+  <li><%= r[:address].last %></li>
+  <li><% if r[:cats] == Array %>
+        <%= r[:cats].join(', ') %>
+      <% else %>
+         <%= (r[:cats]) %>
+      <% end %>
+  </li>
+  <li>Distance in meters: <%= r[:distance] %></li>
+  <li><%= link_to r[:url], r[:url], :target => "_blank" %></li>
+
+</ul>
+</div>
+<% end %>
 </div>
 
 <hr/>
@@ -64,7 +53,7 @@ Google user_id <%= @event.user_id %>
 <h4>Food Option</h4>
 
 <% @food.each do |f| %>
-<div class='activity ui-widget-content'>
+<div class='activity' data-event='{"title":"<%= f[:name] %>"}'>
 <ul>
   <li><b><%= f[:name] %></b></li>
   <li><%= f[:address].first %></li>
@@ -84,7 +73,6 @@ Google user_id <%= @event.user_id %>
   <li><%= f[:address].first %></li>
   <li><%= f[:address].last %></li>
   <li><%= f[:cats].join(', ') %></li>
-  <li><%= link_to f[:url], f[:url], :target => "_blank" %></li>
 </ul>
 </div>
 <% end %>
@@ -94,7 +82,7 @@ Google user_id <%= @event.user_id %>
 <h3>Sights Option</h3>
 <%#= binding.pry %>
 <% @sights.each do |f| %>
-<div class='activity ui-widget-content'>
+<div class='activity' data-event='{"title":"<%= f[:name] %>"}'>
 <ul>
   <li><b><%= f[:name] %></b></li>
   <li><%= f[:address][0] %></li>
