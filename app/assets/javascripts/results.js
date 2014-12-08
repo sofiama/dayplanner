@@ -20,10 +20,14 @@ $(function(){
     slotEventOverlap: false,
     droppable: true,
     drop: function(date, jsEvent, ui){
-      var name = $(this).find('b').text();
+      var name = $(this).find('.title').text();
       var shortname = name.replace(" ", '').substr(0,5).toLowerCase();
-      
-      $('<input id="' + shortname + '" name="' + shortname + '" type="hidden" value="' + name + '">').insertBefore($('.google'));
+
+      var date = date.format();
+
+      var nameAndDate = name + '/' + date
+      // debugger;
+      $('<input id="' + shortname + '" name="' + shortname + '" type="hidden" value="' + nameAndDate + '">').insertBefore($('.google'));
 
       // alert('Dropped on ' + date.format());
     },

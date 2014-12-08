@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     @auth = request.env["omniauth.auth"]
     @origin = request.env["omniauth.origin"]
     @params = request.env["omniauth.params"].except("utf8", "commit")
-    # binding.pry
+    binding.pry
     
     @user = User.create(
       access_token: @auth['credentials']['token'],
@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
     @event.user_id = @user.id
     
     if @event.save
-      render :nothing => true
+      # render :nothing => true
       client = Google::APIClient.new
       client.authorization.access_token = @user.access_token
       service = client.discovered_api('calendar', 'v3')
@@ -38,21 +38,21 @@ class SessionsController < ApplicationController
       result = client.execute(main_event)
 
       @params.each do |k,v|
+        name = v.split('/').first
+        date = v.split('/').last
         activity = {
           :api_method => service.events.quick_add,
           :parameters => {
             'calendarId' => 'primary', 
-            'text' => "#{v} on #{@event.date_display} 3pm"
+            'text' => "#{name} on #{@event.date_display} #{date}"
           }
         }
         result = client.execute(activity)
       end
 
-      
-
       # @event.google_event_id = result.data.id
       # @event.save
-      # redirect_to(@origin)
+      redirect_to(@origin)
     else
       render :nothing => true
     end

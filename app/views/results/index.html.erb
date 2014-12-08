@@ -54,7 +54,7 @@ Google user_id <%= @event.user_id %>
 <% @food.each do |f| %>
 <div class='activity' data-event='{"title":"<%= f[:name] %>"}'>
 <ul>
-  <li><b><%= f[:name] %></b></li>
+  <li><b class='title'><%= f[:name] %></b></li>
   <li><%= f[:address].first %></li>
   <li><%= f[:address].last %></li>
   <li><%= f[:cats].join(', ') %></li>
@@ -68,7 +68,7 @@ Google user_id <%= @event.user_id %>
 <% @night.each do |f| %>
 <div class='activity ui-widget-content'>
 <ul>
-  <li><b><%= f[:name] %></b></li>
+  <li><b class='title'><%= f[:name] %></b></li>
   <li><%= f[:address].first %></li>
   <li><%= f[:address].last %></li>
   <li><%= f[:cats].join(', ') %></li>
@@ -83,7 +83,7 @@ Google user_id <%= @event.user_id %>
 <% @sights.each do |f| %>
 <div class='activity' data-event='{"title":"<%= f[:name] %>"}'>
 <ul>
-  <li><b><%= f[:name] %></b></li>
+  <li><b class='title'><%= f[:name] %></b></li>
   <li><%= f[:address][0] %></li>
   <li><%= f[:cats] %></li>
   <li>Distance in meters: <%= f[:distance] %></li>
