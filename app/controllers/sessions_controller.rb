@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     @auth = request.env["omniauth.auth"]
     @origin = request.env["omniauth.origin"]
     @params = request.env["omniauth.params"].except("utf8", "commit")
-    binding.pry
+    # binding.pry
     
     @user = User.create(
       access_token: @auth['credentials']['token'],
@@ -26,28 +26,31 @@ class SessionsController < ApplicationController
       client.authorization.access_token = @user.access_token
       service = client.discovered_api('calendar', 'v3')
 
-      @event.date.to_s
-
       main_event = {
         :api_method => service.events.quick_add,
         :parameters => 
           { 'calendarId' => 'primary',
             'text' => "#{@event.name} on #{@event.date_display} #{@event.time}"}
       }
-      binding.pry
-      result = client.execute(main_event)
+      # binding.pry
+      # client.execute(main_event)
 
       @params.each do |k,v|
         name = v.split('/').first
-        date = v.split('/').last
+        time = v.split('/').last
         activity = {
           :api_method => service.events.quick_add,
           :parameters => {
             'calendarId' => 'primary', 
-            'text' => "#{name} on #{@event.date_display} #{date}"
+            'text' => "#{name} on #{@event.date_display} #{time}"
           }
         }
-        result = client.execute(activity)
+        client.execute(activity)
+      end
+
+      short_name = @event.name.downcase[0..4]
+      if !@params.has_key?(short_name)
+        client.execute(main_event)
       end
 
       # @event.google_event_id = result.data.id

@@ -20,15 +20,6 @@ $(function(){
     slotEventOverlap: false,
     droppable: true,
     drop: function(date, jsEvent, ui){
-      // var name = $(this).find('.title').text();
-      // var shortname = name.replace(" ", '').substr(0,5).toLowerCase();
-
-      // var date = date.format();
-
-      // var nameAndDate = name + '/' + date
-      // // debugger;
-      // $('<input id="' + shortname + '" name="' + shortname + '" type="hidden" value="' + nameAndDate + '">').insertBefore($('.google'));
-
       // alert('Dropped on ' + date.format());
     },
     eventSources: [
@@ -67,7 +58,7 @@ $(function(){
 
     var shortTitle = title.replace(" ", '').substr(0,5).toLowerCase();
 
-    var titleAndTime = title + '/' + time
+    var titleAndTime = title + '/' + time;
     $('<input id="' + shortTitle + '" name="' + shortTitle + '" type="hidden" value="' + titleAndTime + '">').insertBefore($('.google'));
     });
   });
