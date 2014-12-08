@@ -6,24 +6,12 @@
         });
       };
 
-      FB.ui({
-        method: 'share_open_graph',
-        action_type: 'og.image',
-        action_properties: JSON.stringify({
-            object:'https://developers.facebook.com/docs/',
-        })
-      }, function(response){});
 
-     //  FB.ui(
-     //   {
-     //    method: 'share',
-     //    href: 'https://developers.facebook.com/docs/',
-     //    method: 'share_open_graph',
-     //    action_type: 'og.likes',
-     //    action_properties: JSON.stringify({
-     //    object:'https://developers.facebook.com/docs/'
-     // })
-     //  }, function(response){});
+    FB.ui(
+     {
+      method: 'share',
+      href: 'https://developers.facebook.com/docs/'
+    }, function(response){});
 
       (function(d, s, id){
          var js, fjs = d.getElementsByTagName(s)[0];

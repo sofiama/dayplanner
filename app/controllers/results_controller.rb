@@ -6,4 +6,10 @@ class ResultsController < ApplicationController
     @night = @event.get_yelp_nightlife
     @sights = @event.get_foursquare_sights
   end
+
+
+  #rooute: event_result (SINGULAR)
+  def create
+    @event = Event.find(params[:event_id])
+  end
 end

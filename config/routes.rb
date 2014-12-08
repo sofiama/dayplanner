@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'events#new'
 
   resources :events do
-    resources :results, :only => [:index]
+    resources :results, :only => [:index, :create]
   end
 
   resources :sessions, :only => [:index, :new]
