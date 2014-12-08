@@ -22,21 +22,17 @@ $(function(){
     drop: function(date, jsEvent, ui){
       // alert('Dropped on ' + date.format());
     },
-    eventSources: [
-      {
-        events: [
-          {
-            title: $('.event-name').text(),
-            start: $('.event-time').text(),
-            eventStartEditable: false
-            // durationEditable: true
-          }
-        ],
-        color: '#0099FF',
-        textColor: '#FFFFFF',
-        // editable: true
-      }
-    ],
+    eventSources: [{
+      events: [{
+          title: $('.event-name').text(),
+          start: $('.event-time').text(),
+          eventStartEditable: false
+          // durationEditable: true
+      }],
+      color: '#0099FF',
+      textColor: '#FFFFFF',
+      // editable: true
+    }],
     editable: true,
     eventClick: function(calEvent, jsEvent, view){
       alert('Event: ' + calEvent.title);

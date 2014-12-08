@@ -105,13 +105,11 @@ class Event < ActiveRecord::Base
   def get_yelp_restaurants
     result = YelpApi.search_venues('restaurants', 5, self.lat, self.long)
     get_yelp_venue_results(result)
-    # get_yelp_venue_r(result)
   end
 
   def get_yelp_nightlife
     result = YelpApi.search_venues('nightlife', 3, self.lat, self.long)
     get_yelp_venue_results(result)
-    # get_yelp_venue_r(result)
   end
 
   def get_yelp_venue_results(result)
@@ -123,44 +121,19 @@ class Event < ActiveRecord::Base
       venue[:name] = r.name
       venue[:url] = r.url
       venue[:address] = r.location.display_address
-      venue[:phone] = r.phone if r.keys.include?(:phone)
+      # venue[:phone] = r.phone if r.keys.include?(:phone)
       venue[:lat] = r.location.coordinate.latitude
       venue[:long] = r.location.coordinate.longitude
       venue[:cats] = r.categories.map{|i| i.first}
       # binding.pry
-      venue[:rating] = r.rating
-      venue[:review_count] = r.review_count
-      venue[:is_closed] = r.is_closed
+      # venue[:rating] = r.rating
+      # venue[:review_count] = r.review_count
+      # venue[:is_closed] = r.is_closed
       venue[:distance] = r.distance #in meters
       all_venues << venue
-         #binding.pry
     end
     all_venues
   end
-
-
-  # def get_yelp_restaurants_ar
-  #   result = YelpApi.search_venues('restaurants', 5, self.lat, self.long)
-  #   get_yelp_venue_ar(result)
-  # end
-
-  # def get_yelp_nightlife_ar
-  #   result = YelpApi.search_venues('nightlife', 3, self.lat, self.long)
-  #   get_yelp_venue_ar(result)
-  # end
-
-  # def get_yelp_venue_ar(result)
-  #   result.businesses.each do |r|
-  #     self.activities.create(
-  #       :event_id => self.id,
-  #       :name => r.name, 
-  #       :address => r.location.display_address.join('/'),
-  #       :lat => r.location.coordinate.latitude,
-  #       :long => r.location.coordinate.longitude,
-  #       :url => r.url
-  #     )
-  #   end
-  # end
 
   def get_rand_options
     options = []

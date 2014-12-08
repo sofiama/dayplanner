@@ -32,7 +32,7 @@ class SessionsController < ApplicationController
           { 'calendarId' => 'primary',
             'text' => "#{@event.name} on #{@event.date_display} #{@event.time}"}
       }
-      # binding.pry
+
       # client.execute(main_event)
 
       @params.each do |k,v|
