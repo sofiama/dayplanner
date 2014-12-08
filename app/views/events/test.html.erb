@@ -1,77 +1,4 @@
 
-<!DOCTYPE html>
-<html lang="en-US" class="no-js">
-  <head>
-
-    <!-- ==============================================
-    Title and Meta Tags
-    =============================================== -->
-    <meta charset="utf-8">
-    <title>Quattro | Elegant One-Page Template</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <!-- ==============================================
-    Favicons
-    =============================================== -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
-    <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="assets/images/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="assets/images/apple-touch-icon-114x114.png">
-    
-    <!-- ==============================================
-    CSS
-    =============================================== -->    
-    
-    
-    <!-- ==============================================
-    Fonts
-    =============================================== -->
-    <link href='http://fonts.googleapis.com/css?family=Roboto:100,300,100italic,400,300italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300' rel='stylesheet' type='text/css'>
-    
-    <!-- ==============================================
-    JS
-    =============================================== -->
-    
-    
-  </head>
-  
-  <body data-spy="scroll" data-target="#main-nav" data-offset="400">
-  
-    <!--=== PAGE PRELOADER ===-->
-    <div id="page-loader"><span class="page-loader-gif">Loading...</span></div>
-    
-    <!-- ==============================================
-    HEADER
-    =============================================== -->
-    <header id="home" class="parallax-bg" data-parallax-background="assets/images/header-bg2.jpg" data-stellar-background-ratio=".3">
-      
-      <div class="header-content">
-        
-        <img class="header-logo" src="assets/images/logo.png" alt=""/>
-      
-        <div class="flexslider header-slider">
-        
-          <ul class="slides">
-          
-            <li><h1 class="bordered-text">Welcome to <span class="primary">Quattro</span> Studio</h1></li>
-            <li><h1 class="bordered-text">We are <span class="primary">Young</span></h1></li>
-            <li><h1 class="bordered-text">We are <span class="primary">Passionate</span></h1></li>
-            <li><h1 class="bordered-text">We have <span class="primary">Fresh</span> Ideas</h1></li>
-            
-          </ul>
-          
-        </div><!--End home-slider -->
-          
-        <a class="scroll-button scrollto" href="#about"><i class="fa fa-angle-down"></i></a>  
-          
-      </div>
-      
-    </header><!--End header -->
-
-    
-
     <!-- ==============================================
     CALL TO ACTION
     =============================================== -->     
@@ -82,8 +9,7 @@
         <h1 class="section-title">About our Studio</h1>
         <p class="section-description">Nam id felis eu felis consequat adipiscing. Suspendisse sit amet faucibus nunc, dignissim vehicula enim.<br/>Vestibulum luctus turpis sit amet varius venenatis.</p>
         
-        <img class="img-responsive img-center scrollimation fade-up" src="assets/images/devices.png" alt="" />
-        
+        <%= image_tag "devices.png", class:"img-responsive img-center scrollimation fade-up", alt:"" %>
         <div class="row">
         
           <div class="col-sm-4">
@@ -214,7 +140,7 @@
     <!-- ==============================================
     CALL TO ACTION
     =============================================== -->
-    <section class="parallax-bg padding-top-bottom cta-image" data-parallax-background="assets/images/light-abstract.jpg" data-stellar-background-ratio=".7">
+    <section class="parallax-bg padding-top-bottom cta-image" data-parallax-background="<%= image_path "light-abstract.jpg"%>" data-stellar-background-ratio=".7">
     
       <div class="container">
         
@@ -222,7 +148,7 @@
         
           <div class="col-sm-6 scrollimation fade-right">
           
-            <img class="img-responsive img-center" src="assets/images/placeholder.png" alt=""/>
+            <%= image_tag "placeholder.png", class:"img-responsive img-center", alt:"" %>
             
           </div>
           
@@ -297,7 +223,7 @@
     <!-- ==============================================
     COUNTERS
     =============================================== -->
-    <section class="parallax-bg light-typo padding-top-bottom" data-parallax-background="assets/images/laptop-bg.jpg" data-stellar-background-ratio=".5">
+    <section class="parallax-bg light-typo padding-top-bottom" data-parallax-background=<%= image_path "laptop-bg.jpg"%> data-stellar-background-ratio=".5">
     
       <div class="container">
       
@@ -387,7 +313,7 @@
           =============================================== --> 
           <article class="project-item illustration">
             
-            <img class="img-responsive project-image" src="assets/images/thumb.png"  alt=""><!--Project thumb -->
+            <%= image_tag "thumb.png", class:"img-responsive project-image", alt:"" %><!--Project thumb -->
             
             <div class="hover-mask">
               <h2 class="project-title">Designer World</h2><!--Project Title -->
@@ -413,7 +339,7 @@
           
           <article class="project-item identity logo">
             
-            <img class="img-responsive project-image" src="assets/images/thumb.png"  alt=""><!--Project thumb -->
+            <%= image_tag "thumb.png", class:"img-responsive project-image", alt:"" %><!--Project thumb -->
             
             <div class="hover-mask">
               <h2 class="project-title">Squirrel</h2><!--Project Title -->
@@ -436,7 +362,7 @@
 
           <article class="project-item illustration">
             
-            <img class="img-responsive project-image" src="assets/images/thumb.png"  alt=""><!--Project thumb -->
+            <%= image_tag "thumb.png", class:"img-responsive project-image", alt:"" %><!--Project thumb -->
             
             <div class="hover-mask">
               <h2 class="project-title">Radio Tape</h2><!--Project Title -->
@@ -458,7 +384,7 @@
 
           <article class="project-item identity">
             
-            <img class="img-responsive project-image" src="assets/images/thumb.png"  alt=""><!--Project thumb -->
+            <%= image_tag "thumb.png", class:"img-responsive project-image", alt:"" %><!--Project thumb -->
             
             <div class="hover-mask">
               <h2 class="project-title">Austin Texas</h2><!--Project Title -->
@@ -480,7 +406,7 @@
 
           <article class="project-item logo">
             
-            <img class="img-responsive project-image" src="assets/images/thumb.png"  alt=""><!--Project thumb -->
+            <%= image_tag "thumb.png", class:"img-responsive project-image", alt:"" %><!--Project thumb -->
             
             <div class="hover-mask">
               <h2 class="project-title">Red Glove</h2><!--Project Title -->
@@ -502,7 +428,7 @@
 
           <article class="project-item logo">
             
-            <img class="img-responsive project-image" src="assets/images/thumb.png"  alt=""><!--Project thumb -->
+            <%= image_tag "thumb.png", class:"img-responsive project-image", alt:"" %><!--Project thumb -->
             
             <div class="hover-mask">
               <h2 class="project-title">Checklist</h2><!--Project Title -->
@@ -524,7 +450,7 @@
           
           <article class="project-item identity logo">
             
-            <img class="img-responsive project-image" src="assets/images/thumb.png"  alt=""><!--Project thumb -->
+            <%= image_tag "thumb.png", class:"img-responsive project-image", alt:"" %><!--Project thumb -->
             
             <div class="hover-mask">
               <h2 class="project-title">Music City</h2><!--Project Title -->
@@ -546,7 +472,7 @@
 
           <article class="project-item illustration logo">
             
-            <img class="img-responsive project-image" src="assets/images/thumb.png"  alt=""><!--Project thumb -->
+            <%= image_tag "thumb.png", class:"img-responsive project-image", alt:"" %><!--Project thumb -->
             
             <div class="hover-mask">
               <h2 class="project-title">Black Rock</h2><!--Project Title -->
@@ -585,7 +511,7 @@
           <div class="col-sm-6 col-md-3">
           
             <div class="client">
-              <a href="#link"><img class="img-responsive img-center" src="assets/images/client-logo.png" alt=""/></a>
+              <a href="#link"><%= image_tag "client-logo.png", class:"img-responsive img-center", alt:"" %></a>
             </div>
           
           </div>
@@ -593,7 +519,7 @@
           <div class="col-sm-6 col-md-3">
           
             <div class="client">
-              <a href="#link"><img class="img-responsive img-center" src="assets/images/client-logo.png" alt=""/></a>
+              <a href="#link"><%= image_tag "client-logo.png", class:"img-responsive img-image", alt:"" %></a>
             </div>
           
           </div>
@@ -601,7 +527,7 @@
           <div class="col-sm-6 col-md-3">
           
             <div class="client">
-              <a href="#link"><img class="img-responsive img-center" src="assets/images/client-logo.png" alt=""/></a>
+              <a href="#link"><%= image_tag "client-logo.png", class:"img-responsive img-image", alt:"" %></a>
             </div>
           
           </div>
@@ -609,7 +535,7 @@
           <div class="col-sm-6 col-md-3">
           
             <div class="client">
-              <a href="#link"><img class="img-responsive img-center" src="assets/images/client-logo.png" alt=""/></a>
+              <a href="#link"><%= image_tag "client-logo.png", class:"img-responsive img-image", alt:"" %></a>
             </div>
           
           </div>
@@ -635,7 +561,7 @@
           <div class="col-md-3 col-sm-6 team-member scrollimation fade-up d1">
           
             <div class="member-thumb">
-              <img class="img-responsive img-center" src="assets/images/member.png" alt="" />
+              <%= image_tag "member.png", class:"img-responsive img-center", alt:"" %>
               
               <ul class="member-socials">
                 <li><a href="mailto:mail@example.com"><i class="fa fa-envelope fa-fw"></i></a></li>
@@ -657,7 +583,7 @@
           <div class="col-md-3 col-sm-6 team-member scrollimation fade-up">
           
             <div class="member-thumb">
-              <img class="img-responsive img-center" src="assets/images/member.png" alt="" />
+              <%= image_tag "member.png", class:"img-responsive img-image", alt:"" %>
               
               <ul class="member-socials">
                 <li><a href="mailto:mail@example.com"><i class="fa fa-envelope fa-fw"></i></a></li>
@@ -679,7 +605,7 @@
           <div class="col-md-3 col-sm-6 team-member scrollimation fade-up">
           
             <div class="member-thumb">
-              <img class="img-responsive img-center" src="assets/images/member.png" alt="" />
+              <%= image_tag "member.png", class:"img-responsive img-image", alt:"" %>
               
               <ul class="member-socials">
                 <li><a href="mailto:mail@example.com"><i class="fa fa-envelope fa-fw"></i></a></li>
@@ -701,7 +627,7 @@
           <div class="col-md-3 col-sm-6 team-member scrollimation fade-up d1">
           
             <div class="member-thumb">
-              <img class="img-responsive img-center" src="assets/images/member.png" alt="" />
+              <%= image_tag "member.png", class:"img-responsive img-image", alt:"" %>
               
               <ul class="member-socials">
                 <li><a href="mailto:mail@example.com"><i class="fa fa-envelope fa-fw"></i></a></li>
@@ -729,7 +655,7 @@
     <!-- ==============================================
     TESTIMONIALS
     =============================================== -->
-    <section id="testimonials" class="parallax-bg light-typo padding-top-bottom" data-parallax-background="assets/images/man-bg.jpg" data-stellar-background-ratio=".5">
+    <section id="testimonials" class="parallax-bg light-typo padding-top-bottom" data-parallax-background=<%= image_path "man-bg.jpg" %> data-stellar-background-ratio=".5">
     
       <div class="container">
       
@@ -746,7 +672,7 @@
                 <li>
                   <div class="media">
                     <div class="pull-left">
-                      <img class="client-img img-circle" src="assets/images/client.png" alt=""/>
+                      <%= image_tag "client.png", class:"client-img img-circle", alt:"" %>
                     </div>
                     
                     <div class="media-body">
@@ -758,7 +684,7 @@
                 <li>
                   <div class="media">
                     <div class="pull-left">
-                      <img class="client-img img-circle" src="assets/images/client.png" alt=""/>
+                      <%= image_tag "client.png", class:"client-img img-circle", alt:"" %>
                     </div>
                     
                     <div class="media-body">
@@ -770,7 +696,7 @@
                 <li>
                   <div class="media">
                     <div class="pull-left">
-                      <img class="client-img img-circle" src="assets/images/client.png" alt=""/>
+                      <%= image_tag "client.png", class:"client-img img-circle", alt:"" %>
                     </div>
                     
                     <div class="media-body">
@@ -890,7 +816,7 @@
     <!-- ==============================================
     CONTACT
     =============================================== -->
-    <section id="contact" class="parallax-bg light-typo padding-top-bottom " data-parallax-background="assets/images/contact-bg.jpg" data-stellar-background-ratio=".1">
+    <section id="contact" class="parallax-bg light-typo padding-top-bottom " data-parallax-background=<%= image_path "contact-bg.jpg" %> data-stellar-background-ratio=".1">
     
       <div class="container">
       
@@ -962,29 +888,6 @@
       </div>
       
     </section>
-    
-    <!-- ==============================================
-    FOOTER
-    =============================================== --> 
-    <footer id="main-footer">
-    
-      <div class="container text-center">
-      
-        <img class="img-responsive img-center footer-logo" src="assets/images/logo-black.png" alt="" />
-      
-        <ul class="social-links">
-          <li><a href="#link"><i class="fa fa-twitter fa-fw"></i></a></li>
-          <li><a href="#link"><i class="fa fa-facebook fa-fw"></i></a></li>
-          <li><a href="#link"><i class="fa fa-google-plus fa-fw"></i></a></li>
-          <li><a href="#link"><i class="fa fa-dribbble fa-fw"></i></a></li>
-          <li><a href="#link"><i class="fa fa-linkedin fa-fw"></i></a></li>
-        </ul>
-        <p>&copy;2014 Quattro Theme by <a href="https://wrapbootstrap.com/user/qthemes" target="_blank">Qthemes</a></p>
-        
-      </div>
-      
-    </footer>
-    
     
     
   </body>

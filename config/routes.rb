@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-get 'events/test' => 'events#test'
+  get 'events/test' => 'events#test'
 
   root 'events#new'
   

@@ -53,7 +53,6 @@ Google user_id <%= @event.user_id %>
 <h3>YELP RESULTS</h3>
 
 <h4>Food Option</h4>
-<% i = 0 %>
 <% @food.each do |f| %>
 <div class='activity' data-event='{"title":"<%= f[:name] %>"}'>
 <ul>
@@ -81,7 +80,6 @@ Google user_id <%= @event.user_id %>
 <hr/>
 
 <h3>FOURSQUARE RESULTS</h3>
-<% i = 0 %>
 <h3>Sights Option</h3>
 <% @sights.each do |f| %>
 <div class='activity' data-event='{"title":"<%= f[:name] %>"}'>

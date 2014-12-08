@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Plan Nada</title>
-  <meta charset="utf-8">
-  <%= include_gon %>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application'%>
+  <%= csrf_meta_tags %>
+
+  <%= include_gon %>
   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
   <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-  <%= csrf_meta_tags %>
   
   <!-- ==============================================
     Title and Meta Tags
     =============================================== -->
     <meta charset="utf-8">
+    <title>Plan Zero</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
@@ -24,27 +24,49 @@
     <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="72x72" href="assets/images/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="assets/images/apple-touch-icon-114x114.png">
-    
+     
     <!-- ==============================================
     Fonts
     =============================================== -->
     <link href='http://fonts.googleapis.com/css?family=Roboto:100,300,100italic,400,300italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300' rel='stylesheet' type='text/css'>
-    
-    <!-- ==============================================
-    JS
-    =============================================== -->
-      
-    <!--[if lt IE 9]>
-      <script src="assets/js/respond.min.js"></script>
-    <![endif]-->
 
 </head>
-<body>
-
-<!-- ==============================================
-    MAIN NAV
-    =============================================== -->
+<body data-spy="scroll" data-target="#main-nav" data-offset="400">
+  <!--=== PAGE PRELOADER ===-->
+    <div id="page-loader"><span class="page-loader-gif">Loading...</span></div>
+    
+  <!-- ==============================================
+  HEADER
+  =============================================== -->
+  
+  <header id="home" class="parallax-bg" data-parallax-background=<%= image_path "header-bg2.jpg"%> data-stellar-background-ratio=".3">
+      
+    <div class="header-content">
+        
+    <%= image_tag "logo.png", class:"header-logo", alt:"" %>
+  
+    <div class="flexslider header-slider">
+    
+      <ul class="slides">
+      
+        <li><h1 class="bordered-text">Welcome to <span class="primary">Zero</span> Plans</h1></li>
+        <li><h1 class="bordered-text">We are <span class="primary">Young</span></h1></li>
+        <li><h1 class="bordered-text">We are <span class="primary">Passionate</span></h1></li>
+        <li><h1 class="bordered-text">We have <span class="primary">Fresh</span> Ideas</h1></li>
+        
+      </ul>
+      
+      </div><!--End home-slider -->
+      
+    <a class="scroll-button scrollto" href="#about"><i class="fa fa-angle-down"></i></a>  
+          
+    </div>
+      
+  </header><!--End header -->
+  <!-- ==============================================
+  MAIN NAV
+  =============================================== -->
 
     <div id="main-nav" class="navbar">
       <div class="container">
@@ -58,7 +80,6 @@
           <!-- ======= LOGO ========-->
           <a class="navbar-brand scrollto" href="#home">
             
-            <!-- <img class="site-logo" src="assets/images/logo-small.png" alt="logo" /> -->
             <%= image_tag "logo-small.png", class:"site-logo" %>
           </a>
           
@@ -96,6 +117,28 @@
 
 
 <%= yield %>
+
+<!-- ==============================================
+    FOOTER
+    =============================================== --> 
+    <footer id="main-footer">
+    
+      <div class="container text-center">
+      
+        <%= image_tag "logo-black.png", class:"img-responsive img-center footer-logo", alt:"" %>
+      
+        <ul class="social-links">
+          <li><a href="#link"><i class="fa fa-twitter fa-fw"></i></a></li>
+          <li><a href="#link"><i class="fa fa-facebook fa-fw"></i></a></li>
+          <li><a href="#link"><i class="fa fa-google-plus fa-fw"></i></a></li>
+          <li><a href="#link"><i class="fa fa-dribbble fa-fw"></i></a></li>
+          <li><a href="#link"><i class="fa fa-linkedin fa-fw"></i></a></li>
+        </ul>
+        <p>&copy;2014 Quattro Theme by <a href="https://wrapbootstrap.com/user/qthemes" target="_blank">Qthemes</a></p>
+        
+      </div>
+      
+    </footer>
 
 </body>
 </html>
