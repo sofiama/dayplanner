@@ -31,20 +31,24 @@ $(function(){
         events: [
           {
             title: $('.event-name').text(),
-            start: $('.event-time').text()
+            start: $('.event-time').text(),
+            // eventStartEditable: false,
+            // durationEditable: true
           }
         ],
         color: '#0099FF',
         textColor: '#FFFFFF',
-        durationEditable: true
+        // editable: true
       }
-    ]
+    ],
+    editable: true
+    // eventStartEditable: false,
+    // durationEditable: true
   });
 
   $('.activity').draggable({
     revert: false,
     revertDuration: 0,
-    editable: true
   });
 
   $('.activity').data('duration', '01:00');
