@@ -20,14 +20,14 @@ $(function(){
     slotEventOverlap: false,
     droppable: true,
     drop: function(date, jsEvent, ui){
-      var name = $(this).find('.title').text();
-      var shortname = name.replace(" ", '').substr(0,5).toLowerCase();
+      // var name = $(this).find('.title').text();
+      // var shortname = name.replace(" ", '').substr(0,5).toLowerCase();
 
-      var date = date.format();
+      // var date = date.format();
 
-      var nameAndDate = name + '/' + date
-      // debugger;
-      $('<input id="' + shortname + '" name="' + shortname + '" type="hidden" value="' + nameAndDate + '">').insertBefore($('.google'));
+      // var nameAndDate = name + '/' + date
+      // // debugger;
+      // $('<input id="' + shortname + '" name="' + shortname + '" type="hidden" value="' + nameAndDate + '">').insertBefore($('.google'));
 
       // alert('Dropped on ' + date.format());
     },
@@ -59,6 +59,19 @@ $(function(){
   });
 
   $('.activity').data('duration', '01:00');
+
+  $('.google').on('click', function(){
+    ($('#calendar').find('.fc-content')).each(function(){
+    var title = $(this).find('.fc-title').text();
+    var time = $(this).find('.fc-time').attr('data-full');
+
+    var shortTitle = title.replace(" ", '').substr(0,5).toLowerCase();
+
+    var titleAndTime = title + '/' + time
+    $('<input id="' + shortTitle + '" name="' + shortTitle + '" type="hidden" value="' + titleAndTime + '">').insertBefore($('.google'));
+    });
+  });
+  
 
 });
   
