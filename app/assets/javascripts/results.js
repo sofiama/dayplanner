@@ -22,8 +22,8 @@ $(function(){
     drop: function(date, jsEvent, ui){
       var name = $(this).find('b').text();
       var shortname = name.replace(" ", '').substr(0,5).toLowerCase();
-      debugger;
-      $('<input id="' + shortname + '" name="' + shortname + '" type="hidden" value="' + name + '">').insertBefore($('.google:last-child'));
+      
+      $('<input id="' + shortname + '" name="' + shortname + '" type="hidden" value="' + name + '">').insertBefore($('.google'));
 
       // alert('Dropped on ' + date.format());
     },
