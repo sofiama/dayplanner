@@ -6,9 +6,17 @@ class ResultsController < ApplicationController
     @night = @event.get_yelp_nightlife
     @sights = @event.get_foursquare_sights
 
+
+    gon.mainEvent = @event
+    gon.mainEventLL = [@event.lat, @event.long] #bc long is keyword
+    gon.food = @food
+    gon.night = @night
+    gon.sights = @sights
+
     if @event.user_id != nil
       @user = User.find(@event.user_id)
     end
 
   end
 end
+
