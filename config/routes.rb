@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
 
+get 'events/test' => 'events#test'
+
   root 'events#new'
   
   resources :events do
     resources :results, :only => [:index]
   end
   
+  
+
   resources :sessions, :only => [:index, :new]
   get 'auth/:provider/callback' => 'sessions#create'
 

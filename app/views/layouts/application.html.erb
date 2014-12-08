@@ -1,15 +1,99 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Dayplanner</title>
+  <title>Plan Nada</title>
+  <meta charset="utf-8">
   <%= include_gon %>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application'%>
   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
   <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
   <%= csrf_meta_tags %>
+  
+  <!-- ==============================================
+    Title and Meta Tags
+    =============================================== -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- ==============================================
+    Favicons
+    =============================================== -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/images/apple-touch-icon-114x114.png">
+    
+    <!-- ==============================================
+    Fonts
+    =============================================== -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:100,300,100italic,400,300italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300' rel='stylesheet' type='text/css'>
+    
+    <!-- ==============================================
+    JS
+    =============================================== -->
+      
+    <!--[if lt IE 9]>
+      <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
 </head>
 <body>
+
+<!-- ==============================================
+    MAIN NAV
+    =============================================== -->
+
+    <div id="main-nav" class="navbar">
+      <div class="container">
+      
+        <div class="navbar-header">
+        
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#site-nav">
+            <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+          </button>
+          
+          <!-- ======= LOGO ========-->
+          <a class="navbar-brand scrollto" href="#home">
+            
+            <!-- <img class="site-logo" src="assets/images/logo-small.png" alt="logo" /> -->
+            <%= image_tag "logo-small.png", class:"site-logo" %>
+          </a>
+          
+        </div>
+        
+        <div id="site-nav" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="sr-only">
+              <a href="#home" class="scrollto">Home</a>
+            </li>
+            <li>
+              <a href="#about" class="scrollto">About</a>
+            </li>
+            <li>
+              <a href="#services" class="scrollto">Services</a>
+            </li>
+            <li>
+              <a href="#portfolio" class="scrollto">Portfolio</a>
+            </li>
+            <li>
+              <a href="#team" class="scrollto">Team</a>
+            </li>
+            <li>
+              <a href="#pricing" class="scrollto">Prices</a>
+            </li>
+            <li>
+              <a href="#contact" class="scrollto">Contact</a>
+            </li>
+          </ul>
+        </div><!--End navbar-collapse -->
+        
+      </div><!--End container -->
+      
+    </div><!--End main-nav -->
+
 
 <%= yield %>
 
