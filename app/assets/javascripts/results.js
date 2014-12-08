@@ -21,8 +21,9 @@ $(function(){
     droppable: true,
     drop: function(date, jsEvent, ui){
       var name = $(this).find('b').text();
-      $('<input id="act1_name" name="act1_name" type="hidden" value="' + name + '">').insertBefore($('.google:last-child'));
-
+      var shortname = name.replace(" ", '').substr(0,5).toLowerCase();
+      debugger;
+      $('<input id="' + shortname + '" name="' + shortname + '" type="hidden" value="' + name + '">').insertBefore($('.google:last-child'));
 
       // alert('Dropped on ' + date.format());
     },
@@ -32,7 +33,7 @@ $(function(){
           {
             title: $('.event-name').text(),
             start: $('.event-time').text(),
-            // eventStartEditable: false,
+            eventStartEditable: false
             // durationEditable: true
           }
         ],
@@ -41,9 +42,11 @@ $(function(){
         // editable: true
       }
     ],
-    editable: true
-    // eventStartEditable: false,
-    // durationEditable: true
+    editable: true,
+    eventClick: function(calEvent, jsEvent, view){
+      alert('Event: ' + calEvent.title);
+    }
+
   });
 
   $('.activity').draggable({
@@ -52,20 +55,6 @@ $(function(){
   });
 
   $('.activity').data('duration', '01:00');
-
-
-  // $('.time-slot').droppable({
-  //   drop: function(event, ui){
-  //     var target = $(event.target);
-  //     console.log($(this).appendTo(target));
-  //     // $(ui.draggable).appendTo(target);
-  //     debugger;
-  //     var calendarChild = $('.calendar').children();
-      
-  //     calendarChild.each(function(){
-  //       console.log($(this).last().children().find('b').text());
-  //     });
-
 
 });
   
