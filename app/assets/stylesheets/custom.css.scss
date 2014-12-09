@@ -1,0 +1,11 @@
+.go-button{
+    position:absolute;
+    bottom:30px;
+    left:50%;
+    margin-left:-35px;
+    color:#fff !important;
+    padding:20px;
+    font-size: 36px;
+    -webkit-animation: moving 2s ease-out infinite;
+    animation: moving 2s ease-out infinite;
+}

@@ -1,5 +1,33 @@
-<h1>results#index</h1>
+ <section class="parallax-bg padding-top-bottom cta-image" data-parallax-background="<%= image_path "light-abstract.jpg"%>" data-stellar-background-ratio=".7">
+    
+  <div class="container">
+    
+    <div class="row">
+    
+      <div class="col-sm-6 scrollimation fade-right">
+      
+        <%= image_tag "placeholder.png", class:"img-responsive img-center", alt:"" %>
+        
+      </div>
+      
+      <div class="col-sm-6 scrollimation fade-left d1">
+      
+        <h1 class="big-title">Activities</h1>
+        <p>Let's see what's there to do</p>
+        <p>Results from yelp and foursquare</p>
+        
+        <a class="btn btn-quattro scrollto" href="#services"><i class="fa fa-arrow-down"></i>Check Them Out!</a>
+        
+      </div>
+    
+    </div>
+  
+  </div>
+  
+</section>
 
+<h1>results#index</h1>
+<div id="testimonials-slider" class="flexslider"></div>
 <p>Results for</p>
 <p><b class='event-name'><%= @event.name %></b></p>
 <p> on <b class='event-date'><%= @event.date_display %></b>
@@ -10,9 +38,6 @@ Google user_id <%= @event.user_id %>
 <% if @event.user_id != nil %>
 <%= @user.get_main_gcal_id %>
 <% end %>
-
-
-<div id="map"></div>
 
 <h4>Calendar</h4>
 <%= form_tag '/auth/google_oauth2', :method => 'get', :class => 'google-form' do |f| %>
@@ -54,7 +79,7 @@ Google user_id <%= @event.user_id %>
 
 <h4>Food Option</h4>
 <% @food.each do |f| %>
-<div class='activity' data-event='{"title":"<%= f[:name] %>"}'>
+<div class='activity fc-event ui-draggable ui-draggable-handle' data-event='{"title":"<%= f[:name] %>"}'>
 <ul>
   <li><b class='title'><%= f[:name] %></b></li>
   <li><%= f[:address].first %></li>
@@ -68,7 +93,7 @@ Google user_id <%= @event.user_id %>
 
 <h3>Night Option</h3>
 <% @night.each do |f| %>
-<div id='n-<%= i %>' class='activity ui-widget-content'>
+<div class='activity ui-widget-content'>
 <ul>
   <li><b class='title'><%= f[:name] %></b></li>
   <li><%= f[:address].first %></li>
@@ -132,3 +157,5 @@ Google user_id <%= @event.user_id %>
     </ul>
     </div>
 <% end %>
+
+<div id="map"></div>

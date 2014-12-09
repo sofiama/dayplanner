@@ -12,19 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery-ui
+//= require jquery-ui/draggable
 //= require turbolinks
 
-//= require bootstrap
-//= require bootstrap.min
-//= require jquery-1.8.2.min
 //= require modernizr.min
-
-//= require jquery.min
-//= require jquery-ui.custom.min
-//= require moment.min
-//= require fullcalendar
-
+//= require bootstrap.min
 //= require jquery.easing.1.3.min
 //= require jquery.scrollto
 //= require jquery.flexslider.min
@@ -33,6 +25,13 @@
 //= require waypoints.min
 //= require waypoints-sticky.min
 //= require jquery.countTo
+//= require contact
 //= require quattro
 
-//= require_tree .
+//= require jquery-ui.custom.min
+//= require moment.min
+//= require fullcalendar
+//= require results
+// require_tree .
+
+

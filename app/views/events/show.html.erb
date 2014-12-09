@@ -1,25 +1,47 @@
-<h1>event#show</h1>
+<!-- ==============================================
+FEATURES
+=============================================== -->
+<section class="white-bg padding-top-bottom">
 
-<h2>The results from SeatGeek are:</h2>
-<b>Confirm your ticket:</b>
-<br/><br/>
-<% @event.get_results.each do |e| %>
+  <div class="container features">
+    
+    <h1 class="section-title">Confirm your ticket</h1>
+    <p class="section-description">via results from SeatGeek</p>
+    
+    <div class="row">
+
+    <% @event.get_results.each do |e| %>
+      <div class="col-sm-4 col-sm-offset-1">
+      <%= form_tag event_path, :method => 'patch' do |f| %>
+        <div class="form-group">
+        <%= label_tag :title, e[:title], :class => 'control-label' %>
+        <%= hidden_field_tag :name, value = e[:title] %>
+        </div>
+        <div class="form-group">
+        <%= e[:date] %> at <%= e[:local_time] %>
+        <%= hidden_field_tag :datetime, value = e[:datetime_local] %>
+        </div>
+        <div class="form-group">
+        <%= e[:venue_name] %> - <%= e[:venue_loc] %>
+        <%= hidden_field_tag :lat, value = e[:lat] %>
+        <%= hidden_field_tag :long, value = e[:long] %>
+        </div>
+        <div class="form-group">
+        <%= e[:taxonomies].join(', ') %>
+        <%= hidden_field_tag :taxonomies, value = e[:taxonomies] %>
+        </div>
+        <div class="form-group">
+          <%= hidden_field_tag :url, value = e[:url] %>
+        </div>
+        <div class="form-group">
+          <%= hidden_field_tag :img_url, value = e[:img_url] %>
+        </div>
+        <%= submit_tag 'Confirm', :class => 'btn btn-quattro' %>
+        <% end %>
+      </div>
+    <% end %>
+    </div>
   
-  <%= form_tag event_path, :method => 'patch' do |f| %>
-  <%= e[:title]  %>
-  <br/>
-  <%= hidden_field_tag :name, value = e[:title] %>
-  <%= e[:date] %> at <%= e[:local_time] %>
-  <%= hidden_field_tag :datetime, value = e[:datetime_local] %>
-  <br/>
-  <%= e[:venue_name] %> - <%= e[:venue_loc] %>
-  <%= hidden_field_tag :lat, value = e[:lat] %>
-  <%= hidden_field_tag :long, value = e[:long] %>
-  <br/>
-  <%= e[:taxonomies].join(', ') %>
-  <%= hidden_field_tag :taxonomies, value = e[:taxonomies] %>
-  <br>
-  <%= submit_tag 'This is the EVENT' %>
-  <% end %>
-  <br/><br/>
-<% end %>
+  </div>
+  
+</section>

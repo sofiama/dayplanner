@@ -27,9 +27,10 @@ class Event < ActiveRecord::Base
 
     @results["events"].each do |e|
       event = {}
-
+      binding.pry
       event[:title] = e["title"]
-
+      event[:url] = e["url"]
+      event[:img_url] = e['performers'].first['image']
       event[:datetime_local] = e["datetime_local"]
       # date in sun dec 7, 2014 format
       date = Date.parse(e["datetime_local"])
