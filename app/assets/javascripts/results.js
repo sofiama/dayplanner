@@ -24,7 +24,7 @@ $(function(){
       center: 'title',
       right:  ''
     },
-    height: 650,
+    height: 400,
     snapDuration: '01:00:00',
     scrollTime: '08:00:00',
     slotEventOverlap: false,
@@ -45,16 +45,25 @@ $(function(){
       // editable: true
     }],
     editable: true,
-    eventClick: function(calEvent, jsEvent, view){
-        var r=confirm("Delete " + calEvent.title);
-          if (r===true){
-            $('#calendar').fullCalendar('removeEvents', calEvent._id);
-          }
-    }
+    // eventClick: function(calEvent, jsEvent, view){
+    //   // var r = confirm("Delete " + calEvent.title);
+    //   //   if (r === true){
+    //   //     $('#calendar').fullCalendar('removeEvents', calEvent._id);
+    //   // }
+    //   });
+    // }
+    eventRender: function(event, element) {
+        element.append( "<span class='closon'>X</span>" );
+        console.log(element);
+        // debugger;
+        element.find(".closon").click(function() {
+          $('#calendar').fullCalendar('removeEvents',event._id);
+        });
+      }
   });
 
   $('.activity').draggable({
-    revert: false,
+    revert: true,
     revertDuration: 0
   });
 

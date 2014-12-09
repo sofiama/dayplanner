@@ -54,35 +54,32 @@
         </li>
       </ul>
     </div>
-  
-    <div class="row services">
-      <div class="col-md-10-offset col-md-2 fade-right d1">
-        <%= form_tag '/auth/google_oauth2', :method => 'get', :class => 'google-form' do |f| %>
-        <%= button_tag :type =>'submit', :class => 'google', :class => 'btn btn-quattro' do %>
-          <i class='fa fa-google'></i>Add to Google Calendar
-          <% end %>
-        <% end %>
-      </div>
-    </div>
 
     <div class="row services">
     
-      <div class="col-md-4 item text-center scrollimation fade-right d1">
+    <div class='col-md-8'>
+      <div class="col-md-3 item text-center scrollimation fade-right d1">
     
-        <h3>Food/Night</h3>
+        <h3>Restaurants</h3>
         <div class='external-events'>
-        <% @food.each do |f| %>
-        <div class='activity fc-event ui-draggable ui-draggable-handle' data-event='{"title":"<%= f[:name] %>"}'>
-          <b class='title'><%= f[:name] %></b></br>
-          <%= f[:address].first %>
-          <%= f[:address].last %>
-<!--           <%#= f[:cats].join(', ') %>
-          Distance in meters: <%#= f[:distance] %> -->
-          <span class='url'><%= link_to f[:url], f[:url], :target => "_blank" %></span>
+          <% @food.each do |f| %>
+          <div class='activity fc-event ui-draggable ui-draggable-handle' data-event='{"title":"<%= f[:name] %>"}'>
+            <b class='title'><%= f[:name] %></b></br>
+            <%= f[:address].first %>
+            <%= f[:address].last %>
+  <!--           <%#= f[:cats].join(', ') %>
+            Distance in meters: <%#= f[:distance] %> -->
+            <span class='url'><%= link_to f[:url], f[:url], :target => "_blank" %></span>
+          </div>
+          <% end %>
         </div>
-        <% end %>
       </div>
-       
+
+      <div class="col-md-1"></div>
+
+      <div class="col-md-3 item text-center scrollimation fade-right">
+        <h3>Nightlife</h3>
+        <div class='external-events'>
         <% @night.each do |f| %>
           <div class='activity fc-event ui-draggable ui-draggable-handle'>
             <b class='title'><%= f[:name] %></b></br>
@@ -92,12 +89,14 @@
             <%= link_to f[:url], f[:url], :target => "_blank" %>
           </div>
         <% end %> 
+        </div>
       </div>
-      
-      <div class="col-md-4 item text-center scrollimation fade-right">
 
-        <h3>Sights</h3>
-        <% @sights.each do |f| %>
+      <div class="col-md-1"></div>
+
+      <div class="col-md-3 item text-center scrollimation fade-left">
+          <h3>Sights</h3>
+          <% @sights.each do |f| %>
           <div class='activity fc-event ui-draggable ui-draggable-handle' data-event='{"title":"<%= f[:name] %>"}'>
           
             <b class='title'><%= f[:name] %></b></br>
@@ -109,16 +108,41 @@
           
           </div>
         <% end %>
+        </div>
       </div>
 
-      
-      <!-- <div class="col-md-1 item text-center scrollimation fade-left">
-        
-      </div> -->
-      
       <div class="col-md-4 item text-center scrollimation fade-left d1">
 
         <div id='calendar'></div>
+        
+      </div>
+      
+    </div>
+
+        <div class="row services">
+    
+    <div class='col-md-8'>
+        <div class="col-md-3 item text-center scrollimation fade-right d1">
+        </div>
+
+        <div class="col-md-1"></div>
+
+        <div class="col-md-3 item text-center scrollimation fade-right">
+        </div>
+
+        <div class="col-md-1"></div>
+
+        <div class="col-md-3 item text-center scrollimation fade-left">
+        </div>
+      </div>
+
+      <div class="col-md-4 item text-center scrollimation fade-left d1">
+
+        <%= form_tag '/auth/google_oauth2', :method => 'get', :class => 'google-form' do |f| %>
+        <%= button_tag :type =>'submit', :class => 'google', :class => 'btn btn-quattro' do %>
+          <i class='fa fa-google'></i>Add to Google Calendar
+          <% end %>
+        <% end %>
         
       </div>
       
