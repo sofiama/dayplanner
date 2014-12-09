@@ -111,7 +111,7 @@ class Event < ActiveRecord::Base
   end
 
   def get_yelp_nightlife
-    result = YelpApi.search_venues('nightlife', 3, self.lat, self.long)
+    result = YelpApi.search_venues('nightlife', 5, self.lat, self.long)
     get_yelp_venue_results(result)
   end
 

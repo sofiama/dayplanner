@@ -7707,7 +7707,7 @@ View.prototype = {
 							_this.trigger('eventReceive', null, renderedEvents[0]); // signal an external event landed
 
 							var mapLayer = String(el[0].id);
-
+							//debugger;
 							$("span:contains('" + mapLayer +"')").click();
 
 						}

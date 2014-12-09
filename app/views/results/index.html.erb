@@ -1,17 +1,17 @@
  <section class="parallax-bg padding-top-bottom cta-image" data-parallax-background="<%= image_path "light-abstract.jpg"%>" data-stellar-background-ratio=".7">
-    
+
   <div class="container">
-    
+
     <div class="row">
-    
+
       <div class="col-sm-6 scrollimation fade-right">
-        
+
         <%= image_tag "#{@event.img_url}", class:"img-responsive img-center", alt:"" %>
-        
+
       </div>
-      
+
       <div class="col-sm-6 scrollimation fade-left d1">
-      
+
         <h1 class="big-title">Activities</h1>
         <p>Let's see what's there to do near</p>
         <p>
@@ -19,25 +19,25 @@
           <b class='event-time'><%= @event.time_display %></b><b class='event-utc'><%=@event.date %></b><p>
           <b><%= @event.address %></b>
         <p>Results from yelp and foursquare</p>
-        
+
         <a class="btn btn-quattro scrollto" href="#services"><i class="fa fa-arrow-down"></i>Check Them Out!</a>
-        
+
       </div>
-    
+
     </div>
-  
+
   </div>
-  
+
 </section>
 
 
 <section id="services" class="white-bg padding-top-bottom">
-    
+
   <div class="container">
-    
+
     <h1 class="section-title">Results</h1>
     <p class="section-description"></p>
-    
+
     <div id="filter-works">
       <ul>
         <li class="active scrollimation fade-right d1">
@@ -56,14 +56,15 @@
     </div>
 
     <div class="row services">
-    
+
     <div class='col-md-8'>
       <div class="col-md-3 item text-center scrollimation fade-right d1 first">
-    
+
         <h3 class='type'>Restaurants</h3>
         <div class='external-events'>
+          <% i = 1 %>
           <% @food.each do |f| %>
-          <div class='activity fc-event ui-draggable ui-draggable-handle' data-event='{"title":"<%= f[:name] %>"}' data-cat='food'>
+          <div id='n<%= i %>' class='activity fc-event ui-draggable ui-draggable-handle' data-event='{"title":"<%= f[:name] %>"}' data-cat='food'>
             <b class='title'><%= f[:name] %></b></br>
             <%= f[:address].first %>
             <%= f[:address].last %>
@@ -71,6 +72,7 @@
             Distance in meters: <%#= f[:distance] %> -->
             <span class='url'><%= link_to f[:url], f[:url], :target => "_blank" %></span>
           </div>
+            <% i += 1 %>
           <% end %>
         </div>
       </div>
@@ -80,34 +82,40 @@
       <div class="col-md-3 item text-center scrollimation fade-right">
         <h3 class='type'>Nightlife</h3>
         <div class='external-events'>
+          <% i = 1 %>
         <% @night.each do |f| %>
-          <div class='activity fc-event ui-draggable ui-draggable-handle' data-event='{"title":"<%= f[:name] %>"}' data-cat='night'>
+          <div id='n<%= i %>' class='activity fc-event ui-draggable ui-draggable-handle' data-event='{"title":"<%= f[:name] %>"}' data-cat='night'>
             <b class='title'><%= f[:name] %></b></br>
             <%= f[:address].first %>
             <%= f[:address].last %>
             <!-- <%#= f[:cats].join(', ') %> -->
             <%= link_to f[:url], f[:url], :target => "_blank" %>
           </div>
-        <% end %> 
+          <% i += 1 %>
+        <% end %>
         </div>
       </div>
 
       <div class="col-md-1"></div>
 
       <div class="col-md-3 item text-center scrollimation fade-left third">
+
+
           <h3 class='type'>Sights</h3>
+          <% i = 1 %>
           <% @sights.each do |f| %>
-          <div class='activity fc-event ui-draggable ui-draggable-handle sights' data-event='{"title":"<%= f[:name] %>"}' data-cat='sight'>
-          
-            <b class='title'><%= f[:name] %></b></br>
-            <%= f[:address][0] %></br>
-           <!--  <%#= f[:cats] %></br>
-            Distance in meters: <%#= f[:distance] %></br>
-            <%#= f[:here_now] %></br> -->
-            <%= link_to f[:url], f[:url], :target => "_blank" %></br>
-          
-          </div>
-        <% end %>
+            <div id="s<%= i %>" class='activity fc-event ui-draggable ui-draggable-handle sights' data-event='{"title":"<%= f[:name] %>"}' data-cat='sight'>
+
+              <b class='title'><%= f[:name] %></b></br>
+              <%= f[:address][0] %></br>
+             <!--  <%#= f[:cats] %></br>
+              Distance in meters: <%#= f[:distance] %></br>
+              <%#= f[:here_now] %></br> -->
+              <%= link_to f[:url], f[:url], :target => "_blank" %></br>
+
+            </div>
+            <% i += 1 %>
+          <% end %>
         </div>
       </div>
 
@@ -120,18 +128,18 @@
           <% end %>
         <% end %>
       </div>
-      
+
     </div>
-    
+
     <p class="text-center"><a class="btn btn-quattro scrollto" href="#map-section"><i class="fa fa-arrow-down"></i> See where it is on the map!</a></p>
   </div>
-  
+
 </section>
 
 <section id="map-section" class="padding-top">
-    
+
       <div class="container">
-        
+
         <h1 class="section-title">Map</h1>
         <div class="row">
           <div class="col-md-4 item text-center scrollimation fade-left d1">
@@ -139,9 +147,9 @@
             <div id="map"></div>
           </div>
         </div>
-      </div><!-- End container --> 
-      
-    
+      </div><!-- End container -->
+
+
     </section>
 
 
