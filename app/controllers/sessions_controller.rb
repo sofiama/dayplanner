@@ -58,8 +58,8 @@ class SessionsController < ApplicationController
 
         # @event.google_event_id = result.data.id
         # @event.save
-        # redirect_to(@origin)
-        redirect_to events_path
+        redirect_to(@origin)
+        # render :nothing => true
       else
         render :nothing => true
       end

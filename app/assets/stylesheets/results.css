@@ -25,6 +25,8 @@
 .external-events .activity{
 }
 
-.google-form button{
-  
+.google{
+  background-color: #D14130;
+  /*width: 100px;*/
+  /*margin-right: 0;*/
 }
