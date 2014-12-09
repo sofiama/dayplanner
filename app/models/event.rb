@@ -27,7 +27,7 @@ class Event < ActiveRecord::Base
 
     @results["events"].each do |e|
       event = {}
-      binding.pry
+      # binding.pry
       event[:title] = e["title"]
       event[:url] = e["url"]
       event[:img_url] = e['performers'].first['image']

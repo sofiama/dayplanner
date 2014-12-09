@@ -43,7 +43,7 @@ $(function(){
 
   $('.activity').draggable({
     revert: false,
-    revertDuration: 0,
+    revertDuration: 0
   });
 
   $('.activity').data('duration', '01:00');

@@ -6,9 +6,10 @@
 }
 
 .activity{
-  height: 130px;
-  padding: 5px;
-  border: 1px solid #000;
+  margin: 10px;
+  display: block;
+  width: 150px;
+  font-size: 14px;
 }
 
 #map { height: 180px; }
