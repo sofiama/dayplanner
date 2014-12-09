@@ -24,14 +24,10 @@
 }
 
 #map{
-  left: 20px;
-  width: 48%;
-  height: 1000px;
+  width: 400px;
+  height: 400px;
 }
 
 .google{
   background-color: #D14130;
-  /*width: 100px;*/
-  /*margin-right: 0;*/
->>>>>>> layout
 }
