@@ -36,6 +36,9 @@ FEATURES
         <div class="form-group">
           <%= hidden_field_tag :img_url, value = e[:img_url] %>
         </div>
+        <div class="form-group">
+          <%= hidden_field_tag :address, value = e[:address] %>
+        </div>
         <%= submit_tag 'Confirm', :class => 'btn btn-quattro' %>
         <% end %>
       </div>

@@ -17,7 +17,7 @@
         <p>
           <b class='event-name'><%= @event.name %></b><br/><b class='event-date'><%= @event.date_display %></b> at <b><%= @event.time %></b>
           <b class='event-time'><%= @event.time_display %></b><b class='event-utc'><%=@event.date %></b><p>
-          <!-- <b><%#= @event.address %></b> -->
+          <b><%= @event.address %></b>
         <p>Results from yelp and foursquare</p>
         
         <a class="btn btn-quattro scrollto" href="#services"><i class="fa fa-arrow-down"></i>Check Them Out!</a>
@@ -53,6 +53,16 @@
           <a href="#" data-filter=".illustration">Illustration</a>
         </li>
       </ul>
+    </div>
+  
+    <div class="row services">
+      <div class="col-md-10-offset col-md-2 fade-right d1">
+        <%= form_tag '/auth/google_oauth2', :method => 'get', :class => 'google-form' do |f| %>
+        <%= button_tag :type =>'submit', :class => 'google', :class => 'btn btn-quattro' do %>
+          <i class='fa fa-google'></i>Add to Google Calendar
+          <% end %>
+        <% end %>
+      </div>
     </div>
 
     <div class="row services">
@@ -116,13 +126,6 @@
   </div>
   
 </section>
-
-
-    <p>
-      <%= form_tag '/auth/google_oauth2', :method => 'get', :class => 'google-form' do |f| %>
-      <%= submit_tag 'Export to Google Calendar', :class => 'google', :class => 'btn btn-quattro' %>
-      <% end %>
-    </p>
 
 Google user_id <%= @event.user_id %>
 <hr/>

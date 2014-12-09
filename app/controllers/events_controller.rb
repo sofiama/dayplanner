@@ -41,6 +41,7 @@ class EventsController < ApplicationController
     @event.update(:taxonomies => params[:taxonomies])
     @event.update(:url => params[:url])
     @event.update(:img_url => params[:img_url])
+    @event.update(:address => params[:address])
     # raise params
     # @event.update(:user_id => @event.id)
     redirect_to event_results_path(@event)
