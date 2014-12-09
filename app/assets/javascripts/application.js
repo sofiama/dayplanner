@@ -33,5 +33,6 @@
 //= require fullcalendar
 //= require results
 // require_tree .
+//= require custom
 
 

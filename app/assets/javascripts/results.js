@@ -34,15 +34,11 @@ $(function(){
       textColor: '#FFFFFF',
       // editable: true
     }],
-    editable: true,
-    eventClick: function(calEvent, jsEvent, view){
-      alert('Event: ' + calEvent.title);
-    }
-
+    editable: true
   });
 
   $('.activity').draggable({
-    revert: false,
+    revert: true,
     revertDuration: 0
   });
 

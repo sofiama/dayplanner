@@ -13,7 +13,11 @@
       <div class="col-sm-6 scrollimation fade-left d1">
       
         <h1 class="big-title">Activities</h1>
-        <p>Let's see what's there to do</p>
+        <p>Let's see what's there to do near</p>
+        <p>
+          <b class='event-name'><%= @event.name %></b><br/><b class='event-date'><%= @event.date_display %></b> at <b><%= @event.time %></b>
+          <b class='event-time'><%= @event.time_display %></b><b class='event-utc'><%=@event.date %></b><p>
+          <!-- <b><%#= @event.address %></b> -->
         <p>Results from yelp and foursquare</p>
         
         <a class="btn btn-quattro scrollto" href="#services"><i class="fa fa-arrow-down"></i>Check Them Out!</a>
@@ -32,32 +36,73 @@
   <div class="container">
     
     <h1 class="section-title">Results</h1>
-    <p class="section-description"><b class='event-name'><%= @event.name %></b><br/> <b class='event-date'><%= @event.date_display %></b> at <b><%= @event.time %></b>
-      <b class='event-time'><%= @event.time_display %></b><b class='event-utc'><%=@event.date %></b></p>
+    <p class="section-description"></p>
     
+    <div id="filter-works">
+      <ul>
+        <li class="active scrollimation fade-right d1">
+          <a href="#" data-filter="*">All</a>
+        </li>
+        <li class="scrollimation fade-right">
+          <a href="#" data-filter=".identity">Identity</a>
+        </li>
+        <li class="scrollimation fade-left">
+          <a href="#" data-filter=".logo">Logo</a>
+        </li>
+        <li class="scrollimation fade-left d1">
+          <a href="#" data-filter=".illustration">Illustration</a>
+        </li>
+      </ul>
+    </div>
+
     <div class="row services">
     
       <div class="col-md-4 item text-center scrollimation fade-right d1">
     
-
-        <div class="icon"><i class="fa fa-flag"></i></div>
-        <h3>Branding</h3>
-        <p>Phasellus ac mi quam. Suspendisse eu erat venenatis, euismod tellus sollicitudin, egestas lacus.</p>
-        
+        <h3>Food/Night</h3>
+        <% @food.each do |f| %>
+        <div class='activity fc-event ui-draggable ui-draggable-handle' data-event='{"title":"<%= f[:name] %>"}'>
+          <b class='title'><%= f[:name] %></b></br>
+          <%= f[:address].first %>
+          <%= f[:address].last %>
+<!--           <%#= f[:cats].join(', ') %>
+          Distance in meters: <%#= f[:distance] %> -->
+          <%= link_to f[:url], f[:url], :target => "_blank" %>
+        </div>
+        <% end %>
+       
+        <% @night.each do |f| %>
+          <div class='activity fc-event ui-draggable ui-draggable-handle'>
+            <b class='title'><%= f[:name] %></b></br>
+            <%= f[:address].first %>
+            <%= f[:address].last %>
+            <!-- <%#= f[:cats].join(', ') %> -->
+            <%= link_to f[:url], f[:url], :target => "_blank" %>
+          </div>
+        <% end %> 
       </div>
       
       <div class="col-md-4 item text-center scrollimation fade-right">
-    
-        <div class="icon"><i class="fa fa-pencil"></i></div>
-        <h3>Design</h3>
-        <p>Phasellus ac mi quam. Suspendisse eu erat venenatis, euismod tellus sollicitudin, egestas lacus.</p>
-        
+
+        <h3>Sights</h3>
+        <% @sights.each do |f| %>
+          <div class='activity fc-event ui-draggable ui-draggable-handle' data-event='{"title":"<%= f[:name] %>"}'>
+          
+            <b class='title'><%= f[:name] %></b></br>
+            <%= f[:address][0] %></br>
+           <!--  <%#= f[:cats] %></br>
+            Distance in meters: <%#= f[:distance] %></br>
+            <%#= f[:here_now] %></br> -->
+            <%= link_to f[:url], f[:url], :target => "_blank" %></br>
+          
+          </div>
+        <% end %>
       </div>
 
       
-      <div class="col-md-1 item text-center scrollimation fade-left">
+      <!-- <div class="col-md-1 item text-center scrollimation fade-left">
         
-      </div>
+      </div> -->
       
       <div class="col-md-4 item text-center scrollimation fade-left d1">
 
@@ -73,6 +118,12 @@
 </section>
 
 
+    <p>
+      <%= form_tag '/auth/google_oauth2', :method => 'get', :class => 'google-form' do |f| %>
+      <%= submit_tag 'Export to Google Calendar', :class => 'google', :class => 'btn btn-quattro' %>
+      <% end %>
+    </p>
+
 Google user_id <%= @event.user_id %>
 <hr/>
 <% if @event.user_id != nil %>
@@ -80,9 +131,6 @@ Google user_id <%= @event.user_id %>
 <% end %>
 
 <h4>Calendar</h4>
-<%= form_tag '/auth/google_oauth2', :method => 'get', :class => 'google-form' do |f| %>
-<%= submit_tag 'Export to Google Calendar', :class => 'google' %>
-<% end %>
 
 <hr/>
 
@@ -109,8 +157,7 @@ Google user_id <%= @event.user_id %>
   <li><%= link_to r[:url], r[:url], :target => "_blank" %></li>
 
 </ul>
-</div>
-<% end %>
+
 </div>
 
 <hr/>
@@ -118,45 +165,14 @@ Google user_id <%= @event.user_id %>
 <h3>YELP RESULTS</h3>
 
 <h4>Food Option</h4>
-<% @food.each do |f| %>
-<div class='activity fc-event ui-draggable ui-draggable-handle' data-event='{"title":"<%= f[:name] %>"}'>
-<ul>
-  <li><b class='title'><%= f[:name] %></b></li>
-  <li><%= f[:address].first %></li>
-  <li><%= f[:address].last %></li>
-  <li><%= f[:cats].join(', ') %></li>
-  <li>Distance in meters: <%= f[:distance] %></li>
-  <li><%= link_to f[:url], f[:url], :target => "_blank" %></li>
-</ul>
-</div>
-<% end %>
+
 
 <h3>Night Option</h3>
-<% @night.each do |f| %>
-<div class='activity ui-widget-content'>
-<ul>
-  <li><b class='title'><%= f[:name] %></b></li>
-  <li><%= f[:address].first %></li>
-  <li><%= f[:address].last %></li>
-  <li><%= f[:cats].join(', ') %></li>
-</ul>
-</div>
-<% end %>
+
 <hr/>
 
 <h3>FOURSQUARE RESULTS</h3>
 <h3>Sights Option</h3>
-<% @sights.each do |f| %>
-<div class='activity' data-event='{"title":"<%= f[:name] %>"}'>
-<ul>
-  <li><b class='title'><%= f[:name] %></b></li>
-  <li><%= f[:address][0] %></li>
-  <li><%= f[:cats] %></li>
-  <li>Distance in meters: <%= f[:distance] %></li>
-  <li><%= f[:here_now] %></li>
-  <li><%= link_to "link", f[:url], :target => "_blank" %></li>
-</ul>
-</div>
 <% end %>
 
 <hr/>

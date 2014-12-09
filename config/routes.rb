@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   get 'events/test' => 'events#test'
 
-  root 'events#new'
+  get 'events/team' => 'events#team'
+  
+  root 'events#index'
   
   resources :events do
     resources :results, :only => [:index]
