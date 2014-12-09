@@ -31,6 +31,7 @@ class Event < ActiveRecord::Base
       event[:title] = e["title"]
       event[:url] = e["url"]
       event[:img_url] = e['performers'].first['image']
+      # binding.pry
       event[:datetime_local] = e["datetime_local"]
       # date in sun dec 7, 2014 format
       date = Date.parse(e["datetime_local"])
