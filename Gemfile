@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.1.2'
 
 gem 'pg'
 
@@ -58,5 +59,3 @@ gem 'omniauth'
 gem 'omniauth-google-oauth2'
 
 gem 'gon'
-
-ruby '2.1.2'
