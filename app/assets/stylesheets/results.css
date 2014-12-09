@@ -30,3 +30,12 @@
 .google{
   background-color: #D14130;
 }
+
+.google:hover,
+.google:active {
+    color: #fff;
+    background: #E43E59;
+    text-decoration: none;
+    -webkit-transition: all .2s ease-out;
+    transition: all .2s ease-out;
+}
