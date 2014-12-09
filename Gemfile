@@ -59,6 +59,3 @@ gem 'omniauth-google-oauth2'
 
 
 gem 'gon'
-
-gem 'carrierwave'
-gem 'fog'
