@@ -70,6 +70,7 @@
       <div class="col-md-4 item text-center scrollimation fade-right d1">
     
         <h3>Food/Night</h3>
+        <div class='external-events'>
         <% @food.each do |f| %>
         <div class='activity fc-event ui-draggable ui-draggable-handle' data-event='{"title":"<%= f[:name] %>"}'>
           <b class='title'><%= f[:name] %></b></br>
@@ -77,9 +78,10 @@
           <%= f[:address].last %>
 <!--           <%#= f[:cats].join(', ') %>
           Distance in meters: <%#= f[:distance] %> -->
-          <%= link_to f[:url], f[:url], :target => "_blank" %>
+          <span class='url'><%= link_to f[:url], f[:url], :target => "_blank" %></span>
         </div>
         <% end %>
+      </div>
        
         <% @night.each do |f| %>
           <div class='activity fc-event ui-draggable ui-draggable-handle'>
@@ -127,19 +129,8 @@
   
 </section>
 
-Google user_id <%= @event.user_id %>
-<hr/>
-<% if @event.user_id != nil %>
-<%= @user.get_main_gcal_id %>
-<% end %>
-
-<h4>Calendar</h4>
-
-<hr/>
 
 <%= button_to 'pick for me' ,event_results_path, :method => 'get' %>
-
-
 
 <div class='random'>
 <h4>Random Picks</h4>
@@ -158,25 +149,11 @@ Google user_id <%= @event.user_id %>
   </li>
   <li>Distance in meters: <%= r[:distance] %></li>
   <li><%= link_to r[:url], r[:url], :target => "_blank" %></li>
-
+  <% end %>
 </ul>
 
 </div>
 
-<hr/>
-
-<h3>YELP RESULTS</h3>
-
-<h4>Food Option</h4>
-
-
-<h3>Night Option</h3>
-
-<hr/>
-
-<h3>FOURSQUARE RESULTS</h3>
-<h3>Sights Option</h3>
-<% end %>
 
 <hr/>
 

@@ -7,6 +7,15 @@ $(function(){
 
   var eventDate = $('.event-date').text()
 
+  // $('.external-events').each(function(){
+  //   var eventObject = {
+  //     title: $(this).find('title').text();
+  //     url: $(this).find('url').text();
+  //   }
+
+
+  // });
+
   $('#calendar').fullCalendar({
     defaultView: 'agendaDay',
     defaultDate: $('.event-date').text(),
@@ -22,6 +31,7 @@ $(function(){
     droppable: true,
     drop: function(date, jsEvent, ui){
       // alert('Dropped on ' + date.format());
+
     },
     eventSources: [{
       events: [{
@@ -30,15 +40,21 @@ $(function(){
           eventStartEditable: false
           // durationEditable: true
       }],
-      color: '#0099FF',
+      color: '#FFD340',
       textColor: '#FFFFFF',
       // editable: true
     }],
-    editable: true
+    editable: true,
+    eventClick: function(calEvent, jsEvent, view){
+        var r=confirm("Delete " + calEvent.title);
+          if (r===true){
+            $('#calendar').fullCalendar('removeEvents', calEvent._id);
+          }
+    }
   });
 
   $('.activity').draggable({
-    revert: true,
+    revert: false,
     revertDuration: 0
   });
 
