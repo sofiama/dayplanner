@@ -32,7 +32,7 @@
 //= require moment.min
 //= require fullcalendar
 //= require results
-// require_tree .
+//= require_tree .
 //= require custom
 
 //= require html2canvas

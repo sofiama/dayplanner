@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+debugger
 //$("span:contains('f1')").click() //this will toggle click where 'f1' is the span text so do this when a block is dropped into a timeslot div!
 
  var regLayer = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
