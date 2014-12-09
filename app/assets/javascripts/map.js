@@ -2,6 +2,13 @@ $(document).ready(function(){
 
 //$("span:contains('f1')").click() //this will toggle click where 'f1' is the span text so do this when a block is dropped into a timeslot div!
 
+var baseLayer = L.tileLayer('http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png', {
+    attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+    subdomains: 'abcd',
+    minZoom: 0,
+    maxZoom: 20
+  });
+
  var regLayer = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
           subdomains: ['a', 'b', 'c'],
           attribution: '© OpenStreetMap contributors',
@@ -56,7 +63,8 @@ $(document).ready(function(){
   var map = L.map('map', {
     center: gon.mainEventLL,
     zoom: 15,
-    layers: [regLayer]
+    layers: [baseLayer]
+    // layers: [regLayer]
     });
 
   L.control.layers(null, overlayMaps).addTo(map); //makes control box

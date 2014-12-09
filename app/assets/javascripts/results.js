@@ -37,22 +37,22 @@ $(function(){
       textColor: '#FFFFFF',
       // editable: true
     }],
-    // eventRender: function(event, element) {
-    //         element.append( "<span class='closon'>X</span>" );
-    //           $(document).on('click', ".closon", function() {
-    //             //console.log(element.attr('id'));
-    //           // $('#calendar').fullCalendar('removeEvents', element.attr('id'));
-    //           console.log(event);
-    //           $('#calendar').fullCalendar('removeEvents', event._id );
-    //            // var mapLayer;
-    //            // $("span:contains('" + mapLayer +"')").click();
-    //            //console.log($(this).parent());
-    //            //$(this).parent().remove();
-    //            //alert($(this)._id)
+    eventRender: function(event, element) {
+            element.append( "<span class='closon'>X</span>" );
+              $(document).on('click', ".closon", function() {
+                //console.log(element.attr('id'));
+              // $('#calendar').fullCalendar('removeEvents', element.attr('id'));
+              console.log(event);
+              $('#calendar').fullCalendar('removeEvents', event._id );
+               // var mapLayer;
+               // $("span:contains('" + mapLayer +"')").click();
+               //console.log($(this).parent());
+               //$(this).parent().remove();
+               //alert($(this)._id)
 
-    //            //alert("clicked the X");
-    //         });
-    //     },
+               //alert("clicked the X");
+            });
+        },
     editable: true
   });
 
