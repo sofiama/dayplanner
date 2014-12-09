@@ -32,9 +32,6 @@
 //= require moment.min
 //= require fullcalendar
 //= require results
-//= require_tree .
+
 //= require custom
 //= require map
-
-//= require html2canvas
-//= require canvas2image

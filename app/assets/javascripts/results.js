@@ -35,16 +35,16 @@ $(function(){
       textColor: '#FFFFFF',
       // editable: true
     }],
-    editable: true,
-    eventClick: function(event){
-      $('#calendar').fullCalendar('removeEvents',event._id);
-    },
-    eventRender: function(event, element) {
-        element.prepend( "<span class='closon'>X</span>" );
-        element.find(".closon").click(function() {
-          $('#calendar').fullCalendar('removeEvents',event._id);
-        });
-      }
+    editable: true
+    // eventClick: function(event){
+    //   $('#calendar').fullCalendar('removeEvents',event._id);
+    // },
+    // eventRender: function(event, element) {
+    //     element.prepend( "<span class='closon'>X</span>" );
+    //     element.find(".closon").click(function() {
+    //       $('#calendar').fullCalendar('removeEvents',event._id);
+    //     });
+    //   }
   });
 
 
