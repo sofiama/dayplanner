@@ -60,7 +60,7 @@ $(document).ready(function(){
     });
 
   L.control.layers(null, overlayMaps).addTo(map); //makes control box
-
+  $("span:contains('Main Event')").click()
 
    // function compareOffset(id1, id2) {
    //    return (
@@ -69,3 +69,5 @@ $(document).ready(function(){
    //  }
 
 });
+
+

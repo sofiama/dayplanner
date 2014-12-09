@@ -11,4 +11,38 @@
   border: 1px solid #000;
 }
 
-#map { height: 180px; }
+#map{
+  left: 20px;
+  width: 48%;
+  height: 1000px;
+}
+
+#calendar{
+  right: 20px;
+  width: 48%;
+  float: right;
+}
+
+#food{
+  left: 20px;
+  width: 30%;
+  float: left;
+}
+
+#night{
+  float: left;
+  width: 30%;
+}
+
+#sights{
+  float: left;
+  width: 30%;
+}
+
+.closon {
+    position: absolute;
+    top: -2px;
+    right: 0;
+    cursor: crosshair;
+    z-index: 5;
+  }

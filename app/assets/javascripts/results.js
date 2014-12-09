@@ -7,6 +7,10 @@ $(function(){
 
   var eventDate = $('.event-date').text()
 
+
+
+
+
   $('#calendar').fullCalendar({
     defaultView: 'agendaDay',
     defaultDate: $('.event-date').text(),
@@ -33,12 +37,22 @@ $(function(){
       textColor: '#FFFFFF',
       // editable: true
     }],
-    editable: true,
-    eventClick: function(calEvent, jsEvent, view){
-      alert('Event: ' + calEvent.title);
-    }
+    eventRender: function(event, element) {
+            element.append( "<span class='closon'>X</span>" );
+              $(document).on('click', ".closon", function() {
 
+               // $('#calendar').fullCalendar('removeEvents', "event._id");
+               // var mapLayer;
+               // $("span:contains('" + mapLayer +"')").click();
+               $(this).parent().remove();
+               //alert($(this)._id)
+
+               //alert("clicked the X");
+            });
+        },
+    editable: true
   });
+
 
   $('.activity').draggable({
     revert: false,
@@ -55,10 +69,21 @@ $(function(){
     var shortTitle = title.replace(" ", '').substr(0,5).toLowerCase();
 
     var titleAndTime = title + '/' + time;
+
     $('<input id="' + shortTitle + '" name="' + shortTitle + '" type="hidden" value="' + titleAndTime + '">').insertBefore($('.google'));
     });
   });
-  
+
+//CLEAR SCHEDULE AND REMOVE ALL POINTS
+   $('#clear').on('click', function(){
+      $("#calendar").fullCalendar( 'removeEvents' );
+      $("span:contains('f1')").click();
+   });
+
+
 
 });
-  
+
+
+
+
