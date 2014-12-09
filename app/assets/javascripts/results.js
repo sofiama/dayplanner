@@ -15,8 +15,9 @@ $(function(){
       center: 'title',
       right:  ''
     },
+    height: 650,
     snapDuration: '01:00:00',
-    scrollTime: '06:00:00',
+    scrollTime: '08:00:00',
     slotEventOverlap: false,
     droppable: true,
     drop: function(date, jsEvent, ui){

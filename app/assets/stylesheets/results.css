@@ -12,3 +12,7 @@
 }
 
 #map { height: 180px; }
+
+.event-time, .event-utc{
+  display: none;
+}
