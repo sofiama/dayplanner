@@ -4,6 +4,8 @@
  * (c) 2013 Adam Shaw
  */
 
+var draggable_id;
+
 (function(factory) {
 	if (typeof define === 'function' && define.amd) {
 		define([ 'jquery', 'moment' ], factory);
@@ -5943,11 +5945,14 @@ $.extend(DayGrid.prototype, {
 		if (!event.allDay && seg.isStart) {
 			timeHtml = '<span class="fc-time">' + htmlEscape(view.getEventTimeText(event)) + '</span>';
 		}
-		console.log(event);
+		//console.log(event);
 		titleHtml =
 			'<span class="fc-title">' +
 				(htmlEscape(event.title || '') || '&nbsp;') + // we always want one line of height
 			'</span>';
+
+		idHtml =
+			'<span class="fc-id">TESTING</span>';
 
 		return '<a class="' + classes.join(' ') + '"' +
 				(event.url ?
@@ -5961,8 +5966,8 @@ $.extend(DayGrid.prototype, {
 			'>' +
 				'<div class="fc-content">' +
 					(isRTL ?
-						titleHtml + ' ' + timeHtml : // put a natural space in between
-						timeHtml + ' ' + titleHtml   //
+						titleHtml + ' ' + timeHtml + ' ' + idHtml: // put a natural space in between
+						timeHtml + ' ' + titleHtml  + ' ' + idHtml //
 						) +
 				'</div>' +
 				(isResizable ?
@@ -7091,7 +7096,7 @@ $.extend(TimeGrid.prototype, {
 			startTimeText = view.getEventTimeText(event.start, null);
 		}
 
-		return '<a class="' + classes.join(' ') + '"' +
+		return '<a id=' + draggable_id + ' class="' + classes.join(' ') + '"' +
 			(event.url ?
 				' href="' + htmlEscape(event.url) + '"' :
 				''
@@ -7642,6 +7647,8 @@ View.prototype = {
 
 		if (this.opt('droppable')) { // only listen if this setting is on
 			el = $(ev.target);
+			draggable_id = el[0].id;
+			//console.log(draggable_id);
 
 			// Test that the dragged element passes the dropAccept selector or filter function.
 			// FYI, the default is "*" (matches all)
@@ -7700,7 +7707,7 @@ View.prototype = {
 							_this.trigger('eventReceive', null, renderedEvents[0]); // signal an external event landed
 
 							var mapLayer = String(el[0].id);
-							console.log(el[0]);
+
 							$("span:contains('" + mapLayer +"')").click();
 
 						}
