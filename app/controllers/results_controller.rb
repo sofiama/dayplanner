@@ -18,5 +18,11 @@ class ResultsController < ApplicationController
     end
 
   end
+
+
+  #rooute: event_result (SINGULAR)
+  def create
+    @event = Event.find(params[:event_id])
+  end
 end
 

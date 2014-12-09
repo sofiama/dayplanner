@@ -35,4 +35,5 @@
 // require_tree .
 //= require custom
 
-
+//= require html2canvas
+//= require canvas2image
