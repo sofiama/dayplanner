@@ -7,15 +7,6 @@ $(function(){
 
   var eventDate = $('.event-date').text()
 
-  // $('.external-events').each(function(){
-  //   var eventObject = {
-  //     title: $(this).find('title').text();
-  //     url: $(this).find('url').text();
-  //   }
-
-
-  // });
-
   $('#calendar').fullCalendar({
     defaultView: 'agendaDay',
     defaultDate: $('.event-date').text(),
@@ -54,13 +45,12 @@ $(function(){
     // }
     eventRender: function(event, element) {
         element.append( "<span class='closon'>X</span>" );
-        console.log(element);
-        // debugger;
         element.find(".closon").click(function() {
           $('#calendar').fullCalendar('removeEvents',event._id);
         });
       }
   });
+
 
   $('.activity').draggable({
     revert: true,
@@ -77,10 +67,13 @@ $(function(){
     var shortTitle = title.replace(" ", '').substr(0,5).toLowerCase();
 
     var titleAndTime = title + '/' + time;
+
     $('<input id="' + shortTitle + '" name="' + shortTitle + '" type="hidden" value="' + titleAndTime + '">').insertBefore($('.google'));
     });
   });
-  
 
 });
-  
+
+
+
+
