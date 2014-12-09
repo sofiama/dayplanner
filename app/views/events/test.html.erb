@@ -7,85 +7,7 @@
     <!-- ==============================================
     CALL TO ACTION
     =============================================== -->
-    <section class="parallax-bg padding-top-bottom cta-image" data-parallax-background="<%= image_path "light-abstract.jpg"%>" data-stellar-background-ratio=".7">
-    
-      <div class="container">
-        
-        <div class="row">
-        
-          <div class="col-sm-6 scrollimation fade-right">
-          
-            <%= image_tag "placeholder.png", class:"img-responsive img-center", alt:"" %>
-            
-          </div>
-          
-          <div class="col-sm-6 scrollimation fade-left d1">
-          
-            <h1 class="big-title">Why choose Us?</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in varius erat.</p>
-            <p>Nam id felis eu felis consequat adipiscing. Suspendisse sit amet faucibus nunc, dignissim vehicula enim. Vestibulum luctus turpis sit amet varius venenatis.</p>
-            
-            <a class="btn btn-quattro scrollto" href="#services"><i class="fa fa-arrow-down"></i>Check Our Services</a>
-            
-          </div>
-        
-        </div>
-      
-      </div>
-      
-    </section>
-    
-    <!-- ==============================================
-    SERVICES
-    =============================================== -->
-    <section id="services" class="white-bg padding-top-bottom">
-    
-      <div class="container">
-        
-        <h1 class="section-title">Our Services</h1>
-        <p class="section-description">We create awesome Websites and Mobile Apps, the perfect solution for your project.<br/> We don't make designs, we make magic!</p>
-        
-        <div class="row services">
-        
-          <div class="col-md-3 col-sm-6 item text-center scrollimation fade-right d1">
-        
-            <div class="icon"><i class="fa fa-flag"></i></div>
-            <h3>Branding</h3>
-            <p>Phasellus ac mi quam. Suspendisse eu erat venenatis, euismod tellus sollicitudin, egestas lacus.</p>
-            
-          </div>
-          
-          <div class="col-md-3 col-sm-6 item text-center scrollimation fade-right">
-        
-            <div class="icon"><i class="fa fa-pencil"></i></div>
-            <h3>Design</h3>
-            <p>Phasellus ac mi quam. Suspendisse eu erat venenatis, euismod tellus sollicitudin, egestas lacus.</p>
-            
-          </div>
-          
-          <div class="col-md-3 col-sm-6 item text-center scrollimation fade-left">
-        
-            <div class="icon"><i class="fa fa-code"></i></div>
-            <h3>Development</h3>
-            <p>Phasellus ac mi quam. Suspendisse eu erat venenatis, euismod tellus sollicitudin, egestas lacus.</p>
-            
-          </div>
-          
-          <div class="col-md-3 col-sm-6 item text-center scrollimation fade-left d1">
-        
-            <div class="icon"><i class="fa fa-rocket"></i></div>
-            <h3>Rocket Science</h3>
-            <p>Phasellus ac mi quam. Suspendisse eu erat venenatis, euismod tellus sollicitudin, egestas lacus.</p>
-            
-          </div>
-          
-        </div>
-        
-        <p class="text-center"><a class="btn btn-quattro scrollto" href="#portfolio">Our Awesome Works</a></p>
-        
-      </div>
-      
-    </section>
+   
     
     <!-- ==============================================
     COUNTERS
@@ -128,8 +50,7 @@
       </div>
       
     </section>
-
-    <!-- ==============================================
+<!-- ==============================================
     PORTFOLIO
     =============================================== -->
     <section id="portfolio" class="padding-top">
@@ -189,7 +110,7 @@
             
             <!--==== Project Preview HTML ====-->
             
-            <div class="sr-only project-description" data-images="assets/images/slide.png,assets/images/slide.png" >
+            <div class="sr-only project-description" data-images=<%= image_path "slide.png"%>,<%= image_path "slide.png"%> >
             
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sapien risus, blandit at fringilla ac, varius sed dolor. Donec augue lacus, vulputate sed consectetur facilisis, interdum pharetra ligula. Nulla suscipit erat nibh, ut porttitor nisl dapibus eu.</p>
               
@@ -200,7 +121,7 @@
             </div>
             
           </article>
-          <!-- ==============================================
+    <!-- ==============================================
           END PROJECT ITEM
           =============================================== -->           
           
@@ -238,7 +159,7 @@
             
             <!--==== Project Preview HTML ====-->
             
-            <div class="sr-only project-description" data-images="assets/images/slide.png,assets/images/slide.png" >
+            <div class="sr-only project-description" data-images=<%= image_path "slide.png"%>,<%= image_path "slide.png"%> >
             
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sapien risus, blandit at fringilla ac, varius sed dolor. Donec augue lacus, vulputate sed consectetur facilisis, interdum pharetra ligula. Nulla suscipit erat nibh, ut porttitor nisl dapibus eu.</p>
               
@@ -260,7 +181,7 @@
             
             <!--==== Project Preview HTML ====-->
             
-            <div class="sr-only project-description" data-images="assets/images/slide.png,assets/images/slide.png" >
+            <div class="sr-only project-description" data-images=<%= image_path "slide.png"%>,<%= image_path "slide.png"%> >
             
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sapien risus, blandit at fringilla ac, varius sed dolor. Donec augue lacus, vulputate sed consectetur facilisis, interdum pharetra ligula. Nulla suscipit erat nibh, ut porttitor nisl dapibus eu.</p>
               
@@ -282,7 +203,7 @@
             
             <!--==== Project Preview HTML ====-->
             
-            <div class="sr-only project-description" data-images="assets/images/slide.png,assets/images/slide.png" >
+            <div class="sr-only project-description" data-images=<%= image_path "slide.png"%>,<%= image_path "slide.png"%> >
             
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sapien risus, blandit at fringilla ac, varius sed dolor. Donec augue lacus, vulputate sed consectetur facilisis, interdum pharetra ligula. Nulla suscipit erat nibh, ut porttitor nisl dapibus eu.</p>
               
@@ -304,7 +225,7 @@
             
             <!--==== Project Preview HTML ====-->
             
-            <div class="sr-only project-description" data-images="assets/images/slide.png,assets/images/slide.png" >
+            <div class="sr-only project-description" data-images=<%= image_path "slide.png"%>,<%= image_path "slide.png"%> >
             
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sapien risus, blandit at fringilla ac, varius sed dolor. Donec augue lacus, vulputate sed consectetur facilisis, interdum pharetra ligula. Nulla suscipit erat nibh, ut porttitor nisl dapibus eu.</p>
               
@@ -326,7 +247,7 @@
             
             <!--==== Project Preview HTML ====-->
             
-            <div class="sr-only project-description" data-images="assets/images/slide.png,assets/images/slide.png" >
+            <div class="sr-only project-description" data-images=<%= image_path "slide.png"%>,<%= image_path "slide.png"%> >
             
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sapien risus, blandit at fringilla ac, varius sed dolor. Donec augue lacus, vulputate sed consectetur facilisis, interdum pharetra ligula. Nulla suscipit erat nibh, ut porttitor nisl dapibus eu.</p>
               
@@ -348,7 +269,7 @@
             
             <!--==== Project Preview HTML ====-->
             
-            <div class="sr-only project-description" data-images="assets/images/slide.png,assets/images/slide.png" >
+            <div class="sr-only project-description" data-images=<%= image_path "slide.png"%>,<%= image_path "slide.png"%> >
             
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sapien risus, blandit at fringilla ac, varius sed dolor. Donec augue lacus, vulputate sed consectetur facilisis, interdum pharetra ligula. Nulla suscipit erat nibh, ut porttitor nisl dapibus eu.</p>
               

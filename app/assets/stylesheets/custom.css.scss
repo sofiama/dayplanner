@@ -2,10 +2,13 @@
     position:absolute;
     bottom:30px;
     left:50%;
-    margin-left:-35px;
+    margin-left:-72px;
     color:#fff !important;
-    padding:20px;
-    font-size: 36px;
+    font-size: 20px;
+    padding: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
     -webkit-animation: moving 2s ease-out infinite;
     animation: moving 2s ease-out infinite;
+    background-color: #EA8825;
 }
