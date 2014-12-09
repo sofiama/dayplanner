@@ -12,12 +12,12 @@ $(function(){
   //   console.log($(this).empty());
   // });
 
-  var activity = $('.activity');
+  var activities = $('.activities');
 
   $('#filter-works li a').click(function(){
     var customType = $( this ).data('filter');
 
-    activity
+    activities
         .hide()
         .filter(function () {
             // debugger;
@@ -27,7 +27,7 @@ $(function(){
   });
 
   $('#filter-works li a:first').on('click', function(){
-    $('.activity').show();
+    $('.activities').show();
   });
   
 });

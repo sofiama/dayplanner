@@ -6,6 +6,10 @@
   font-size: 8px;
 }
 
+#map { 
+  height: 400px; 
+}
+
 .event-time, .event-utc{
   display: none;
 }
