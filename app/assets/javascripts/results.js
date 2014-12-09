@@ -35,6 +35,7 @@ $(function(){
       textColor: '#FFFFFF',
       // editable: true
     }],
+
     editable: true,
     // eventClick: function(calEvent, jsEvent, view){
     //   // var r = confirm("Delete " + calEvent.title);

@@ -44,13 +44,13 @@
           <a href="#" data-filter="*">All</a>
         </li>
         <li class="scrollimation fade-right">
-          <a href="#" data-filter=".identity">Identity</a>
+          <a href="#" data-filter="food">Restaurants</a>
         </li>
         <li class="scrollimation fade-left">
-          <a href="#" data-filter=".logo">Logo</a>
+          <a href="#" data-filter="night">Nightlife</a>
         </li>
         <li class="scrollimation fade-left d1">
-          <a href="#" data-filter=".illustration">Illustration</a>
+          <a href="#" data-filter="sight">Sights</a>
         </li>
       </ul>
     </div>
@@ -58,12 +58,12 @@
     <div class="row services">
     
     <div class='col-md-8'>
-      <div class="col-md-3 item text-center scrollimation fade-right d1">
+      <div class="col-md-3 item text-center scrollimation fade-right d1 first">
     
-        <h3>Restaurants</h3>
+        <h3 class='type'>Restaurants</h3>
         <div class='external-events'>
           <% @food.each do |f| %>
-          <div class='activity fc-event ui-draggable ui-draggable-handle' data-event='{"title":"<%= f[:name] %>"}'>
+          <div class='activity fc-event ui-draggable ui-draggable-handle' data-event='{"title":"<%= f[:name] %>"}' data-cat='food'>
             <b class='title'><%= f[:name] %></b></br>
             <%= f[:address].first %>
             <%= f[:address].last %>
@@ -78,10 +78,10 @@
       <div class="col-md-1"></div>
 
       <div class="col-md-3 item text-center scrollimation fade-right">
-        <h3>Nightlife</h3>
+        <h3 class='type'>Nightlife</h3>
         <div class='external-events'>
         <% @night.each do |f| %>
-          <div class='activity fc-event ui-draggable ui-draggable-handle'>
+          <div class='activity fc-event ui-draggable ui-draggable-handle' data-event='{"title":"<%= f[:name] %>"}' data-cat='night'>
             <b class='title'><%= f[:name] %></b></br>
             <%= f[:address].first %>
             <%= f[:address].last %>
@@ -94,10 +94,10 @@
 
       <div class="col-md-1"></div>
 
-      <div class="col-md-3 item text-center scrollimation fade-left">
-          <h3>Sights</h3>
+      <div class="col-md-3 item text-center scrollimation fade-left third">
+          <h3 class='type'>Sights</h3>
           <% @sights.each do |f| %>
-          <div class='activity fc-event ui-draggable ui-draggable-handle' data-event='{"title":"<%= f[:name] %>"}'>
+          <div class='activity fc-event ui-draggable ui-draggable-handle sights' data-event='{"title":"<%= f[:name] %>"}' data-cat='sight'>
           
             <b class='title'><%= f[:name] %></b></br>
             <%= f[:address][0] %></br>
@@ -114,47 +114,34 @@
       <div class="col-md-4 item text-center scrollimation fade-left d1">
 
         <div id='calendar'></div>
-        
-      </div>
-      
-    </div>
-
-        <div class="row services">
-    
-    <div class='col-md-8'>
-        <div class="col-md-3 item text-center scrollimation fade-right d1">
-        </div>
-
-        <div class="col-md-1"></div>
-
-
-        <div class="col-md-3 item text-center scrollimation fade-right">
-        </div>
-
-        <div class="col-md-1"></div>
-
-        <div class="col-md-3 item text-center scrollimation fade-left">
-        </div>
-      </div>
-
-      <div class="col-md-4 item text-center scrollimation fade-left d1">
-
         <%= form_tag '/auth/google_oauth2', :method => 'get', :class => 'google-form' do |f| %>
-        <%= button_tag :type =>'submit', :class => 'google', :class => 'btn btn-quattro' do %>
+        <%= button_tag :type =>'submit', :class => 'btn btn-quattro google' do %>
           <i class='fa fa-google'></i>Add to Google Calendar
           <% end %>
         <% end %>
-        
       </div>
       
     </div>
     
-    <p class="text-center"><a class="btn btn-quattro scrollto" href="#portfolio">Our Awesome Works</a></p>
+    <p class="text-center"><a class="btn btn-quattro scrollto" href="#map-section"><i class="fa fa-arrow-down"></i> See where it is on the map!</a></p>
   </div>
   
 </section>
 
-<div id="map"></div>
+<section id="map-section" class="padding-top">
+    
+      <div class="container">
+        
+        <h1 class="section-title">Map</h1>
+        
+        <div class="col-md-4 item text-center scrollimation fade-left d1">
+
+          <div id="map"></div>
+        </div>
+      </div><!-- End container --> 
+      
+    
+    </section>
 
 
 Open in separate window with share options:
