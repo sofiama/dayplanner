@@ -63,7 +63,7 @@ $(document).ready(function(){
 
   var tempScrollTop2 = $(window).scrollTop();
   $("span:contains('Main Event')").click();
-   $(window).scrollTop(tempScrollTop2);
+  $(window).scrollTop(tempScrollTop2);
 
 });
 
