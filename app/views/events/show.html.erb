@@ -11,7 +11,7 @@ FEATURES
     <div class="row">
 
     <% @event.get_results.each do |e| %>
-      <div class="col-sm-3 event-seatgeek">
+      <div class="col-sm-4 event-seatgeek">
       <%= form_tag event_path, :method => 'patch' do |f| %>
         <div class="form-group">
         <%= label_tag :title, e[:title], :class => 'control-label' %>
@@ -41,8 +41,6 @@ FEATURES
         </div>
         <%= submit_tag 'Confirm', :class => 'btn btn-quattro' %>
         <% end %>
-      </div>
-      <div class="col-sm-1">
       </div>
     <% end %>
     </div>
