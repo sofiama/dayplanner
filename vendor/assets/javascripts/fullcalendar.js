@@ -7707,9 +7707,10 @@ View.prototype = {
 							_this.trigger('eventReceive', null, renderedEvents[0]); // signal an external event landed
 
 							var mapLayer = String(el[0].id);
-							//debugger;
+							//adds marker to map:
 							$("span:contains('" + mapLayer +"')").click();
-
+							//scrolls site back to calendar:
+							$(".btn.btn-quattro.scrollto")[0].click();
 						}
 					}
 				});

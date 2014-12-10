@@ -1,0 +1,39 @@
+
+.activity{
+  margin: 10px;
+  display: block;
+  width: 150px;
+  overflow: hidden;
+  font-size: 8px;
+}
+
+.event-time, .event-utc{
+  display: none;
+}
+
+.activity .title{
+  font-weight: bold;
+  font-size: 10px;
+  padding: 2px;
+}
+
+#btnSave1{
+  left: 100px;
+}
+
+.external-events .activity{
+}
+
+#map{
+  float: left;
+  width: 1200px;
+  height: 650px;
+  bottom: 10px;
+}
+
+.google{
+  background-color: #D14130;
+}
+
+#clear{
+}
