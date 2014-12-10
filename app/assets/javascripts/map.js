@@ -18,10 +18,7 @@ $(document).ready(function(){
   {
     food_layers.push(L.layerGroup([L.marker([gon.food[i].lat, gon.food[i].long]).bindPopup("Restaurant: " + gon.food[i].name)]));
 
-    if (i < 3)
-    {
-      night_layers.push(L.layerGroup([L.marker([gon.night[i].lat, gon.night[i].long]).bindPopup("Nightlife: " + gon.night[i].name)]));
-    }
+    night_layers.push(L.layerGroup([L.marker([gon.night[i].lat, gon.night[i].long]).bindPopup("Nightlife: " + gon.night[i].name)]));
 
     sights_layers.push(L.layerGroup([L.marker([gon.sights[i].lat, gon.sights[i].long]).bindPopup("Sights: " + gon.sights[i].name)]));
   }
@@ -40,6 +37,8 @@ $(document).ready(function(){
     "n1": night_layers[0],
     "n2": night_layers[1],
     "n3": night_layers[2],
+    "n4": night_layers[3],
+    "n5": night_layers[4],
     "s1": sights_layers[0],
     "s2": sights_layers[1],
     "s3": sights_layers[2],
@@ -52,8 +51,8 @@ $(document).ready(function(){
     zoom: 15,
     //layers: [regLayer]
     layers: [baseLayer],
-    // autoPan: false,
-    zoomControl: false
+    // autoPan: false
+    // zoomControl: false
     });
 
   L.control.layers(null, overlayMaps).addTo(map); //makes control box
