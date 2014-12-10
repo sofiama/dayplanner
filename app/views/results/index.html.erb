@@ -72,7 +72,7 @@
             <%= f[:address].last %>
   <!--           <%#= f[:cats].join(', ') %>
             Distance in meters: <%#= f[:distance] %> -->
-            <span class='url'><%= link_to f[:url], f[:url], :target => "_blank" %></span>
+            <span class='url'><%= link_to 'YELP', f[:url], :target => "_blank" %></span> <i class="fa fa-yelp"></i>
           </div>
             <% i += 1 %>
           <% end %>
@@ -85,16 +85,16 @@
         <h3 class='type'>Nightlife</h3>
         <div class='external-events'>
           <% i = 1 %>
-        <% @night.each do |f| %>
+          <% @night.each do |f| %>
 
-          <div id='n<%= i %>' class='activity fc-event ui-draggable ui-draggable-handle' data-event='{"title":"<%= f[:name] %>"}'>
+            <div id='n<%= i %>' class='activity fc-event ui-draggable ui-draggable-handle' data-event='{"title":"<%= f[:name] %>"}'>
 
             <b class='title'><%= f[:name] %></b></br>
             <%= f[:address].first %>
-            <%= f[:address].last %>
-            <!-- <%#= f[:cats].join(', ') %> -->
-            <%= link_to f[:url], f[:url], :target => "_blank" %>
-          </div>
+            <%= f[:address].last %><br/>
+            <%= link_to 'YELP', f[:url], :target => "_blank"%> <i class="fa fa-yelp"></i>
+
+            </div>
           <% i += 1 %>
         <% end %>
         </div>
@@ -104,6 +104,7 @@
 
       <div class="col-md-3 item text-center scrollimation fade-left activities" data-cat='sight'>
           <h3 class='type'>Sights</h3>
+          <div class='external-events'>
           <% i = 1 %>
           <% @sights.each do |f| %>
 
@@ -111,15 +112,13 @@
 
               <b class='title'><%= f[:name] %></b></br>
               <%= f[:address][0] %></br>
-             <!--  <%#= f[:cats] %></br>
-              Distance in meters: <%#= f[:distance] %></br>
-              <%#= f[:here_now] %></br> -->
-              <%= link_to f[:url], f[:url], :target => "_blank" %></br>
+              <i class="fa fa-foursquare"> <%= link_to 'FourSquare', f[:url], :target => "_blank" %></i>
 
             </div>
             <% i += 1 %>
           <% end %>
         </div>
+    </div>
     </div>
 
       <div class="col-md-4 item text-center scrollimation fade-left d1">

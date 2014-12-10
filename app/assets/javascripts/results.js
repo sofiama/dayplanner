@@ -35,7 +35,7 @@ $(function(){
       textColor: '#FFFFFF',
       // editable: true
     }],
-    editable: true
+    editable: true,
     // eventClick: function(event){
     //   $('#calendar').fullCalendar('removeEvents',event._id);
     // },
