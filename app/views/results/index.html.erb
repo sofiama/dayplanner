@@ -61,16 +61,16 @@
 
       <div class="col-md-3 item text-center scrollimation fade-right d1 activities" data-cat='food'>
 
-        <h3 class='type'>Restaurants</h3>
+        <h3 class='yelp1'>Restaurants</h3>
         <div class='external-events'>
           <% i = 1 %>
           <% @food.each do |f| %>
 
           <div id='f<%= i %>' class='activity fc-event ui-draggable ui-draggable-handle' data-event='{"title":"<%= f[:name] %>"}' data-cat='food'>
 
-            <b class='title'><%= f[:name] %></b></br>
+            <b class='title'><%= f[:name] %></b><br/>
             <%= f[:address].first %>
-            <%= f[:address].last %>
+            <%#= f[:address].last %><br/>
   <!--           <%#= f[:cats].join(', ') %>
             Distance in meters: <%#= f[:distance] %> -->
             <span class='url'><%= link_to 'YELP', f[:url], :target => "_blank" %></span> <i class="fa fa-yelp"></i>
@@ -83,16 +83,16 @@
       <div class="col-md-1"></div>
 
       <div class="col-md-3 item text-center scrollimation fade-right activities" data-cat='night'>
-        <h3 class='type'>Nightlife</h3>
+        <h3 class='yelp2'>Nightlife</h3>
         <div class='external-events'>
           <% i = 1 %>
           <% @night.each do |f| %>
 
             <div id='n<%= i %>' class='activity fc-event ui-draggable ui-draggable-handle' data-event='{"title":"<%= f[:name] %>"}'>
 
-            <b class='title'><%= f[:name] %></b></br>
+            <b class='title'><%= f[:name] %></b><br/>
             <%= f[:address].first %>
-            <%= f[:address].last %><br/>
+            <%#= f[:address].last %><br/>
             <%= link_to 'YELP', f[:url], :target => "_blank"%> <i class="fa fa-yelp"></i>
 
             </div>
@@ -104,15 +104,15 @@
       <div class="col-md-1"></div>
 
       <div class="col-md-3 item text-center scrollimation fade-left activities" data-cat='sight'>
-          <h3 class='type'>Sights</h3>
+          <h3 class='foursquare'>Sights</h3>
           <div class='external-events'>
           <% i = 1 %>
           <% @sights.each do |f| %>
 
             <div id="s<%= i %>" class='activity fc-event ui-draggable ui-draggable-handle sights' data-event='{"title":"<%= f[:name] %>"}'>
 
-              <b class='title'><%= f[:name] %></b></br>
-              <%= f[:address][0] %></br>
+              <b class='title'><%= f[:name] %></b><br/>
+              <%= f[:address][0] %><br/>
               <i class="fa fa-foursquare"></i> <%= link_to 'FourSquare', f[:url], :target => "_blank" %>
 
             </div>

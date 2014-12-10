@@ -6,6 +6,10 @@ body {
   height: 500px;
 }
 
+#map { 
+  height: 500px; 
+}
+
 .go-button{
     position:absolute;
     bottom:30px;
@@ -28,10 +32,20 @@ body {
   /*font-weight: 800;*/
 }
 
-.type{
+.activities h3{
   color: #EA8825;
-  margin-left: auto;
-  margin-right: auto;
+}
+
+.services .yelp1{
+  padding-left: 7px;
+}
+
+.services .yelp2{
+  padding-left: 30px;
+}
+
+.services .foursquare{
+  padding-left: 43px;
 }
 
 .activity{
@@ -39,30 +53,17 @@ body {
   display: block;
   width: 150px;
   overflow: hidden;
-  font-size: 8px;
+  font-size: 10px;
   background-color: #27A0C9;
 }
 
-#map { 
-  height: 500px; 
+.activity .title{
+  font-size: 12px;
+  padding: 3px 0;
 }
 
 .event-time, .event-utc{
   display: none;
-}
-
-.activity{
-  margin: 10px;
-  display: block;
-  width: 150px;
-  overflow: hidden;
-  font-size: 8px;
-}
-
-.activity .title{
-  font-weight: bold;
-  font-size: 10px;
-  padding: 2px;
 }
 
 .activity a{
