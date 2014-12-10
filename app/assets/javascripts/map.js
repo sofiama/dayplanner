@@ -7,10 +7,8 @@ $(document).ready(function(){
     maxZoom: 20
   });
 
-  var mainEvent = L.marker(gon.mainEventLL).bindPopup('Your Main Event: ' + gon.mainEvent.name);
+  var mainEvent = L.marker(gon.mainEventLL).bindPopup('Main Event: ' + gon.mainEvent.name);
   var mainEventLayer = L.layerGroup([mainEvent]);
-
-  //Create each marker and push it into array as layerGroup (1:1 ratio):
 
   var food_layers= [];
   var night_layers = [];
@@ -18,14 +16,14 @@ $(document).ready(function(){
 
   for (var i = 0; i < 5; i++)
   {
-    food_layers.push(L.layerGroup([L.marker([gon.food[i].lat, gon.food[i].long]).bindPopup("Food option: " + gon.food[i].name)]));
+    food_layers.push(L.layerGroup([L.marker([gon.food[i].lat, gon.food[i].long]).bindPopup("Restaurant: " + gon.food[i].name)]));
 
     if (i < 3)
     {
-      night_layers.push(L.layerGroup([L.marker([gon.night[i].lat, gon.night[i].long]).bindPopup("Night option: " + gon.night[i].name)]));
+      night_layers.push(L.layerGroup([L.marker([gon.night[i].lat, gon.night[i].long]).bindPopup("Nightlife: " + gon.night[i].name)]));
     }
 
-    sights_layers.push(L.layerGroup([L.marker([gon.sights[i].lat, gon.sights[i].long]).bindPopup("Sights option: " + gon.sights[i].name)]));
+    sights_layers.push(L.layerGroup([L.marker([gon.sights[i].lat, gon.sights[i].long]).bindPopup("Sights: " + gon.sights[i].name)]));
   }
 
  //Add every single layerGroup to overlayMaps
@@ -53,11 +51,16 @@ $(document).ready(function(){
     center: gon.mainEventLL,
     zoom: 15,
     //layers: [regLayer]
-    layers: [baseLayer]
+    layers: [baseLayer],
+    // autoPan: false,
+    zoomControl: false
     });
 
   L.control.layers(null, overlayMaps).addTo(map); //makes control box
-  $("span:contains('Main Event')").click()
+
+  $('p').find('a[href$="map-section"]').on('click', function(){
+    $("span:contains('Main Event')").click();
+  });
 
 });
 
