@@ -57,12 +57,9 @@ $(document).ready(function(){
 
   L.control.layers(null, overlayMaps).addTo(map); //makes control box
 
-  $('p').find('a[href$="map-section"]').on('click', function(){
+    var tempScrollTop2 = $(window).scrollTop();
     $("span:contains('Main Event')").click();
-  });
-
-  $("span:contains('Main Event')").click();
-
+    $(window).scrollTop(tempScrollTop2);
 
   //CLEAR SCHEDULE AND REMOVE ALL POINTS
    $('#clear').on('click', function(){

@@ -35,5 +35,7 @@
   background-color: #D14130;
 }
 
-#clear{
+button#clear{
+  position: relative;
+  left: 917px;
 }

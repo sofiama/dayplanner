@@ -7708,9 +7708,11 @@ View.prototype = {
 
 							var mapLayer = String(el[0].id);
 							//adds marker to map:
+							var tempScrollTop = $(window).scrollTop();
 							$("span:contains('" + mapLayer +"')").click();
+							$(window).scrollTop(tempScrollTop);
 							//scrolls site back to calendar:
-							$(".btn.btn-quattro.scrollto")[0].click();
+							//$(".btn.btn-quattro.scrollto")[0].click();
 						}
 					}
 				});
