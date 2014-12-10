@@ -48,7 +48,7 @@ $(document).ready(function(){
 
   var map = L.map('map', {
     center: gon.mainEventLL,
-    zoom: 15,
+    zoom: 12,
     //layers: [regLayer]
     layers: [baseLayer],
     // autoPan: false
