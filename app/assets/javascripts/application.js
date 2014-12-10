@@ -19,7 +19,7 @@
 //= require bootstrap.min
 //= require jquery.easing.1.3.min
 //= require jquery.scrollto
-//= require jquery.flexslider.min
+//= require jquery.flexslider
 //= require jquery.stellar.min
 //= require jquery.masonry.min
 //= require waypoints.min
@@ -32,8 +32,6 @@
 //= require moment.min
 //= require fullcalendar
 //= require results
-//= require_tree .
-//= require custom
 
-//= require html2canvas
-//= require canvas2image
+//= require custom
+//= require map

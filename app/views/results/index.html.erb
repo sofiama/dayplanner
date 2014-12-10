@@ -58,19 +58,22 @@
     <div class="row services">
 
     <div class='col-md-8'>
-      <div class="col-md-3 item text-center scrollimation fade-right d1 first">
+
+      <div class="col-md-3 item text-center scrollimation fade-right d1 activities" data-cat='food'>
 
         <h3 class='type'>Restaurants</h3>
         <div class='external-events'>
           <% i = 1 %>
           <% @food.each do |f| %>
+
           <div id='f<%= i %>' class='activity fc-event ui-draggable ui-draggable-handle' data-event='{"title":"<%= f[:name] %>"}' data-cat='food'>
+
             <b class='title'><%= f[:name] %></b></br>
             <%= f[:address].first %>
             <%= f[:address].last %>
   <!--           <%#= f[:cats].join(', ') %>
             Distance in meters: <%#= f[:distance] %> -->
-            <span class='url'><%= link_to f[:url], f[:url], :target => "_blank" %></span>
+            <span class='url'><%= link_to 'YELP', f[:url], :target => "_blank" %></span> <i class="fa fa-yelp"></i>
           </div>
             <% i += 1 %>
           <% end %>
@@ -79,18 +82,20 @@
 
       <div class="col-md-1"></div>
 
-      <div class="col-md-3 item text-center scrollimation fade-right">
+      <div class="col-md-3 item text-center scrollimation fade-right activities" data-cat='night'>
         <h3 class='type'>Nightlife</h3>
         <div class='external-events'>
           <% i = 1 %>
-        <% @night.each do |f| %>
-          <div id='n<%= i %>' class='activity fc-event ui-draggable ui-draggable-handle' data-event='{"title":"<%= f[:name] %>"}' data-cat='night'>
+          <% @night.each do |f| %>
+
+            <div id='n<%= i %>' class='activity fc-event ui-draggable ui-draggable-handle' data-event='{"title":"<%= f[:name] %>"}'>
+
             <b class='title'><%= f[:name] %></b></br>
             <%= f[:address].first %>
-            <%= f[:address].last %>
-            <!-- <%#= f[:cats].join(', ') %> -->
-            <%= link_to f[:url], f[:url], :target => "_blank" %>
-          </div>
+            <%= f[:address].last %><br/>
+            <%= link_to 'YELP', f[:url], :target => "_blank"%> <i class="fa fa-yelp"></i>
+
+            </div>
           <% i += 1 %>
         <% end %>
         </div>
@@ -98,26 +103,24 @@
 
       <div class="col-md-1"></div>
 
-      <div class="col-md-3 item text-center scrollimation fade-left third">
-
-
+      <div class="col-md-3 item text-center scrollimation fade-left activities" data-cat='sight'>
           <h3 class='type'>Sights</h3>
+          <div class='external-events'>
           <% i = 1 %>
           <% @sights.each do |f| %>
-            <div id="s<%= i %>" class='activity fc-event ui-draggable ui-draggable-handle sights' data-event='{"title":"<%= f[:name] %>"}' data-cat='sight'>
+
+            <div id="s<%= i %>" class='activity fc-event ui-draggable ui-draggable-handle sights' data-event='{"title":"<%= f[:name] %>"}'>
 
               <b class='title'><%= f[:name] %></b></br>
               <%= f[:address][0] %></br>
-             <!--  <%#= f[:cats] %></br>
-              Distance in meters: <%#= f[:distance] %></br>
-              <%#= f[:here_now] %></br> -->
-              <%= link_to f[:url], f[:url], :target => "_blank" %></br>
+              <i class="fa fa-foursquare"> <%= link_to 'FourSquare', f[:url], :target => "_blank" %></i>
 
             </div>
             <% i += 1 %>
           <% end %>
         </div>
-      </div>
+    </div>
+    </div>
 
       <div class="col-md-4 item text-center scrollimation fade-left d1">
 
@@ -136,34 +139,30 @@
 
 </section>
 
-<section id="map-section" class="padding-top">
+<section id="map-section" class="white-bg padding-top-bottom">
+
 
       <div class="container">
 
         <h1 class="section-title">Map</h1>
-        <div class="row">
-          <div class="col-md-4 item text-center scrollimation fade-left d1">
 
+        <div class="row">
+          <div class="col-md-1 item text-center scrollimation fade-up">
+          </div>
+          <div class="col-md-10 item text-center scrollimation fade-up">
             <div id="map"></div>
           </div>
+          <div class="col-md-1 item text-center scrollimation fade-up">
+          </div>
         </div>
+
       </div><!-- End container -->
 
 
     </section>
 
 
-Open in separate window with share options:
-<%= link_to 'Finalize' ,event_results_path(@event), method: 'post' %>
-
-
-<input type="button" id="btnSave" value="Save PNG"/>
-
-<!-- <div id="img-out"></div> -->
-
-<!-- DIV -> IMG creating -->
-
-<%= button_to 'pick for me' ,event_results_path, :method => 'get' %>
+<%#= button_to 'pick for me' ,event_results_path, :method => 'get' %>
 
 <div class='random'>
 <h4>Random Picks</h4>

@@ -1,13 +1,16 @@
 $(document).ready(function(){
 
-//$("span:contains('f1')").click() //this will toggle click where 'f1' is the span text so do this when a block is dropped into a timeslot div!
+var baseLayer = L.tileLayer('http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png', {
 
- var regLayer = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          subdomains: ['a', 'b', 'c'],
-          attribution: '© OpenStreetMap contributors',
-          continuousWorld: true
-      });
+    attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
 
+    subdomains: 'abcd',
+
+    minZoom: 0,
+
+    maxZoom: 20
+
+  });
 
   var baseLayer = L.tileLayer('http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png', {
     attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
@@ -58,8 +61,6 @@ $(document).ready(function(){
     "s5": sights_layers[4]
   };
 
-
-
   var map = L.map('map', {
     center: gon.mainEventLL,
     zoom: 15,
@@ -69,12 +70,6 @@ $(document).ready(function(){
 
   L.control.layers(null, overlayMaps).addTo(map); //makes control box
   $("span:contains('Main Event')").click()
-
-   // function compareOffset(id1, id2) {
-   //    return (
-   //      Math.abs($(id1).offset().top - $(id2).offset().top < 2) && Math.abs($(id1).offset().left - $(id2).offset().left < 2)
-   //    );
-   //  }
 
 });
 
