@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20141209114332) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "activities", force: true do |t|
     t.string   "name"
     t.string   "url"
@@ -48,7 +51,6 @@ ActiveRecord::Schema.define(version: 20141209114332) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "event_id"
     t.string   "email"
   end
 
