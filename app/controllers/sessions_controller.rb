@@ -7,22 +7,22 @@ class SessionsController < ApplicationController
     @auth = request.env["omniauth.auth"]
 
     if @auth["provider"] == "google_oauth2"
-      
+
       @origin = request.env["omniauth.origin"]
       @params = request.env["omniauth.params"].except("utf8", "commit")
       # binding.pry
-      
+
       @user = User.create(
         access_token: @auth['credentials']['token'],
         # refresh_token: @auth['refresh_token'],
         # expires_at: Time.at(@auth['credentials']['expires_at']).to_datetime,
         email: @auth["info"]["email"],
-        event_id: request.env["omniauth.origin"].split('/')[4]
+        #event_id: request.env["omniauth.origin"].split('/')[4]
         )
 
       @event = Event.find(@origin.split('/')[4])
       @event.user_id = @user.id
-      
+
       if @event.save
         # render :nothing => true
         client = Google::APIClient.new
@@ -31,7 +31,7 @@ class SessionsController < ApplicationController
 
         main_event = {
           :api_method => service.events.quick_add,
-          :parameters => 
+          :parameters =>
             { 'calendarId' => 'primary',
               'text' => "#{@event.name} on #{@event.date_display} #{@event.time}"}
         }
@@ -44,7 +44,7 @@ class SessionsController < ApplicationController
           activity = {
             :api_method => service.events.quick_add,
             :parameters => {
-              'calendarId' => 'primary', 
+              'calendarId' => 'primary',
               'text' => "#{name} on #{@event.date_display} #{time}"
             }
           }

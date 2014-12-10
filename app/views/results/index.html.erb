@@ -64,7 +64,7 @@
         <div class='external-events'>
           <% i = 1 %>
           <% @food.each do |f| %>
-          <div id='n<%= i %>' class='activity fc-event ui-draggable ui-draggable-handle' data-event='{"title":"<%= f[:name] %>"}' data-cat='food'>
+          <div id='f<%= i %>' class='activity fc-event ui-draggable ui-draggable-handle' data-event='{"title":"<%= f[:name] %>"}' data-cat='food'>
             <b class='title'><%= f[:name] %></b></br>
             <%= f[:address].first %>
             <%= f[:address].last %>

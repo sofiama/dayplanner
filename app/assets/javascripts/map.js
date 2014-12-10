@@ -9,6 +9,13 @@ $(document).ready(function(){
       });
 
 
+  var baseLayer = L.tileLayer('http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png', {
+    attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+    subdomains: 'abcd',
+    minZoom: 0,
+    maxZoom: 20
+  });
+
   var mainEvent = L.marker(gon.mainEventLL).bindPopup('Your Main Event: ' + gon.mainEvent.name);
   var mainEventLayer = L.layerGroup([mainEvent]);
 
@@ -56,7 +63,8 @@ $(document).ready(function(){
   var map = L.map('map', {
     center: gon.mainEventLL,
     zoom: 15,
-    layers: [regLayer]
+    //layers: [regLayer]
+    layers: [baseLayer]
     });
 
   L.control.layers(null, overlayMaps).addTo(map); //makes control box

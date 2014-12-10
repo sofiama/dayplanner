@@ -24,8 +24,10 @@
 }
 
 #map{
-  width: 400px;
-  height: 400px;
+  float: left;
+  width: 1200px;
+  height: 650px;
+  bottom: 10px;
 }
 
 .google{
