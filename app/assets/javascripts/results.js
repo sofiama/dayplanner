@@ -36,15 +36,15 @@ $(function(){
       // editable: true
     }],
     editable: true,
-    // eventClick: function(event){
-    //   $('#calendar').fullCalendar('removeEvents',event._id);
-    // },
-    // eventRender: function(event, element) {
-    //     element.append( "<span class='closon'>X</span>" );
-    //     element.find(".closon").click(function() {
-    //       $('#calendar').fullCalendar('removeEvents',event._id);
-    //     });
-    //   }
+    eventClick: function(event){
+      $('#calendar').fullCalendar('removeEvents',event._id);
+    },
+    eventRender: function(event, element) {
+        element.prepend( "<span class='closon'>X</span>" );
+        element.find(".closon").click(function() {
+          $('#calendar').fullCalendar('removeEvents',event._id);
+        });
+      }
   });
 
 
