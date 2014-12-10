@@ -123,13 +123,16 @@
     </div>
 
       <div class="col-md-4 item text-center scrollimation fade-left d1">
+        
 
         <div id='calendar'></div>
+        <button class='remove-events' type="button">Remove Activities</button>
         <%= form_tag '/auth/google_oauth2', :method => 'get', :class => 'google-form' do |f| %>
         <%= button_tag :type =>'submit', :class => 'btn btn-quattro google' do %>
           <i class='fa fa-google'></i>Add to Google Calendar
           <% end %>
         <% end %>
+        
       </div>
 
     </div>

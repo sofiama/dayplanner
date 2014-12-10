@@ -101,3 +101,22 @@ body {
   font-weight: bold;
   color: #D14130;
 }
+
+.remove-events{
+  border: none;
+  font-size: 10px;
+  cursor: pointer;
+  padding: 5px 10px;
+  display: inline-block;
+  margin-top: 10px;
+  text-decoration: none;
+  font-weight: 400;
+  outline: none;
+  position: relative;
+  background: #EA8825;
+  color: #fff;
+  border-radius: 5px;
+  -webkit-transition: all .2s ease-out;
+  transition: all .2s ease-out;
+  float: right;
+}

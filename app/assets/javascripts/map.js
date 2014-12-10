@@ -65,6 +65,29 @@ $(document).ready(function(){
   $("span:contains('Main Event')").click();
   $(window).scrollTop(tempScrollTop2);
 
+
+  $('.remove-events').on('click', function(){
+      $("#calendar").fullCalendar( 'removeEvents' );
+      //$("span:contains('f1')").click();
+      //debugger;
+      for (var i = 0; i < 5; i++)
+      {
+        food_layers[i].clearLayers();
+        night_layers[i].clearLayers();
+        sights_layers[i].clearLayers();
+      }
+      var me = {
+          // title: gon.mainEvent.name,
+          // start: gon.mainEvent.date
+          title: $('.event-name').text(),
+          start: $('.event-time').text(),
+          eventStartEditable: false,
+          color: '#FFD340',
+          textColor: '#FFFFFF'
+        };
+        // debugger;
+        $("#calendar").fullCalendar('renderEvent', me);
+   });
 });
 
 
