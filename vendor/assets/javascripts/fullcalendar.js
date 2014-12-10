@@ -7707,9 +7707,10 @@ View.prototype = {
 							_this.trigger('eventReceive', null, renderedEvents[0]); // signal an external event landed
 
 							var mapLayer = String(el[0].id);
-							//debugger;
+							//adds marker to map:
+							var tempScrollTop = $(window).scrollTop();
 							$("span:contains('" + mapLayer +"')").click();
-
+							$(window).scrollTop(tempScrollTop);
 						}
 					}
 				});

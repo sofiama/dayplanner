@@ -57,9 +57,13 @@ $(document).ready(function(){
 
   L.control.layers(null, overlayMaps).addTo(map); //makes control box
 
-  $('p').find('a[href$="map-section"]').on('click', function(){
-    $("span:contains('Main Event')").click();
-  });
+  // $('p').find('a[href$="map-section"]').on('click', function(){
+  //   $("span:contains('Main Event')").click();
+  // });
+
+  var tempScrollTop2 = $(window).scrollTop();
+  $("span:contains('Main Event')").click();
+   $(window).scrollTop(tempScrollTop2);
 
 });
 
