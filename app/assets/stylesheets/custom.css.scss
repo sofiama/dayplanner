@@ -1,3 +1,11 @@
+body { 
+  height: auto;
+}
+
+#home{
+  height: 500px;
+}
+
 .go-button{
     position:absolute;
     bottom:30px;
@@ -36,11 +44,19 @@
 }
 
 #map { 
-  height: 400px; 
+  height: 500px; 
 }
 
 .event-time, .event-utc{
   display: none;
+}
+
+.activity{
+  margin: 10px;
+  display: block;
+  width: 150px;
+  overflow: hidden;
+  font-size: 8px;
 }
 
 .activity .title{
@@ -67,4 +83,14 @@
     text-decoration: none;
     -webkit-transition: all .2s ease-out;
     transition: all .2s ease-out;
+}
+
+.event-time, .event-utc{
+  display: none;
+}
+
+.event-seatgeek{
+  padding-top: 10px;
+  margin-top: 50px;
+  /*border: #aaa dotted;*/
 }
