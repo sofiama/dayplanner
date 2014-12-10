@@ -32,7 +32,6 @@ var baseLayer = L.tileLayer('http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.p
   {
     food_layers.push(L.layerGroup([L.marker([gon.food[i].lat, gon.food[i].long]).bindPopup("Food option: " + gon.food[i].name)]));
 
-    if (i < 3)
     {
       night_layers.push(L.layerGroup([L.marker([gon.night[i].lat, gon.night[i].long]).bindPopup("Night option: " + gon.night[i].name)]));
     }
@@ -54,6 +53,8 @@ var baseLayer = L.tileLayer('http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.p
     "n1": night_layers[0],
     "n2": night_layers[1],
     "n3": night_layers[2],
+    "n4": night_layers[3],
+    "n5": night_layers[4],
     "s1": sights_layers[0],
     "s2": sights_layers[1],
     "s3": sights_layers[2],
@@ -69,8 +70,31 @@ var baseLayer = L.tileLayer('http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.p
     });
 
   L.control.layers(null, overlayMaps).addTo(map); //makes control box
-  $("span:contains('Main Event')").click()
+  $("span:contains('Main Event')").click();
+
+
+  //CLEAR SCHEDULE AND REMOVE ALL POINTS
+   $('#clear').on('click', function(){
+      $("#calendar").fullCalendar( 'removeEvents' );
+      //$("span:contains('f1')").click();
+      //debugger;
+      for (var i = 0; i < 5; i++)
+      {
+        food_layers[i].clearLayers();
+        night_layers[i].clearLayers();
+        sights_layers[i].clearLayers();
+      }
+      var me = {
+          // title: gon.mainEvent.name,
+          // start: gon.mainEvent.date
+          title: $('.event-name').text(),
+          start: $('.event-time').text(),
+          eventStartEditable: false,
+          color: '#FFD340',
+          textColor: '#FFFFFF'
+        };
+        // debugger;
+        $("#calendar").fullCalendar('renderEvent', me);
+   });
 
 });
-
-
