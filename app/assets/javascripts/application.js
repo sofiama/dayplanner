@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui/draggable
-//= require turbolinks
 
 //= require modernizr.min
 //= require bootstrap.min
