@@ -26,39 +26,41 @@ class Event < ActiveRecord::Base
     all_events = []
 
     @results["events"].each do |e|
-      event = {}
-      # binding.pry
-      event[:title] = e["title"]
-      event[:url] = e["url"]
-      event[:img_url] = e['performers'].first['image']
-      event[:address] = e['venue']['name'] + '/' + e['venue']['address'] + '/' + e['venue']['extended_address']
-      # binding.pry
-      event[:datetime_local] = e["datetime_local"]
-      # date in sun dec 7, 2014 format
-      date = Date.parse(e["datetime_local"])
-      event[:date] = date.strftime('%a') + ' ' + date.strftime('%b') + ' ' + date.strftime('%-d') + ', ' + date.strftime('%Y')
+      if e['venue']['country'] == 'US'
+        event = {}
+        # binding.pry
+      
+        event[:title] = e["title"]
+        event[:url] = e["url"]
+        event[:img_url] = e['performers'].first['image']
+        event[:address] = e['venue']['name'] + '/' + e['venue']['address'] + '/' + e['venue']['extended_address']
+        # binding.pry
+        event[:datetime_local] = e["datetime_local"]
+        # date in sun dec 7, 2014 format
+        date = Date.parse(e["datetime_local"])
+        event[:date] = date.strftime('%a') + ' ' + date.strftime('%b') + ' ' + date.strftime('%-d') + ', ' + date.strftime('%Y')
 
-      # in 12hr AM:PM format
-      event[:local_time] = Time.parse(e["datetime_local"]).strftime('%l:%M %p')
+        # in 12hr AM:PM format
+        event[:local_time] = Time.parse(e["datetime_local"]).strftime('%l:%M %p')
 
-      #lat and long
-      #binding.pry
-      event[:lat] = e["venue"]["location"]["lat"]
-      event[:long] = e["venue"]["location"]["lon"]
+        #lat and long
+        #binding.pry
+        event[:lat] = e["venue"]["location"]["lat"]
+        event[:long] = e["venue"]["location"]["lon"]
 
-      #venue name and loc
-      event[:venue_name] = e["venue"]["name"]
-      event[:venue_loc] = e["venue"]["display_location"]
+        #venue name and loc
+        event[:venue_name] = e["venue"]["name"]
+        event[:venue_loc] = e["venue"]["display_location"]
 
-      #event type in an array
-      event[:taxonomies] = []
-      e["taxonomies"].each do |e|
-        event[:taxonomies] << e["name"]
-      end
-
-      all_events << event
+        #event type in an array
+        event[:taxonomies] = []
+        e["taxonomies"].each do |e|
+          event[:taxonomies] << e["name"]
+        end
+        all_events << event
+      end 
     end
-
+    
     all_events
   end
 
