@@ -12,8 +12,8 @@
 
       <div class="col-sm-6 scrollimation fade-left d1">
 
-        <h1 class="big-title">Activities</h1>
-        <p>Let's see what's there to do near</p>
+        <h1 class="big-title">Your Event</h1>
+        <p>Let's see what there is to do near</p>
         <p>
           <b class='event-name'><%= @event.name %></b><br/><b class='event-date'><%= @event.date_display %></b> at <b><%= @event.time %></b>
           <b class='event-time'><%= @event.time_display %></b><b class='event-utc'><%=@event.date %></b><p>
@@ -123,7 +123,7 @@
     </div>
 
       <div class="col-md-4 item text-center scrollimation fade-left d1">
-        
+
 
         <div id='calendar'></div>
         <button class='remove-events' type="button">Remove Activities</button>
@@ -132,7 +132,7 @@
           <i class='fa fa-google'></i>Add to Google Calendar
           <% end %>
         <% end %>
-        
+
       </div>
 
     </div>

@@ -1,30 +1,30 @@
   <!-- ==============================================
   HEADER
   =============================================== -->
-  
+
   <header id="home" class="parallax-bg" data-parallax-background=<%= image_path "header-bg2.jpg"%> data-stellar-background-ratio=".3">
-      
+
     <div class="header-content">
-     
+
     <%#= image_tag "logo.png", class:"header-logo", alt:"" %>
-    
+
     <div class="flexslider header-slider">
-    
+
       <ul class="slides">
-      
+
         <li><h1 class="bordered-text">Plan <span class="primary">4</span> Me</h1></li>
         <li><h1 class="bordered-text">One <span class="primary">Two</span> Three</h1></li>
         <li><h1 class="bordered-text">Let's <span class="primary">Go</span></h1></li>
-        
+
       </ul>
-      
+
       </div><!--End home-slider -->
-      
+
     <%= button_to new_event_path, :method => 'get', :class => 'go-button btn btn-quatro' do %>
       Let's Go<i class="icon-ok icon-white"></i>
     <% end %>
-<!--     <a class="scroll-button scrollto" href="#about"><i class="fa fa-angle-down"></i></a>  --> 
-          
+<!--     <a class="scroll-button scrollto" href="#about"><i class="fa fa-angle-down"></i></a>  -->
+
     </div>
-      
+
   </header><!--End header -->

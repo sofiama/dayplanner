@@ -1,10 +1,10 @@
     <section id="about" class="gray-bg padding-top-bottom">
-    
-      <div class="container">
-      
-        <h1 class="section-title">Have a Ticket?</h1>
 
-        <p class="section-description">Let's Plan<br/></p>
+      <div class="container">
+
+        <h1 class="section-title">Got Something in Mind?</h1>
+
+        <p class="section-description">Let's Build a Day Around It!<br/></p>
 
         <div class="row">
           <div class="col-sm-2">
@@ -17,7 +17,7 @@
             <div class="form-group">
               <%= f.label :name, :class => 'control-label' %>
               <div class="controls">
-              <%= f.text_field :name, :placeholder => 'ticket name', :class => 'form-control requiredField', :"data-error-empty" => 'enter ticket name' %><br/>
+              <%= f.text_field :name, :placeholder => 'Your event', :class => 'form-control requiredField', :"data-error-empty" => 'Enter event name' %><br/>
               </div>
             </div>
             <div class="form-group">
@@ -26,13 +26,13 @@
             <%= f.date_field :date, :class => 'form-control requiredField', :"data-error-empty" => 'select date' %><br/>
             <%= f.submit 'Search', :class => 'btn btn-quattro', :'data-error-message' => "Error!" %>
             <% end %>
-          
+
           </div>
 
         </div>
-          
+
         </div><!--End row-->
-        
+
       </div><!--End container -->
-      
+
     </section><!--End Call to Action -->
