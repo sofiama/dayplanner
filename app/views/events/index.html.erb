@@ -1,30 +1,30 @@
-  <!-- ==============================================
-  HEADER
-  =============================================== -->
+<!-- ==============================================
+HEADER
+=============================================== -->
+<header id="home" class="parallax-bg" data-parallax-background=<%= image_path "planner.jpg"%> data-stellar-background-ratio=".5">
   
-  <header id="home" class="parallax-bg" data-parallax-background=<%= image_path "planner.jpg"%> data-stellar-background-ratio=".3">
-      
-    <div class="header-content">
-     
-    <%#= image_tag "logo.png", class:"header-logo", alt:"" %>
+  <div class="header-content">
     
-    <div class="flexslider header-slider">
+    <!-- <%#= link_to root_path, :method => 'get', :class => 'header-logo' do %><i class="fa fa-angle-down">Plan 4 Me</i> -->
+    <%# end %>
+  
+    <div class="flexslider header-slider" data-speed = '3000'>
     
       <ul class="slides">
       
-        <li><h1 class="bordered-text">Plan <span class="primary">4</span> Me</h1></li>
-        <li><h1 class="bordered-text">One <span class="primary">Two</span> Three</h1></li>
-        <li><h1 class="bordered-text">Let's <span class="primary">Go</span></h1></li>
+        <li><h1 class="bordered-text">Welcome to <span class="primary">Plan 4 Me</span></h1></li>
+        <li><h1 class="bordered-text">One <span class="primary">Stop</span></h1></li>
+        <li><h1 class="bordered-text">Activity <span class="primary">Planning </span></h1></li>
+        <li><h1 class="bordered-text">For <span class="primary">Your </span>Day</h1></li>
         
       </ul>
       
-      </div><!--End home-slider -->
-      
-    <%= button_to new_event_path, :method => 'get', :class => 'go-button btn btn-quatro' do %>
-      Let's Go<i class="icon-ok icon-white"></i>
+    </div><!--End home-slider -->
+    
+    <%= link_to new_event_path, :method => 'get', :class => 'scroll-button scrollto' do %><i class="fa fa-angle-down"></i>
     <% end %>
-<!--     <a class="scroll-button scrollto" href="#about"><i class="fa fa-angle-down"></i></a>  --> 
-          
-    </div>
+    <!-- <a class="scroll-button scrollto" href="#about"><i class="fa fa-angle-down"></i></a>   -->
       
-  </header><!--End header -->
+  </div>
+  
+</header><!--End header -->

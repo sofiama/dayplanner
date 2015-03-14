@@ -1,0 +1,121 @@
+body { 
+  height: auto;
+}
+
+#home{
+  height: 500px;
+}
+
+#map { 
+  height: 500px; 
+}
+
+.go-button{
+    position:absolute;
+    bottom:30px;
+    left:50%;
+    margin-left:-72px;
+    color:#fff !important;
+    padding:10px;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    -webkit-animation: moving 2s ease-out infinite;
+    animation: moving 2s ease-out infinite;
+    background-color: #EA8825;
+}
+
+.navbar-brand{
+  font-family: 'Changa One', cursive;
+  color: #EA8825;
+  /*text-shadow: 1px 1px 1px #aaa;*/
+  /*font-weight: 800;*/
+}
+
+.activities h3{
+  color: #EA8825;
+}
+
+/*.services .yelp1{
+  padding-left: 7px;
+}
+
+.services .yelp2{
+  padding-left: 30px;
+}
+
+.services .foursquare{
+  padding-left: 43px;
+}*/
+
+.activity{
+  margin: 10px;
+  display: block;
+  width: 150px;
+  overflow: hidden;
+  font-size: 10px;
+  background-color: #27A0C9;
+}
+
+.activity .title{
+  font-size: 12px;
+  padding: 3px 0;
+}
+
+.event-time, .event-utc{
+  display: none;
+}
+
+.activity a{
+  font-weight: bold;
+}
+
+.external-events .activity{
+}
+
+.google{
+  background-color: #D14130;
+}
+
+.google:hover,
+.google:active {
+    color: #fff;
+    background: #E43E59;
+    text-decoration: none;
+    -webkit-transition: all .2s ease-out;
+    transition: all .2s ease-out;
+}
+
+.event-time, .event-utc{
+  display: none;
+}
+
+.event-seatgeek{
+  padding-top: 10px;
+  margin-top: 50px;
+  /*border: #aaa dotted;*/
+}
+
+.notice{
+  padding-bottom: 10px;
+  font-weight: bold;
+  color: #D14130;
+}
+
+.remove-events{
+  border: none;
+  font-size: 10px;
+  cursor: pointer;
+  padding: 5px 10px;
+  display: inline-block;
+  margin-top: 10px;
+  text-decoration: none;
+  font-weight: 400;
+  outline: none;
+  position: relative;
+  background: #EA8825;
+  color: #fff;
+  border-radius: 5px;
+  -webkit-transition: all .2s ease-out;
+  transition: all .2s ease-out;
+}

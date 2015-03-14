@@ -17,7 +17,8 @@
  *= require fullcalendar
  
  *= require styles-5
- *= require_tree .
+ *= require custom
+ *  require_tree .
  *= require_self
 
  */
