@@ -1,6 +1,4 @@
 class EventsController < ApplicationController
-  def test
-  end
 
   def team
   end

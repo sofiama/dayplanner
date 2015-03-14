@@ -35,3 +35,10 @@ end
 # Use unicorn as the app server
 # gem 'unicorn'
 
+# gem 'bootstrap-datepicker-rails'
+
+gem 'momentjs-rails', '>= 2.8.1'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.0.0'
+
+gem 'bootstrap-validator-rails'
+

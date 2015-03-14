@@ -17,6 +17,10 @@
  *= require fullcalendar
  
  *= require styles-5
+
+ *= require bootstrap-datetimepicker
+ *= require bootstrapValidator.min
+ 
  *= require custom
  *  require_tree .
  *= require_self
