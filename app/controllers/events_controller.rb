@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
 
-  def about
+  def home
   end
 
   def new
