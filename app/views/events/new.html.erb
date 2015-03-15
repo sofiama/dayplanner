@@ -1,9 +1,9 @@
-<section id="about" class="parallax-bg padding-top-bottom cta-image" data-parallax-background="<%= image_path "light-abstract.jpg"%>" data-stellar-background-ratio=".3">     
+<section id="contact" class="parallax-bg padding-top-bottom cta-image" data-parallax-background="<%= image_path "light-abstract.jpg"%>" data-stellar-background-ratio=".3">     
   <div class="container">
   
     <h1 class="section-title">Going Somewhere?</h1>
 
-    <p class="section-description">Lookup your confirmed tickected event<br/></p>
+    <p class="section-description">Lookup your ticketed event<br/></p>
 
     <div class="row">
       <div class="col-sm-3">
@@ -17,17 +17,17 @@
         <%= form_for @event, :id => 'contact-form', :class => 'col-sm-8 col-sm-offset-2'  do |f| %>
 
           <div class="form-group">
-            <%= f.label :name, :class => 'control-label' %>
+            <%= f.label :name, 'Event Name', :class => 'control-label' %>
             <div class="controls">
-            <%= f.text_field :name, :placeholder => 'ticket name', :class => 'form-control requiredField', :"data-error-empty" => 'enter ticket name', :"data-bv-notempty"=>'', :"data-bv-notempty-message" => 'cannot be blank' %>
+            <%= f.text_field :name, :placeholder => 'Search by event name', :class => 'form-control requiredField', :"data-error-empty" => 'enter ticket name', :"data-bv-notempty"=>'', :"data-bv-notempty-message" => 'cannot be blank' %>
             </div>
           </div>
         <div class="form-group">
-           <%= f.label :date, :class => 'control-label' %>
+           <%= f.label :date,  'Event Date', :class => 'control-label' %>
 
 <!--         <div class="controls"> -->
           <div class='input-group date' id='datetimepicker'>
-            <%= f.text_field :date, :class => 'form-control requiredField', :"data-error-empty" => 'select date', :"data-bv-notempty" => "", :"data-bv-notempty-message" => 'cannot be blank' %><br/>
+            <%= f.text_field :date, :class => 'form-control requiredField', :"data-error-empty" => 'select date', :'placeholder' => 'and event date dd-mm-yyyy' %><br/>
             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
           </div>
         </div>

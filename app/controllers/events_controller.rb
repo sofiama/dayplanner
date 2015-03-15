@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
 
-  def team
+  def about
   end
 
   def new
