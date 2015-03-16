@@ -4,7 +4,7 @@ include Slug
 
 class Event < ActiveRecord::Base
   has_one :user
-  has_many :activities
+  has_many :tickets
 
   validates_presence_of :name
   validates_presence_of :date, :message => 'must be DD-MM-YYYY format'
@@ -21,64 +21,29 @@ class Event < ActiveRecord::Base
 
   def get_seatgeek_info
     url = "http://api.seatgeek.com/2/events?q=#{self.name_normalizer}+on+#{self.date_normalizer}"
-    @results = JSON.load(open(url))
+    results = JSON.load(open(url))
   end
 
-  def get_results
-    self.get_seatgeek_info
-    all_events = []
+  def get_seatgeek_results_total
+    self.get_seatgeek_info['meta']['total']
+  end
 
-    @results["events"].each do |e|
+  def get_seatgeek_results #tickets
+    self.get_seatgeek_info["events"].each do |e|
       if e['venue']['country'] == 'US'
-        event = {}
-        # binding.pry
-      
-        event[:title] = e["title"]
-        event[:url] = e["url"]
-        event[:img_url] = e['performers'].first['image']
-        event[:address] = e['venue']['name'] + '/' + e['venue']['address'] + '/' + e['venue']['extended_address']
-        # binding.pry
-        event[:datetime_local] = e["datetime_local"]
-        # date in sun dec 7, 2014 format
-        date = Date.parse(e["datetime_local"])
-        event[:date] = date.strftime('%a') + ' ' + date.strftime('%b') + ' ' + date.strftime('%-d') + ', ' + date.strftime('%Y')
-
-        # in 12hr AM:PM format
-        event[:local_time] = Time.parse(e["datetime_local"]).strftime('%l:%M %p')
-
-        #lat and long
-        #binding.pry
-        event[:lat] = e["venue"]["location"]["lat"]
-        event[:long] = e["venue"]["location"]["lon"]
-
-        #venue name and loc
-        event[:venue_name] = e["venue"]["name"]
-        event[:venue_loc] = e["venue"]["display_location"]
-
-        #event type in an array
-        event[:taxonomies] = []
-        e["taxonomies"].each do |e|
-          event[:taxonomies] << e["name"]
-        end
-        all_events << event
-      end 
+        self.tickets.create(
+          :title =>  e["title"],
+          :url => e["url"],
+          :img_url => e['performers'].first['image'],
+          :address => e['venue']['address'] + '/' + e['venue']['extended_address'],
+          :date => DateTime.parse(e["datetime_local"]),
+          :venue_name => e["venue"]["name"],
+          :venue_loc => e["venue"]["display_location"],
+          :lat => e["venue"]["location"]["lat"],
+          :long => e["venue"]["location"]["lon"]
+          )
+      end
     end
-    
-    all_events
-  end
-
-  def date_display
-    date = Date.parse(self.date.to_s)
-    # date.strftime('%a') + ' ' + date.strftime('%b') + ' ' + date.strftime('%-d') + ', ' + date.strftime('%Y')
-  end
-
-  def time_display
-    # Time.parse(self.date.to_s).strftime('%l:%M %p')
-    DateTime.parse(self.date.to_s).strftime('%Y-%m-%dT%H:%M:%S%z')
-  end
-
-  def time
-    Time.parse(self.date.to_s).strftime('%l:%M %p')
   end
 
   # foursquare stuff !!!

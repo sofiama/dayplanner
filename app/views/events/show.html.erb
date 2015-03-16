@@ -6,48 +6,48 @@ PRICES
   <div class="container">
     
     <h1 class="section-title">Confirm your ticket</h1>
-    <p class="section-description">via SeatGeek results</p>
+    <p class="section-description">via: SeatGeek results</p>
     
-    <div class="row pricing">
-  
-      <div class="col-lg-10 col-lg-offset-1">
-      <% @event.get_results.each do |e| %>
+    <% @tickets.each_slice(3) do |tickets| %>  
       
-        <div class="col-sm-4 text-center scrollimation fade-in event-seatgeek">
-        <%= form_tag event_path, :method => 'patch' do |f| %>
-        
-          <div class="item">
-            <p class="icon"><i class="fa fa-ticket fa-fw"></i></p>
+      <div class="row pricing">
+        <div class="col-lg-10 col-lg-offset-1">
+          
+          <% tickets.each do |ticket| %>
+            <div class="col-sm-4 text-center scrollimation fade-in event-seatgeek">
+            
+            <%= form_tag event_path, :method => 'patch' do |f| %>  
+              <div class="item">
+                <p class="icon"><i class="fa fa-ticket fa-fw"></i></p>
 
-            <h4><%= label_tag :title, e[:title], :class => 'control-label' %></h4>
-            <%= hidden_field_tag :name, value = e[:title] %>
-        
-            <h5><%= e[:date] %> at <%= e[:local_time] %></h5>
-            <%= hidden_field_tag :datetime, value = e[:datetime_local] %>
+                <h4><%= label_tag :title, ticket[:title], :class => 'control-label' %></h4>
+                <%= hidden_field_tag :name, value = ticket[:title] %>
+            
+                <h5><%= ticket.date_display %> at <%= ticket.time %></h5>
+                <%= hidden_field_tag :datetime, value = ticket[:datetime_local] %>
 
-            <h5><%= e[:venue_name] %> - <%= e[:venue_loc] %></h5>
-            <%= hidden_field_tag :lat, value = e[:lat] %>
-            <%= hidden_field_tag :long, value = e[:long] %>
+                <h5><%= ticket[:venue_name] %> - <%= ticket[:venue_loc] %></h5>
+                <%= hidden_field_tag :lat, value = ticket[:lat] %>
+                <%= hidden_field_tag :long, value = ticket[:long] %>
 
-            <%#= e[:taxonomies].join(', ') %>
-            <%= hidden_field_tag :taxonomies, value = e[:taxonomies] %>
+                <%= hidden_field_tag :url, value = ticket[:url] %>
 
+                <%= hidden_field_tag :img_url, value = ticket[:img_url] %>
 
-              <%= hidden_field_tag :url, value = e[:url] %>
+                <%= hidden_field_tag :address, value = ticket[:address] %>
 
-              <%= hidden_field_tag :img_url, value = e[:img_url] %>
+                <%= submit_tag 'Confirm', :class => 'btn btn-quattro' %>
+              </div>
+            <% end %>
+            
+            </div>
+         <% end %>
 
-              <%= hidden_field_tag :address, value = e[:address] %>
-
-            <%= submit_tag 'Confirm', :class => 'btn btn-quattro' %>
-          </div>
-
-        <% end %>
-        </div>
-  
-      <% end %>
-      </div>
-    </div>
+         </div>
+      </div><br/>
+    
+    <% end %>
+     
   </div>
   
 </section>
