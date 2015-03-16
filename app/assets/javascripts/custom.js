@@ -21,7 +21,5 @@ $(function(){
   $('#filter-works li a:first').on('click', function(){
     $('.activities').show();
   });
-
-  // for datepicker on events new page
   
 });

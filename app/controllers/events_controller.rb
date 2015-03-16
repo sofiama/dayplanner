@@ -25,25 +25,6 @@ class EventsController < ApplicationController
     @tickets = @event.tickets
   end
 
-  def edit
-    @event = Event.find(params[:id])
-  end
-
-  def update
-    @event = Event.find(params[:id])
-    @event.update(:name => params[:name])
-    @event.update(:date => params[:datetime])
-    @event.update(:lat => params[:lat])
-    @event.update(:long => params[:long])
-    @event.update(:taxonomies => params[:taxonomies])
-    @event.update(:url => params[:url])
-    @event.update(:img_url => params[:img_url])
-    @event.update(:address => params[:address])
-    # raise params
-    # @event.update(:user_id => @event.id)
-    redirect_to event_results_path(@event)
-  end
-
   private
     def event_params
       params.require(:event).permit(:name, :date)
