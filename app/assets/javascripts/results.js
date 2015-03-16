@@ -6,6 +6,7 @@ $(function(){
   });
 
   var eventDate = $('.event-date').text()
+  var dayStart = (parseInt($('.event-utc').text().split(' ')[1])-1).toString()+':00:00'
 
   $('#calendar').fullCalendar({
     defaultView: 'agendaDay',
@@ -17,11 +18,11 @@ $(function(){
     },
     height: 400,
     snapDuration: '01:00:00',
-    scrollTime: '08:00:00',
+    scrollTime: dayStart,
     slotEventOverlap: false,
     droppable: true,
     drop: function(date, jsEvent, ui){
-      // alert('Dropped on ' + date.format());
+      alert('Dropped on ' + date.format());
 
     },
     eventSources: [{
@@ -36,9 +37,9 @@ $(function(){
       // editable: true
     }],
     editable: true,
-    // eventClick: function(event){
-    //   $('#calendar').fullCalendar('removeEvents',event._id);
-    // },
+    eventClick: function(event){
+      $('#calendar').fullCalendar('removeEvents',event._id);
+    },
     // eventRender: function(event, element) {
     //     element.append( "<span class='closon'>X</span>" );
     //     element.find(".closon").click(function() {
@@ -50,7 +51,16 @@ $(function(){
 
   $('.activity').draggable({
     revert: true,
-    revertDuration: 0
+    revertDuration: 0,
+    helper: function(event, ui) {
+        var clone = $(this).clone();
+        $(this).css({opacity:0}); //or $(this).hide()
+        return clone;
+    },
+    stop: function(event, ui) {
+        $(this).css({opacity:1}); //or $(this).show()
+    },
+    appendTo: 'body'
   });
 
   $('.activity').data('duration', '01:00');
