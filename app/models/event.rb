@@ -6,6 +6,9 @@ class Event < ActiveRecord::Base
   has_one :user
   has_many :activities
 
+  validates_presence_of :name, :message => 'Please enter event name'
+  validates_presence_of :date, :message => 'Please select date'
+
   def name_normalizer
     self.name.gsub(' ', '+')
   end

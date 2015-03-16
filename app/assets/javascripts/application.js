@@ -27,19 +27,19 @@
 //= require contact
 //= require quattro
 
-
-//= require moment
-//= require bootstrap-datetimepicker
+//= require bootstrap-datepicker
+// require moment
+// require bootstrap-datetimepicker
 
 //= require jquery-ui.custom.min
-//  require moment.min
+//=  require moment.min
 //= require fullcalendar
 //= require results
 
 
 
 
-//= require bootstrapValidator.min
+// require bootstrapValidator.min
 
 //= require custom
 //= require map

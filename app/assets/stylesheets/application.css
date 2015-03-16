@@ -18,9 +18,11 @@
  
  *= require styles-5
 
- *= require bootstrap-datetimepicker
- *= require bootstrapValidator.min
- 
+ *= require bootstrap-datepicker
+ * require bootstrap-datetimepicker
+ * require bootstrapValidator.min
+ *= require rails_bootstrap_forms
+
  *= require custom
  *  require_tree .
  *= require_self

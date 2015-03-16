@@ -24,23 +24,22 @@ $(function(){
 
   // var currentDate = new Date();
   // var twoDigitMonth = currentDate.getMonth()+1+"";if(twoDigitMonth.length==1)  twoDigitMonth="0" +twoDigitMonth;
-  // var twoDigitDate = currentDate.getDate()+"";if(twoDigitDate.length==1) twoDigitDate="0" +twoDigitDate;
-  // currentDate = twoDigitMonth + "/" + twoDigitDate + "/" + currentDate.getFullYear();
 
   // $('.datepicker').data('date', currentDate);
 
-  // $('.datepicker').datepicker({
-  //   format: 'dd-mm-yyyy',
-  //   startDate: 'now',
-  // });
+  $('.datepicker').datepicker({
+    format: 'dd-mm-yyyy',
+    startDate: 'now',
+    orientation: "right bottom",
+  });
 
   // $('.datepicker').on('changeDate show', function (e){
   //   $('#contact').bootstrapValidator('revalidateField', 'date');
   // })  
 
-  $('#datetimepicker').datetimepicker({
-    format: 'DD-MM-YYYY'
-  });
+  // $('#datetimepicker').datetimepicker({
+  //   format: 'DD-MM-YYYY'
+  // });
 
   // $('#contact').bootstrapValidator({
   //       // framework: 'bootstrap',
