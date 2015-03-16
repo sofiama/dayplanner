@@ -1,0 +1,37 @@
+<!-- ==============================================
+MAIN NAV
+=============================================== -->
+
+<div id="main-nav" class="navbar">
+  <div class="container">
+  
+    <div class="navbar-header">
+    
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#site-nav">
+        <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+      </button>
+      
+      <!-- ======= LOGO ========-->
+      <a class="navbar-brand scrollto" href="#home">
+        <%= link_to 'Plan 4 Me', root_path, :class => 'navbar-brand' %>
+      </a>
+      
+    </div>
+    
+    <div id="site-nav" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="sr-only">
+          <a href="#home" class="scrollto">Home</a>
+        </li>
+        <li>
+          <%= link_to 'Home', events_path %>
+        </li>
+        <li>
+          <%= link_to 'Team', events_team_path %>
+        </li>
+      </ul>
+    </div><!--End navbar-collapse -->
+    
+  </div><!--End container -->
+  
+</div><!--End main-nav -->
