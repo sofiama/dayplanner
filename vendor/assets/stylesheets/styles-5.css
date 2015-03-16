@@ -1397,7 +1397,7 @@ a:focus,
     margin-top:0;
 }
 
-#contact-form .form-control {
+#contact-form .form-control{
     display:inline;
     background:transparent;
     border-radius:5px;
