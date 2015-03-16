@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   root 'events#index'
   
   resources :events do
-    resources :results, :only => [:index, :create]
+    resources :tickets, :only => [:show, :update]
+    #resources :results, :only => [:index, :create]
   end
 
   resources :sessions, :only => [:index, :new]

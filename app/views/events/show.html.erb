@@ -16,29 +16,29 @@ PRICES
           <% tickets.each do |ticket| %>
             <div class="col-sm-4 text-center scrollimation fade-in event-seatgeek">
             
-            <%= form_tag event_path, :method => 'patch' do |f| %>  
+            <%#= form_tag event_results_path, :method => 'get' do |f| %>  
               <div class="item">
                 <p class="icon"><i class="fa fa-ticket fa-fw"></i></p>
 
-                <h4><%= label_tag :title, ticket[:title], :class => 'control-label' %></h4>
-                <%= hidden_field_tag :name, value = ticket[:title] %>
+                <h4><%= ticket[:title] %></h4>
+                <%#= hidden_field_tag :name, value = ticket[:title] %>
             
                 <h5><%= ticket.date_display %> at <%= ticket.time %></h5>
-                <%= hidden_field_tag :datetime, value = ticket[:datetime_local] %>
+                <%#= hidden_field_tag :datetime, value = ticket[:datetime_local] %>
 
                 <h5><%= ticket[:venue_name] %> - <%= ticket[:venue_loc] %></h5>
-                <%= hidden_field_tag :lat, value = ticket[:lat] %>
-                <%= hidden_field_tag :long, value = ticket[:long] %>
+                <%#= hidden_field_tag :lat, value = ticket[:lat] %>
+                <%#= hidden_field_tag :long, value = ticket[:long] %>
 
-                <%= hidden_field_tag :url, value = ticket[:url] %>
+                <%#= hidden_field_tag :url, value = ticket[:url] %>
 
-                <%= hidden_field_tag :img_url, value = ticket[:img_url] %>
+                <%#= hidden_field_tag :img_url, value = ticket[:img_url] %>
 
-                <%= hidden_field_tag :address, value = ticket[:address] %>
-
-                <%= submit_tag 'Confirm', :class => 'btn btn-quattro' %>
+                <%#= hidden_field_tag :address, value = ticket[:address] %>
+                <%#= hidden_field_tag :ticket_id, value = ticket[:ticket_id] %>
+                <%= link_to 'Confirm', event_ticket_path(@event.id, ticket), :method => 'patch' :class => 'btn btn-quattro' %>
               </div>
-            <% end %>
+            <%# end %>
             
             </div>
          <% end %>

@@ -1,0 +1,165 @@
+ <section class="parallax-bg padding-top-bottom cta-image" data-parallax-background="<%= image_path "light-abstract.jpg"%>" data-stellar-background-ratio=".7">
+
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-sm-6 scrollimation fade-right">
+
+        <%= image_tag "#{@ticket.img_url}", class:"img-responsive img-center", alt:"" %>
+
+      </div>
+
+      <div class="col-sm-6 scrollimation fade-left d1">
+
+        <h1 class="big-title">Activities</h1>
+        <p>Let's see what's there to do near</p>
+        <p>
+          <b class='event-name'><%= @ticket.title %></b><br/><b class='event-date'><%= @ticket.date_display %></b> at <b><%= @ticket.time %></b>
+          <b class='event-time'><%= @ticket.time_display %></b><b class='event-utc'><%=@ticket.date %></b><p>
+          <b><%= @ticket.address %></b>
+        <p>Results from yelp and foursquare</p>
+
+        <a class="btn btn-quattro scrollto" href="#services"><i class="fa fa-arrow-down"></i>Check Them Out!</a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="services" class="white-bg padding-top-bottom">
+
+  <div class="container">
+
+    <h1 class="section-title">Results</h1>
+    <p class="section-description">Drag and Drop activities into the Calendar to build your Schedule!</p>
+
+    <div id="filter-works">
+      <ul>
+        <li class="active scrollimation fade-right d1">
+          <a href="#" data-filter="*">All</a>
+        </li>
+        <li class="scrollimation fade-right">
+          <a href="#" data-filter="food">Restaurants</a>
+        </li>
+        <li class="scrollimation fade-left">
+          <a href="#" data-filter="night">Nightlife</a>
+        </li>
+        <li class="scrollimation fade-left d1">
+          <a href="#" data-filter="sight">Sights</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="row services">
+
+    <div class='col-md-8'>
+
+      <div class="col-md-3 item text-center scrollimation fade-right d1 activities" data-cat='food'>
+
+        <h3 class='yelp1'>Restaurants</h3>
+        <div class='external-events'>
+          <% i = 1 %>
+          <% @food.each do |f| %>
+
+          <div id='f<%= i %>' class='activity fc-event ui-draggable ui-draggable-handle' data-event='{"title":"<%= f[:name] %>"}' data-cat='food'>
+
+            <b class='title'><%= f[:name] %></b><br/>
+            <%= f[:address].first %>
+            <%#= f[:address].last %><br/>
+  <!--           <%#= f[:cats].join(', ') %>
+            Distance in meters: <%#= f[:distance] %> -->
+            <span class='url'><%= link_to 'YELP', f[:url], :target => "_blank" %></span> <i class="fa fa-yelp"></i>
+          </div>
+            <% i += 1 %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="col-md-1"></div>
+
+      <div class="col-md-3 item text-center scrollimation fade-right activities" data-cat='night'>
+        <h3 class='yelp2'>Nightlife</h3>
+        <div class='external-events'>
+          <% i = 1 %>
+          <% @night.each do |f| %>
+
+            <div id='n<%= i %>' class='activity fc-event ui-draggable ui-draggable-handle' data-event='{"title":"<%= f[:name] %>"}'>
+
+            <b class='title'><%= f[:name] %></b><br/>
+            <%= f[:address].first %>
+            <%#= f[:address].last %><br/>
+            <%= link_to 'YELP', f[:url], :target => "_blank"%> <i class="fa fa-yelp"></i>
+
+            </div>
+          <% i += 1 %>
+        <% end %>
+        </div>
+      </div>
+
+      <div class="col-md-1"></div>
+
+      <div class="col-md-3 item text-center scrollimation fade-left activities" data-cat='sight'>
+          <h3 class='foursquare'>Sights</h3>
+          <div class='external-events'>
+          <% i = 1 %>
+          <% @sights.each do |f| %>
+
+            <div id="s<%= i %>" class='activity fc-event ui-draggable ui-draggable-handle sights' data-event='{"title":"<%= f[:name] %>"}'>
+
+              <b class='title'><%= f[:name] %></b><br/>
+              <%= f[:address][0] %><br/>
+              <i class="fa fa-foursquare"></i> <%= link_to 'FourSquare', f[:url], :target => "_blank" %>
+
+            </div>
+            <% i += 1 %>
+          <% end %>
+        </div>
+    </div>
+    </div>
+
+      <div class="col-md-4 item text-center scrollimation fade-left d1">
+        
+
+        <div id='calendar'></div>
+        <button class='remove-events' type="button">Remove Activities</button>
+        <%= form_tag '/auth/google_oauth2', :method => 'get', :class => 'google-form' do |f| %>
+        <%= button_tag :type =>'submit', :class => 'btn btn-quattro google' do %>
+          <i class='fa fa-google'></i>Add to Google Calendar
+          <% end %>
+        <% end %>
+        
+      </div>
+
+    </div>
+
+    <p class="text-center"><a class="btn btn-quattro scrollto" href="#map-section"><i class="fa fa-arrow-down"></i> See where it is on the map!</a></p>
+  </div>
+
+</section>
+
+<section id="map-section" class="white-bg padding-top-bottom">
+
+
+      <div class="container">
+
+        <h1 class="section-title">Map</h1>
+
+        <div class="row">
+          <div class="col-md-1 item text-center scrollimation fade-up">
+          </div>
+          <div class="col-md-10 item text-center scrollimation fade-up">
+            <div id="map"></div>
+          </div>
+          <div class="col-md-1 item text-center scrollimation fade-up">
+          </div>
+        </div>
+
+      </div><!-- End container -->
+
+
+    </section>
