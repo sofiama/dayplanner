@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'events/test' => 'events#test'
+  get 'events/home' => 'events#home'
 
   get 'events/team' => 'events#team'
   

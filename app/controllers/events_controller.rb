@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  def test
+  def home
   end
 
   def team
