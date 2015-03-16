@@ -11,21 +11,18 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    if @event.save
+    if @event.save && @event.get_seatgeek_results_total > 0
+      @event.get_seatgeek_results
       redirect_to @event
-    else
+    elsif @event.save
+      flash[:notice] = 'No results found'
       render :new
     end
   end
 
   def show
     @event = Event.find(params[:id])
-    if @event.get_results.count == 0
-      flash[:notice] = 'No results found'
-      redirect_to new_event_path
-    else
-      @event = Event.find(params[:id])
-    end
+    @tickets = @event.tickets
   end
 
   def edit

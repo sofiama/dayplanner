@@ -1,50 +1,42 @@
 <!-- ==============================================
-FEATURES
+PRICES
 =============================================== -->
-<section class="white-bg padding-top-bottom">
+<section id="pricing" class="gray-bg padding-top-bottom">
 
-  <div class="container features">
+  <div class="container">
+    
+    <h1 class="section-title">Confirm your ticket</h1>
+    <p class="section-description">via: SeatGeek results</p>
+    
+    <% @tickets.each_slice(3) do |tickets| %>  
+      
+      <div class="row pricing">
+        <div class="col-lg-10 col-lg-offset-1">
+          
+          <% tickets.each do |ticket| %>
+            <div class="col-sm-4 text-center scrollimation fade-in">
+            
+              <div class="item">
+                <p class="icon"><i class="fa fa-ticket fa-fw"></i></p>
 
-    <h1 class="section-title">Confirm Your Event</h1>
-    <p class="section-description">via SeatGeek</p>
+                <h4><%= ticket[:title] %></h4>
+            
+                <h5><%= ticket.date_display %> at <%= ticket.time %></h5>
 
-    <div class="row">
+                <h5><%= ticket[:venue_name] %> - <%= ticket[:venue_loc] %></h5>
 
-    <% @event.get_results.each do |e| %>
-      <div class="col-sm-4 event-seatgeek">
-      <%= form_tag event_path, :method => 'patch' do |f| %>
-        <div class="form-group">
-        <%= label_tag :title, e[:title], :class => 'control-label' %>
-        <%= hidden_field_tag :name, value = e[:title] %>
-        </div>
-        <div class="form-group">
-        <%= e[:date] %> at <%= e[:local_time] %>
-        <%= hidden_field_tag :datetime, value = e[:datetime_local] %>
-        </div>
-        <div class="form-group">
-        <%= e[:venue_name] %> - <%= e[:venue_loc] %>
-        <%= hidden_field_tag :lat, value = e[:lat] %>
-        <%= hidden_field_tag :long, value = e[:long] %>
-        </div>
-        <div class="form-group">
-        <%#= e[:taxonomies].join(', ') %>
-        <%= hidden_field_tag :taxonomies, value = e[:taxonomies] %>
-        </div>
-        <div class="form-group">
-          <%= hidden_field_tag :url, value = e[:url] %>
-        </div>
-        <div class="form-group">
-          <%= hidden_field_tag :img_url, value = e[:img_url] %>
-        </div>
-        <div class="form-group">
-          <%= hidden_field_tag :address, value = e[:address] %>
-        </div>
-        <%= submit_tag 'Confirm', :class => 'btn btn-quattro' %>
-        <% end %>
-      </div>
+                <%= link_to 'Confirm', event_ticket_path(@event.id, ticket), :method => 'patch', :class => 'btn btn-quattro' %>
+              </div>
+            <%# end %>
+            
+            </div>
+         <% end %>
+
+         </div>
+      </div><br/>
+    
     <% end %>
-    </div>
-
+     
   </div>
-
+  
 </section>
