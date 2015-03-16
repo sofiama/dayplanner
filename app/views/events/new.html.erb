@@ -1,38 +1,40 @@
-    <section id="about" class="gray-bg padding-top-bottom">
+<!-- ==============================================
+    ABOUT
+=============================================== -->
+<section id="about" class="parallax-bg padding-top-bottom cta-image" data-parallax-background="<%= image_path "light-abstract.jpg"%>" data-stellar-background-ratio=".3">     
+  <div class="container">
 
-      <div class="container">
+    <h1 class="section-title">Going Somewhere?</h1>
 
-        <h1 class="section-title">Got Something in Mind?</h1>
+    <p class="section-description">Lookup your ticketed event <i class="fa fa-ticket"></i><br/></p>
 
-        <p class="section-description">Let's Build a Day Around It!<br/></p>
+    <div class="row">
+      <div class="col-sm-3">
+      </div>
+      <div class="col-sm-6 scrollimation fade-up">
+        
+        <%= bootstrap_form_for @event, :id => 'contact-form', :class => "col-sm-8 col-sm-offset-2", :html => {:novalidate => 'novalidate'} do |f| %>
 
-        <div class="row">
-          <div class="col-sm-2">
-          </div>
-          <div class="col-sm-8">
-            <% if flash[:notice] %>
-            <div class='notice'><%= flash[:notice] %></div>
-            <% end %>
-            <%= form_for Event.new, :id => 'contact-form', :class => 'col-sm-8 col-sm-offset-2'  do |f| %>
-            <div class="form-group">
-              <%= f.label :name, :class => 'control-label' %>
-              <div class="controls">
-              <%= f.text_field :name, :placeholder => 'Your event', :class => 'form-control requiredField', :"data-error-empty" => 'Enter event name' %><br/>
-              </div>
-            </div>
-            <div class="form-group">
-            <%= f.label :date, :class => 'control-label' %>
-            <div class="controls">
-            <%= f.date_field :date, :class => 'form-control requiredField', :"data-error-empty" => 'select date' %><br/>
-            <%= f.submit 'Search', :class => 'btn btn-quattro', :'data-error-message' => "Error!" %>
-            <% end %>
-
+          <div class="form-group">
+              <%= f.text_field :name, :label => 'Event Name', :placeholder => 'Search by event name', :class => 'form-control input-lg', :"data-error-empty" => 'Please enter ticket event name', :required => true %>
           </div>
 
+        <div class="form-group">
+            <%= f.text_field :date, :label => 'Event Date', :class => 'form-control input-lg requiredField datepicker', :'data-behaviour' => 'datepicker', :placeholder => 'DD-MM-YYYY' %>
         </div>
 
-        </div><!--End row-->
+        <div class="text-center">
+        <%= f.submit 'Search', :class => 'btn btn-quattro', :'data-error-message' => "Error!" %>
+        </div>
+        <% end %>
+      </div>
 
-      </div><!--End container -->
-
-    </section><!--End Call to Action -->
+      <div class="col-sm-3">
+      </div>
+    
+      
+    </div><!--End row-->
+    
+  </div><!--End container -->
+  
+</section><!--End Call to Action -->

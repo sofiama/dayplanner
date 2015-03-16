@@ -32,5 +32,8 @@
 //= require fullcalendar
 //= require results
 
+//= require bootstrap-datepicker
+//= require custom-datepicker
+
 //= require custom
 //= require map

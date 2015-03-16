@@ -35,3 +35,5 @@ end
 # Use unicorn as the app server
 # gem 'unicorn'
 
+gem 'bootstrap-datepicker-rails'
+gem 'bootstrap_form'
