@@ -37,3 +37,5 @@ end
 
 gem 'bootstrap-datepicker-rails'
 gem 'bootstrap_form'
+
+gem 'leaflet-rails'

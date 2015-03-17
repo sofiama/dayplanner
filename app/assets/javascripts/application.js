@@ -35,5 +35,11 @@
 //= require bootstrap-datepicker
 //= require custom-datepicker
 
+
+//= require leaflet
+// leaflet.awesome-markers
+
 //= require custom
+
 //= require map
+

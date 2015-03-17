@@ -49,7 +49,7 @@
 
   <div class="container features">
 
-    <h1 class="section-title">Results</h1>
+    <h1 class="section-title">Nearby Activities</h1>
     <p class="section-description">Drag and Drop activities into the Calendar to build your Schedule!</p>
 
     <div id="filter-works">
@@ -147,13 +147,13 @@
 
     </div>
 
-    <p class="text-center"><a class="btn btn-quattro scrollto" href="#map-section"><i class="fa fa-arrow-down"></i> See where it is on the map!</a></p>
+  <div class ="row">
+    <p class="text-center"><a class="btn btn-quattro scrollto" href="#map-section"><i class="fa fa-angle-double-down"></i> See where's everything!</a></p>
   </div>
 
 </section>
 
 <section id="map-section" class="white-bg padding-top-bottom">
-
 
       <div class="container">
 
@@ -163,7 +163,19 @@
           <div class="col-md-1 item text-center scrollimation fade-up">
           </div>
           <div class="col-md-10 item text-center scrollimation fade-up">
-            <div id="map"></div>
+            <div id="map">
+              <%= map(:center =>{
+                  :latlng => [ @ticket.lat , @ticket.long ],
+                  :zoom => 18
+                  },
+                  :markers =>[
+                    {
+                      :latlng => [ @ticket.lat , @ticket.long ],
+                      :popup => @ticket.title
+                    }
+                  ]
+                )%>
+            </div>
           </div>
           <div class="col-md-1 item text-center scrollimation fade-up">
           </div>
