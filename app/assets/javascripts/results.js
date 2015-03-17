@@ -22,8 +22,8 @@ $(function(){
     slotEventOverlap: false,
     droppable: true,
     drop: function(date, jsEvent, ui){
-      alert('Dropped on ' + date.format());
-
+      // alert('Dropped on ' + date.format());
+      $(this).remove()
     },
     eventSources: [{
       events: [{

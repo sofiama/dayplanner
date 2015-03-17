@@ -17,6 +17,8 @@ class EventsController < ApplicationController
     elsif @event.save
       flash[:notice] = 'No results found'
       render :new
+    else
+      render :new
     end
   end
 
