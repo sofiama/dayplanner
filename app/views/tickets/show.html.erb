@@ -20,12 +20,14 @@
                     
                     <div class="media-body">
                       <p class="testimonial">
-                        <span class='event-name'><%= @ticket.title %></span><spanr/><br/>
+                        <span class='event-name'><%= @ticket.title %></span><spanr/>
+                        <br/>
                         <span class='event-date'><%= @ticket.date_display %></span> at <span><%= @ticket.time %></span>
                         <span class='event-time'><%= @ticket.time_display %></span><span class='event-utc'><%=@ticket.date %></span><p>
                       </p>
                       <p class="client">
                         <span><%= @ticket.address.split('/')[0] %></span>
+                        <br/>
                         <span><%= @ticket.address.split('/')[1] %></span>
                       </p>
                       <a class="btn btn-quattro scrollto" href="#services"><i class="fa fa-angle-double-down"></i>See what's there to do nearby!</a>
@@ -82,10 +84,9 @@
           <div id='f<%= i %>' class='activity fc-event ui-draggable ui-draggable-handle' data-event='{"title":"<%= f[:name] %>"}' data-cat='food'>
 
             <b class='title'><%= f[:name] %></b><br/>
-            <%= f[:address].first %>
-            <%#= f[:address].last %><br/>
-  <!--           <%#= f[:cats].join(', ') %>
-            Distance in meters: <%#= f[:distance] %> -->
+            <%= f[:address].split('/')[0] %><br/>
+            <%#= f[:address].split('/')[1] %><br/>
+
             <span class='url'><%= link_to 'YELP', f[:url], :target => "_blank" %></span> <i class="fa fa-yelp"></i>
           </div>
             <% i += 1 %>
@@ -104,8 +105,8 @@
             <div id='n<%= i %>' class='activity fc-event ui-draggable ui-draggable-handle' data-event='{"title":"<%= f[:name] %>"}'>
 
             <b class='title'><%= f[:name] %></b><br/>
-            <%= f[:address].first %>
-            <%#= f[:address].last %><br/>
+            <%= f[:address].split('/')[0] %><br/>
+            <%#= f[:address].split('/')[1] %><br/>
             <%= link_to 'YELP', f[:url], :target => "_blank"%> <i class="fa fa-yelp"></i>
 
             </div>
@@ -125,7 +126,8 @@
             <div id="s<%= i %>" class='activity fc-event ui-draggable ui-draggable-handle sights' data-event='{"title":"<%= f[:name] %>"}'>
 
               <b class='title'><%= f[:name] %></b><br/>
-              <%= f[:address][0] %><br/>
+              <%= f[:address].split('/')[0] %><br/>
+              <%#= f[:address].split('/')[1] %><br/>
               <i class="fa fa-foursquare"></i> <%= link_to 'FourSquare', f[:url], :target => "_blank" %>
 
             </div>
