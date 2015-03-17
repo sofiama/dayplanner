@@ -45,10 +45,9 @@
   
 </section>
 
+<section id="services" class="white-bg padding-top-bottom">
 
-<section id="services" class="gray-bg padding-top-bottom">
-
-  <div class="container">
+  <div class="container features">
 
     <h1 class="section-title">Results</h1>
     <p class="section-description">Drag and Drop activities into the Calendar to build your Schedule!</p>
@@ -70,33 +69,31 @@
       </ul>
     </div>
 
-    <div class="row services">
+    <div class="row">
 
     <div class='col-md-8'>
-
-      <div class="col-md-3 item text-center scrollimation fade-right d1 activities" data-cat='food'>
-
+  
+      <div class="col-md-4 item text-center scrollimation fade-right activities" data-cat='food'>
         <h3 class='yelp1'>Restaurants</h3>
         <div class='external-events'>
           <% i = 1 %>
           <% @food.each do |f| %>
 
-          <div id='f<%= i %>' class='activity fc-event ui-draggable ui-draggable-handle' data-event='{"title":"<%= f[:name] %>"}' data-cat='food'>
+            <div id='n<%= i %>' class='activity fc-event ui-draggable ui-draggable-handle' data-event='{"title":"<%= f[:name] %>"}'>
 
-            <b class='title'><%= f[:name] %></b><br/>
+            <span class='title'><%= f[:name] %></span>
+            <br/>
             <%= f[:address].split('/')[0] %><br/>
             <%#= f[:address].split('/')[1] %><br/>
+            <%= link_to 'YELP', f[:url], :target => "_blank"%> <i class="fa fa-yelp"></i>
 
-            <span class='url'><%= link_to 'YELP', f[:url], :target => "_blank" %></span> <i class="fa fa-yelp"></i>
-          </div>
-            <% i += 1 %>
-          <% end %>
+            </div>
+          <% i += 1 %><br/>
+        <% end %>
         </div>
       </div>
 
-      <div class="col-md-1"></div>
-
-      <div class="col-md-3 item text-center scrollimation fade-right activities" data-cat='night'>
+      <div class="col-md-4 item text-center scrollimation fade-right activities" data-cat='night'>
         <h3 class='yelp2'>Nightlife</h3>
         <div class='external-events'>
           <% i = 1 %>
@@ -110,14 +107,12 @@
             <%= link_to 'YELP', f[:url], :target => "_blank"%> <i class="fa fa-yelp"></i>
 
             </div>
-          <% i += 1 %>
+          <% i += 1 %><br/>
         <% end %>
         </div>
       </div>
 
-      <div class="col-md-1"></div>
-
-      <div class="col-md-3 item text-center scrollimation fade-left activities" data-cat='sight'>
+      <div class="col-md-4 item text-center scrollimation fade-left activities" data-cat='sight'>
           <h3 class='foursquare'>Sights</h3>
           <div class='external-events'>
           <% i = 1 %>
@@ -131,7 +126,7 @@
               <i class="fa fa-foursquare"></i> <%= link_to 'FourSquare', f[:url], :target => "_blank" %>
 
             </div>
-            <% i += 1 %>
+            <% i += 1 %><br/>
           <% end %>
         </div>
     </div>
