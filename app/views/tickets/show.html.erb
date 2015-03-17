@@ -164,16 +164,15 @@
           </div>
           <div class="col-md-10 item text-center scrollimation fade-up">
             <div id="map">
-              <%= map(:center =>{
-                  :latlng => [ @ticket.lat , @ticket.long ],
-                  :zoom => 18
-                  },
-                  :markers =>[
-                    {
-                      :latlng => [ @ticket.lat , @ticket.long ],
-                      :popup => @ticket.title
-                    }
-                  ]
+              <%= map(
+                  :center =>{
+                    :latlng => [ @ticket.lat , @ticket.long ],
+                    :zoom => 18
+                    },
+                  :markers => [{
+                    :latlng => [@ticket.lat, @ticket.long],
+                    :popup => @ticket.title
+                  }]
                 )%>
             </div>
           </div>

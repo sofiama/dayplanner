@@ -10,6 +10,16 @@ class TicketsController < ApplicationController
   def show
     @ticket = Ticket.find(params[:id])
     @activities = @ticket.activities
+
+    @geojson = Array.new
+    @activities.each do |activity|
+      @geojson << {
+        :latlng => [activity.lat.to_f, activity.long.to_f],
+        :popup => activity.name
+      }
+    end
+
+    
     @food = @activities.first(5)
     @sights = @activities.last(5)
     @night = @activities - @food - @sights
@@ -26,5 +36,9 @@ class TicketsController < ApplicationController
     if @event.user_id != nil
       @user = User.find(@event.user_id)
     end
+    # respond_to do |format|
+    #   format.html
+    #   format.json { render json: @geojson }  # respond with the created JSON object
+    # end
   end
 end

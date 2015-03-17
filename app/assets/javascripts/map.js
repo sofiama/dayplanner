@@ -1,20 +1,6 @@
 $(document).ready(function(){
 
-  // var icon = L.icon({iconUrl: '<%= image_path("marker-icon.png") %>',
-  //                  shadowUrl: '<%= image_path("marker-shadow.png") %>'
-  //                 });
-  // var baseLayer = L.tileLayer('http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png', {
-  //   attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
-  //   subdomains: 'abcd',
-  //   minZoom: 0,
-  //   maxZoom: 20
-  // });
-
-  // var redMarker = L.AwesomeMarkers.icon({
-  //   icon: 'coffee',
-  //   markerColor: 'red',
-  //   prefix: 'fa'
-  // });
+  // var markers = new L.Marker(new L.LatLng(val.lat, val.long));
 
   // L.marker([51.941196,4.512291], {icon: redMarker}).addTo(map);
 
