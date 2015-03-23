@@ -24,9 +24,8 @@
  *= depend_on_asset "layers.png"
  *= depend_on_asset "layers-2x.png"
  *= require leaflet
-
-
- * require leaflet.awesome-markers
+ *= require leaflet.awesome-markers
+ 
  *= require_tree .
  *= require_self
 

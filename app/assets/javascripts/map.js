@@ -1,91 +1,18 @@
 $(document).ready(function(){
 
-  // var markers = new L.Marker(new L.LatLng(val.lat, val.long));
+  ($('.food_info').data('temp')).forEach(function(food){
+    L.marker([food.lat,food.long]).addTo(map)
+      .bindPopup(food.name)
+  });
 
-  // L.marker([51.941196,4.512291], {icon: redMarker}).addTo(map);
+  ($('.night_info').data('temp')).forEach(function(night){
+    L.marker([night.lat,night.long]).addTo(map)
+      .bindPopup(night.name)
+  });
 
+  ($('.sight_info').data('temp')).forEach(function(sight){
+    L.marker([sight.lat,sight.long]).addTo(map)
+      .bindPopup(sight.name)
+  });
 
-  // var mainEvent = L.marker(mainEventLL).bindPopup('Main Event: ' + mainEvent.name);
-  // var mainEventLayer = L.layerGroup([mainEvent]);
-
-  // var food_layers= [];
-  // var night_layers = [];
-  // var sights_layers = [];
-
-  // for (var i = 0; i < 5; i++)
-  // {
-  //   food_layers.push(L.layerGroup([L.marker([gon.food[i].lat, gon.food[i].long], {icon: redMarker}).addTo(map).bindPopup("Restaurant: " + gon.food[i].name)]));
-
-  //   night_layers.push(L.layerGroup([L.marker([gon.night[i].lat, gon.night[i].long]).bindPopup("Nightlife: " + gon.night[i].name)]));
-
-  //   sights_layers.push(L.layerGroup([L.marker([gon.sights[i].lat, gon.sights[i].long]).bindPopup("Sights: " + gon.sights[i].name)]));
-  // }
-
- //Add every single layerGroup to overlayMaps
-
-  // var f1,f2,f3,f4,f5,n1,n2,n3,s1,s2,s3,s4,s5;
-
-  // var overlayMaps = {
-  //   "Main Event": mainEventLayer,
-  //   "f1": food_layers[0],
-  //   "f2": food_layers[1],
-  //   "f3": food_layers[2],
-  //   "f4": food_layers[3],
-  //   "f5": food_layers[4],
-  //   "n1": night_layers[0],
-  //   "n2": night_layers[1],
-  //   "n3": night_layers[2],
-  //   "n4": night_layers[3],
-  //   "n5": night_layers[4],
-  //   "s1": sights_layers[0],
-  //   "s2": sights_layers[1],
-  //   "s3": sights_layers[2],
-  //   "s4": sights_layers[3],
-  //   "s5": sights_layers[4]
-  // };
-
-  // var map = L.map('map', {
-  //   center: gon.mainEventLL,
-  //   zoom: 12,
-  //   //layers: [regLayer]
-  //   layers: [baseLayer],
-  //   // autoPan: false
-  //   // zoomControl: false
-  //   });
-
-  // L.control.layers(null, overlayMaps).addTo(map); //makes control box
-
-  // // $('p').find('a[href$="map-section"]').on('click', function(){
-  // //   $("span:contains('Main Event')").click();
-  // // });
-
-  // var tempScrollTop2 = $(window).scrollTop();
-  // $("span:contains('Main Event')").click();
-  // $(window).scrollTop(tempScrollTop2);
-
-
-  // $('.remove-events').on('click', function(){
-  //     $("#calendar").fullCalendar( 'removeEvents' );
-  //     //$("span:contains('f1')").click();
-  //     //debugger;
-  //     for (var i = 0; i < 5; i++)
-  //     {
-  //       food_layers[i].clearLayers();
-  //       night_layers[i].clearLayers();
-  //       sights_layers[i].clearLayers();
-  //     }
-  //     var me = {
-  //         // title: gon.mainEvent.name,
-  //         // start: gon.mainEvent.date
-  //         title: $('.event-name').text(),
-  //         start: $('.event-time').text(),
-  //         eventStartEditable: false,
-  //         color: '#FFD340',
-  //         textColor: '#FFFFFF'
-  //       };
-  //       // debugger;
-  //       $("#calendar").fullCalendar('renderEvent', me);
-  //  });
 });
-
-

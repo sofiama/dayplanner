@@ -167,14 +167,21 @@
               <%= map(
                   :center =>{
                     :latlng => [ @ticket.lat , @ticket.long ],
-                    :zoom => 18
+                    :zoom => 16
                     },
-                  :markers => [{
+                  :markers => [{ 
                     :latlng => [@ticket.lat, @ticket.long],
-                    :popup => @ticket.title
+                    :popup => @ticket.title,
                   }]
-                )%>
+                  )
+                %>
             </div>
+            <%= content_tag :div, class: "food_info", data: {temp: @food} do %>
+          <% end %>
+          <%= content_tag :div, class: "night_info", data: {temp: @night} do %>
+          <% end %>
+          <%= content_tag :div, class: "sight_info", data: {temp: @sight} do %>
+          <% end %>
           </div>
           <div class="col-md-1 item text-center scrollimation fade-up">
           </div>
