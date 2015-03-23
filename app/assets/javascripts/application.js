@@ -37,7 +37,7 @@
 
 
 //= require leaflet
-//= leaflet.awesome-markers
+//= require leaflet.awesome-markers
 
 //= require custom
 
