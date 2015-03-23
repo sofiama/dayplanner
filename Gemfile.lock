@@ -89,6 +89,7 @@ GEM
     jwt (1.2.0)
     launchy (2.4.3)
       addressable (~> 2.3)
+    leaflet-rails (0.7.4)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
@@ -204,6 +205,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   jquery-ui-rails
+  leaflet-rails
   omniauth
   omniauth-facebook
   omniauth-google-oauth2

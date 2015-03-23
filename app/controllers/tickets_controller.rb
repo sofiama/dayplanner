@@ -10,21 +10,16 @@ class TicketsController < ApplicationController
   def show
     @ticket = Ticket.find(params[:id])
     @activities = @ticket.activities
+    
     @food = @activities.first(5)
     @sights = @activities.last(5)
     @night = @activities - @food - @sights
-    
-
-    gon.mainEvent = @ticket
-    gon.mainEventLL = [@ticket.lat, @ticket.long] #bc long is keyword
-    gon.food = @food
-    gon.night = @night
-    gon.sights = @sights
 
     @event = @ticket.event
 
     if @event.user_id != nil
       @user = User.find(@event.user_id)
     end
+
   end
 end
