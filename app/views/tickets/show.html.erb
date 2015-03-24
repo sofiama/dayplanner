@@ -45,12 +45,11 @@
   
 </section>
 
+<section id="services" class="white-bg padding-top-bottom">
 
-<section id="services" class="gray-bg padding-top-bottom">
+  <div class="container features">
 
-  <div class="container">
-
-    <h1 class="section-title">Results</h1>
+    <h1 class="section-title">Nearby Activities</h1>
     <p class="section-description">Drag and Drop activities into the Calendar to build your Schedule!</p>
 
     <div id="filter-works">
@@ -70,33 +69,31 @@
       </ul>
     </div>
 
-    <div class="row services">
+    <div class="row">
 
     <div class='col-md-8'>
-
-      <div class="col-md-3 item text-center scrollimation fade-right d1 activities" data-cat='food'>
-
+  
+      <div class="col-md-4 item text-center scrollimation fade-right activities" data-cat='food'>
         <h3 class='yelp1'>Restaurants</h3>
         <div class='external-events'>
           <% i = 1 %>
           <% @food.each do |f| %>
 
-          <div id='f<%= i %>' class='activity fc-event ui-draggable ui-draggable-handle' data-event='{"title":"<%= f[:name] %>"}' data-cat='food'>
+            <div id='n<%= i %>' class='activity fc-event ui-draggable ui-draggable-handle' data-event='{"title":"<%= f[:name] %>"}'>
 
-            <b class='title'><%= f[:name] %></b><br/>
+            <span class='title'><%= f[:name] %></span>
+            <br/>
             <%= f[:address].split('/')[0] %><br/>
             <%#= f[:address].split('/')[1] %><br/>
+            <%= link_to 'YELP', f[:url], :target => "_blank"%> <i class="fa fa-yelp"></i>
 
-            <span class='url'><%= link_to 'YELP', f[:url], :target => "_blank" %></span> <i class="fa fa-yelp"></i>
-          </div>
-            <% i += 1 %>
-          <% end %>
+            </div>
+          <% i += 1 %><br/>
+        <% end %>
         </div>
       </div>
 
-      <div class="col-md-1"></div>
-
-      <div class="col-md-3 item text-center scrollimation fade-right activities" data-cat='night'>
+      <div class="col-md-4 item text-center scrollimation fade-right activities" data-cat='night'>
         <h3 class='yelp2'>Nightlife</h3>
         <div class='external-events'>
           <% i = 1 %>
@@ -110,14 +107,12 @@
             <%= link_to 'YELP', f[:url], :target => "_blank"%> <i class="fa fa-yelp"></i>
 
             </div>
-          <% i += 1 %>
+          <% i += 1 %><br/>
         <% end %>
         </div>
       </div>
 
-      <div class="col-md-1"></div>
-
-      <div class="col-md-3 item text-center scrollimation fade-left activities" data-cat='sight'>
+      <div class="col-md-4 item text-center scrollimation fade-left activities" data-cat='sight'>
           <h3 class='foursquare'>Sights</h3>
           <div class='external-events'>
           <% i = 1 %>
@@ -131,7 +126,7 @@
               <i class="fa fa-foursquare"></i> <%= link_to 'FourSquare', f[:url], :target => "_blank" %>
 
             </div>
-            <% i += 1 %>
+            <% i += 1 %><br/>
           <% end %>
         </div>
     </div>
@@ -152,13 +147,13 @@
 
     </div>
 
-    <p class="text-center"><a class="btn btn-quattro scrollto" href="#map-section"><i class="fa fa-arrow-down"></i> See where it is on the map!</a></p>
+  <div class ="row">
+    <p class="text-center"><a class="btn btn-quattro scrollto" href="#map-section"><i class="fa fa-angle-double-down"></i> See where everything is!</a></p>
   </div>
 
 </section>
 
-<section id="map-section" class="white-bg padding-top-bottom">
-
+<section id="map-section" class="gray-bg padding-top-bottom">
 
       <div class="container">
 
@@ -168,7 +163,23 @@
           <div class="col-md-1 item text-center scrollimation fade-up">
           </div>
           <div class="col-md-10 item text-center scrollimation fade-up">
-            <div id="map"></div>
+            <div id="map">
+              <%= map(
+                  :center =>{
+                    :latlng => [ @ticket.lat , @ticket.long ],
+                    :zoom => 16
+                    }
+                  )
+                %>
+            </div>
+            <%= content_tag :div, class: "ticket-info", data: {temp: @ticket} do %>
+          <% end %>
+            <%= content_tag :div, class: "food-info", data: {temp: @food} do %>
+          <% end %>
+          <%= content_tag :div, class: "night-info", data: {temp: @night} do %>
+          <% end %>
+          <%= content_tag :div, class: "sight-info", data: {temp: @sights} do %>
+          <% end %>
           </div>
           <div class="col-md-1 item text-center scrollimation fade-up">
           </div>

@@ -23,7 +23,7 @@ $(function(){
     droppable: true,
     drop: function(date, jsEvent, ui){
       // alert('Dropped on ' + date.format());
-      $(this).remove()
+      // $(this).remove()
     },
     eventSources: [{
       events: [{
@@ -40,28 +40,56 @@ $(function(){
     eventClick: function(event){
       $('#calendar').fullCalendar('removeEvents',event._id);
     },
-    // eventRender: function(event, element) {
-    //     element.append( "<span class='closon'>X</span>" );
-    //     element.find(".closon").click(function() {
-    //       $('#calendar').fullCalendar('removeEvents',event._id);
-    //     });
-    //   }
+    eventRender: function(event, element) {
+        element.append( "<span class='closeon'>X</span>" );
+        
+        element.find(".closeon").click(function() {
+          $('#calendar').fullCalendar('removeEvents',event._id);
+        });
+      }
   });
 
 
-  $('.activity').draggable({
-    revert: true,
-    revertDuration: 0,
-    helper: function(event, ui) {
+
+  $('.external-events .fc-event').each(function() {
+
+      // store data so the calendar knows to render an event upon drop
+      $(this).data('event', {
+        title: $.trim($(this).text()), // use the element's text as the event title
+        stick: true // maintain when user navigates (see docs on the renderEvent method)
+      });
+
+      // make the event draggable using jQuery UI
+      $(this).draggable({
+        zIndex: 999,
+        revert: true,      // will cause the event to go back to its
+        revertDuration: 0,  //  original position after the drag
+         helper: function(event, ui) {
         var clone = $(this).clone();
         $(this).css({opacity:0}); //or $(this).hide()
         return clone;
-    },
-    stop: function(event, ui) {
-        $(this).css({opacity:1}); //or $(this).show()
-    },
-    appendTo: 'body'
-  });
+        },
+        stop: function(event, ui) {
+            $(this).css({opacity:1}); //or $(this).show()
+        },
+        appendTo: 'body'
+          });
+    });
+
+
+  // $('.activity').draggable({
+  //   revert: true,
+  //   revertDuration: 0,
+  //   helper: function(event, ui) {
+  //       var clone = $(this).clone();
+  //       $(this).css({opacity:0}); //or $(this).hide()
+  //       return clone;
+  //   },
+  //   stop: function(event, ui) {
+  //       $(this).css({opacity:1}); //or $(this).show()
+  //   },
+  //   appendTo: 'body'
+  // });
 
   $('.activity').data('duration', '01:00');
 
