@@ -1,5 +1,5 @@
- <section id="testimonials" class="parallax-bg light-typo padding-top-bottom" data-parallax-background="<%= image_path "clock-bg-dark.jpg"%>" data-stellar-background-ratio=".5">
-    
+ <!-- <section id="testimonials" class="parallax-bg padding-top-bottom" data-parallax-background="<%#= image_path "light-abstract.jpg"%>" data-stellar-background-ratio=".5"> -->
+<section id="testimonials" class="color-bg light-typo cta">
       <div class="container">
       
         <h1 class="section-title scrollimation fade-up">Your Ticketed Event</h1>
@@ -7,35 +7,31 @@
         <div class="row scrollimation fade-in">
         
           <div class="col-sm-10 col-sm-offset-1">
-          
-            <div id="testimonials-slider" class="flexslider">
+
+            <div class="col-sm-6 scrollimation fade-right">
             
-              <ul class="slides">
-                <!--Single Testimonial-->
-                <li>
-                  <div class="media">
-                    <div class="pull-left">
-                      <%= image_tag "#{@ticket.img_url}", class:"img-responsive client-iamge image-circle", alt:"" %>
-                    </div>
-                    
-                    <div class="media-body">
-                      <p class="testimonial">
-                        <span class='event-name'><%= @ticket.title %></span><spanr/>
-                        <br/>
-                        <span class='event-date'><%= @ticket.date_display %></span> at <span><%= @ticket.time %></span>
-                        <span class='event-time'><%= @ticket.time_display %></span><span class='event-utc'><%=@ticket.date %></span><p>
-                      </p>
-                      <p class="client">
-                        <span><%= @ticket.address.split('/')[0] %></span>
-                        <br/>
-                        <span><%= @ticket.address.split('/')[1] %></span>
-                      </p>
-                      <a class="btn btn-quattro scrollto" href="#services"><i class="fa fa-angle-double-down"></i>See what's there to do nearby!</a>
-                    </div>
-                  </div>
-              </ul>
-          
-        </div><!-- End slider -->
+              <%= image_tag "#{@ticket.img_url}", class:"img-responsive image-center", alt:"" %>
+              
+            </div>
+            
+            <div class="col-sm-6 scrollimation fade-left d1">
+              <p class='large-title'><strong><span class='event-name'><%= @ticket.title %></span></strong></p>
+              
+              <p class='large-text'><span class='event-date'><%= @ticket.date_display %></span> at <span><%= @ticket.time %></span></p>
+              <span class='event-time'><%= @ticket.time_display %></span>
+              <span class='event-utc'><%=@ticket.date %></span>
+              <p class='large-text'><span><%= @ticket.address.split('/')[0] %></span></p>
+              <p class='large-text'><span><%= @ticket.address.split('/')[1] %></p>
+
+              <a class="btn btn-quattro more scrollto" href="#services"><i class="fa fa-angle-double-down"></i> Check Out Nearby Activities <i class="fa fa-angle-double-down"></i></a>
+
+            </div>
+          </div>
+
+          <div class="col-sm-10 col-sm-offset-1 scrollimation fade-left text-center">
+              
+
+            </div>
         
       </div><!-- End col -->
       
