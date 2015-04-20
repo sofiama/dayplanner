@@ -1,12 +1,7 @@
 $(function(){
 
-  $('.random').hide();
-  $('.google').on('click', function(){
-    $('.random').show();
-  });
-
-  var eventDate = $('.event-date').text()
-  var dayStart = (parseInt($('.event-utc').text().split(' ')[1])-1).toString()+':00:00'
+  var eventDate = $('.event-date').text();
+  var dayStart = (parseInt($('.event-utc').text().split(' ')[1])-2).toString()+':00:00';
 
   $('#calendar').fullCalendar({
     defaultView: 'agendaDay',
@@ -16,7 +11,7 @@ $(function(){
       center: 'title',
       right:  ''
     },
-    height: 400,
+    height: 600,
     snapDuration: '01:00:00',
     scrollTime: dayStart,
     slotEventOverlap: false,
@@ -37,22 +32,26 @@ $(function(){
       // editable: true
     }],
     editable: true,
-    eventClick: function(event){
-      $('#calendar').fullCalendar('removeEvents',event._id);
-    },
-    eventRender: function(event, element) {
-        element.append( "<span class='closeon'>X</span>" );
-        
-        element.find(".closeon").click(function() {
-          $('#calendar').fullCalendar('removeEvents',event._id);
-        });
-      }
+
+    // // makes the entire event clickable to be removed
+    // eventClick: function(event){
+    //   // $('.closeon').click(function() {
+    //   //   $('#calendar').fullCalendar('removeEvents',event._id);
+    //   // });
+    //   $('#calendar').fullCalendar('removeEvents',event._id);
+    // },
+    // eventRender: function(event, element) {
+    //   element.append( "<span class='closeon'>X</span>" );
+      
+    //   element.find(".closeon").click(function() {
+    //     $('#calendar').fullCalendar('removeEvents',event._id);
+    //   });
+    // }
   });
 
-
+  $('.activity').data('duration', '01:00');
 
   $('.external-events .fc-event').each(function() {
-
       // store data so the calendar knows to render an event upon drop
       $(this).data('event', {
         title: $.trim($(this).text()), // use the element's text as the event title
@@ -76,22 +75,19 @@ $(function(){
           });
     });
 
+  $('.remove-events').on('click', function(){
+    $("#calendar").fullCalendar('removeEvents');
 
-  // $('.activity').draggable({
-  //   revert: true,
-  //   revertDuration: 0,
-  //   helper: function(event, ui) {
-  //       var clone = $(this).clone();
-  //       $(this).css({opacity:0}); //or $(this).hide()
-  //       return clone;
-  //   },
-  //   stop: function(event, ui) {
-  //       $(this).css({opacity:1}); //or $(this).show()
-  //   },
-  //   appendTo: 'body'
-  // });
+    var ticketed_event = {
+      title: $('.event-name').text(),
+      start: $('.event-time').text(),
+      eventStartEditable: false,
+      color: '#FFD340',
+      textColor: '#FFFFFF'
+    };
 
-  $('.activity').data('duration', '01:00');
+    $('#calendar').fullCalendar('renderEvent', ticketed_event);
+  });
 
   $('.google').on('click', function(){
     ($('#calendar').find('.fc-content')).each(function(){
