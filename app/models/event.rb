@@ -25,7 +25,6 @@ class Event < ActiveRecord::Base
   end
 
   def get_seatgeek_results_total
-    binding.pry
     self.get_seatgeek_info['meta']['total']
   end
 

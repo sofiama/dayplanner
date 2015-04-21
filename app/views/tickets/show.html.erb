@@ -55,69 +55,75 @@
       <div class='col-md-8'>
         <h2 class='text-center'>Draggable Activities</h2>
         
-        <div class="col-md-4 item text-center scrollimation fade-right activities" data-cat='food'>
-          <h3 class='yelp1'>Restaurants</h3>
-          <div class='external-events'>
-            <% i = 1 %>
-            <% @food.each do |activity| %>
+        <% if @food.count > 0 %>
+          <div class="col-md-4 item text-center scrollimation fade-right activities" data-cat='food'>
+              <h3 class='yelp1'>Restaurants</h3>
+              <div class='external-events'>
+                <% i = 1 %>
+                <% @food.each do |activity| %>
 
-              <div id='n<%= i %>' class='activity fc-event ui-draggable ui-draggable-handle' data-event='{"title":"<%= activity[:name] %>"}'>
+                  <div id='n<%= i %>' class='activity fc-event ui-draggable ui-draggable-handle' data-event='{"title":"<%= activity[:name] %>"}'>
 
-              <span class='title'><%= activity[:name] %></span>
-              <br/>
-              <%= activity[:address].split('/')[0] %><br/>
-              <%#= activity[:address].split('/')[1] %><br/>
-              <div class='yelp'>
-                <%= link_to 'YELP <i class="fa fa-yelp"></i>'.html_safe, activity[:url], :target => "_blank"%> 
-              </div>
-              </div>
-            <% i += 1 %><br/>
-          <% end %>
+                  <span class='title'><%= activity[:name] %></span>
+                  <br/>
+                  <%= activity[:address].split('/')[0] %><br/>
+                  <%#= activity[:address].split('/')[1] %><br/>
+                  <div class='yelp'>
+                    <%= link_to 'YELP <i class="fa fa-yelp"></i>'.html_safe, activity[:url], :target => "_blank"%> 
+                  </div>
+                  </div>
+                <% i += 1 %><br/>
+              <% end %>
+            </div>
           </div>
-        </div>
+        <% end %>
 
-        <div class="col-md-4 item text-center scrollimation fade-right activities" data-cat='night'>
-          <h3 class='yelp2'>Nightlife</h3>
-          <div class='external-events'>
-            <% i = 1 %>
-            <% @night.each do |activity| %>
-
-              <div id='n<%= i %>' class='activity fc-event ui-draggable ui-draggable-handle' data-event='{"title":"<%= activity[:name] %>"}'>
-
-              <b class='title'><%= activity[:name] %></b><br/>
-              <%= activity[:address].split('/')[0] %><br/>
-              <%#= activity[:address].split('/')[1] %><br/>
-
-              <div class='yelp'>
-                <%= link_to 'YELP <i class="fa fa-yelp"></i>'.html_safe, activity[:url], :target => "_blank"%>
-              </div>
-
-              </div>
-            <% i += 1 %><br/>
-          <% end %>
-          </div>
-        </div>
-
-        <div class="col-md-4 item text-center scrollimation fade-left activities" data-cat='sight'>
-            <h3 class='foursquare'>Sights</h3>
+        <% if @night.count > 0 %>
+          <div class="col-md-4 item text-center scrollimation fade-right activities" data-cat='night'>
+            <h3 class='yelp2'>Nightlife</h3>
             <div class='external-events'>
-            <% i = 1 %>
-            <% @sights.each do |activity| %>
+              <% i = 1 %>
+              <% @night.each do |activity| %>
 
-              <div id="s<%= i %>" class='activity fc-event ui-draggable ui-draggable-handle sights' data-event='{"title":"<%= activity[:name] %>"}'>
+                <div id='n<%= i %>' class='activity fc-event ui-draggable ui-draggable-handle' data-event='{"title":"<%= activity[:name] %>"}'>
 
                 <b class='title'><%= activity[:name] %></b><br/>
                 <%= activity[:address].split('/')[0] %><br/>
                 <%#= activity[:address].split('/')[1] %><br/>
 
-                <div class='foursquare'>
-                  <%= link_to '<i class="fa fa-foursquare"></i> FourSquare'.html_safe, activity[:url], :target => "_blank" %>
+                <div class='yelp'>
+                  <%= link_to 'YELP <i class="fa fa-yelp"></i>'.html_safe, activity[:url], :target => "_blank"%>
                 </div>
-              </div>
+
+                </div>
               <% i += 1 %><br/>
             <% end %>
+            </div>
           </div>
-        </div>
+        <% end %>
+
+        <% if @sights.count > 0 %>
+          <div class="col-md-4 item text-center scrollimation fade-left activities" data-cat='sight'>
+              <h3 class='foursquare'>Sights</h3>
+              <div class='external-events'>
+              <% i = 1 %>
+              <% @sights.each do |activity| %>
+
+                <div id="s<%= i %>" class='activity fc-event ui-draggable ui-draggable-handle sights' data-event='{"title":"<%= activity[:name] %>"}'>
+
+                  <b class='title'><%= activity[:name] %></b><br/>
+                  <%= activity[:address].split('/')[0] %><br/>
+                  <%#= activity[:address].split('/')[1] %><br/>
+
+                  <div class='foursquare'>
+                    <%= link_to '<i class="fa fa-foursquare"></i> FourSquare'.html_safe, activity[:url], :target => "_blank" %>
+                  </div>
+                </div>
+                <% i += 1 %><br/>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
     </div>
 
     <div class="col-md-4 item text-center scrollimation fade-left d1">
