@@ -15,9 +15,21 @@ class EventsController < ApplicationController
       @event.get_seatgeek_results
       redirect_to @event
     elsif @event.save
-      flash[:notice] = 'No results found'
+      flash.now[:notice] = 'No results found'
       render :new
     else
+      render :new
+    end
+  end
+
+  def update
+    @event = Event.find(params[:id])
+    @event.update_attributes(event_params)
+    if @event.get_seatgeek_results_total > 0
+      @event.get_seatgeek_results
+      redirect_to @event
+    else
+      flash.now[:notice] = 'No results found'
       render :new
     end
   end

@@ -13,6 +13,8 @@
       </div>
       <div class="col-sm-6 scrollimation fade-up">
         
+        <div class='notice'><%= flash[:notice] %></div>
+        
         <%= bootstrap_form_for @event, :id => 'contact-form', :class => "col-sm-8 col-sm-offset-2", :html => {:novalidate => 'novalidate'} do |f| %>
 
           <div class="form-group">
