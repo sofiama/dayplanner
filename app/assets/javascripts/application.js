@@ -30,7 +30,7 @@
 //= require jquery-ui.custom.min
 //= require moment.min
 //= require fullcalendar
-//= require results
+//= require calendar
 
 //= require bootstrap-datepicker
 //= require custom-datepicker

@@ -16,39 +16,19 @@ $(function(){
     scrollTime: dayStart,
     slotEventOverlap: false,
     droppable: true,
-    drop: function(date, jsEvent, ui){
-      // alert('Dropped on ' + date.format());
-      // $(this).remove()
-    },
     eventSources: [{
       events: [{
           title: $('.event-name').text(),
           start: $('.event-time').text(),
           eventStartEditable: false
-          // durationEditable: true
       }],
       color: '#FFD340',
-      textColor: '#FFFFFF',
-      // editable: true
+      textColor: '#FFFFFF'
     }],
-    editable: true,
-
-    // // makes the entire event clickable to be removed
-    // eventClick: function(event){
-    //   // $('.closeon').click(function() {
-    //   //   $('#calendar').fullCalendar('removeEvents',event._id);
-    //   // });
-    //   $('#calendar').fullCalendar('removeEvents',event._id);
-    // },
-    // eventRender: function(event, element) {
-    //   element.append( "<span class='closeon'>X</span>" );
-      
-    //   element.find(".closeon").click(function() {
-    //     $('#calendar').fullCalendar('removeEvents',event._id);
-    //   });
-    // }
+    editable: true
   });
 
+  /* activity event duration on drop into calendar */
   $('.activity').data('duration', '01:00');
 
   $('.external-events .fc-event').each(function() {
@@ -75,6 +55,7 @@ $(function(){
           });
     });
 
+  /* clear calendar */
   $('.remove-events').on('click', function(){
     $("#calendar").fullCalendar('removeEvents');
 
@@ -89,6 +70,7 @@ $(function(){
     $('#calendar').fullCalendar('renderEvent', ticketed_event);
   });
 
+  /* add to google calendar button */
   $('.google').on('click', function(){
     ($('#calendar').find('.fc-content')).each(function(){
     var title = $(this).find('.fc-title').text();
