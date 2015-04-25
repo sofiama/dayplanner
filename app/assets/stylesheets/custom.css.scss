@@ -17,6 +17,139 @@
   padding-bottom: 125px;
 }
 
+#testimonials{
+  padding-bottom: 100px;
+}
+ 
+#testimonials h2{
+  text-transform: uppercase;
+}
+
+#testimonials img{
+  width: 100%;
+  height: 100%;
+  -webkit-radius: 10px;
+  -moz-radius: 10px;
+  border-radius: 10px;
+  border: 3px solid #FFF;
+}
+
+.large-title{
+  font-family: 'Raleway', sans-serif;
+  font-size: 40px;
+  line-height:1.05em;
+  font-weight:100;
+  letter-spacing:0;
+}
+
+.large-text{
+  font-size: 20px;
+}
+
+#testimonials .more{
+  background: #fff;
+  color: #EA8825;
+  text-decoration: none;
+  box-shadow:0 3px rgba(0,0,0,0.1);
+}
+
+#testimonials .more:hover{
+  font-weight: bold;
+  /*text-shadow: 1px 1px #CCC;*/
+}
+
+#services h2{
+  text-transform: uppercase;
+  color: #EA8825;
+}
+
+/* calendar */
+.event-time, .event-utc{
+  display: none;
+}
+
+.fc-event{
+  border: 1px solid #000;
+  background-color: #000;
+  cursor: pointer;
+}
+
+/*.closeon {
+    position: absolute;
+    top: -2px;
+    right: 0;
+    cursor: pointer;
+}*/
+
+.activity a{
+  font-weight: bold;
+}
+
+.fa-yelp, .fa-foursquare{
+  color: #EA8825;
+}
+
+.yelp a:hover, .yelp a:hover i{
+  color: #EF3131;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.foursquare a:hover, .foursquare a:hover i{
+  color: #076BB6;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.remove-events{
+  border: 3px solid #C1C1C1;
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 400;
+  outline: none;
+  position: relative;
+  background-color: #C1C1C1;
+  color: #FFF;
+  border-radius: 5px;
+  -webkit-radius: 5px;
+  -moz-radius: 5px;
+  -webkit-transition: all .2s ease-out;
+  transition: all .2s ease-out;
+}
+
+.remove-events:hover{
+  color: #FFF;
+  background-color: #A9A9A9;
+  border: 3px solid #A9A9A9;
+  border-radius: 5px #A9A9A9;
+  -webkit-radius: 5px;
+  -moz-radius: 5px;
+  box-shadow:0 3px rgba(0,0,0,0.1);
+}
+
+.google{
+  background-color: #D14130;
+  color: #FFF;
+  border: 3px solid #D14130;
+  border-radius: 5px;
+  -webkit-radius: 5px;
+  -moz-radius: 5px;
+}
+
+.google:hover,
+.google:active {
+  color: #FFF;
+  background-color: #CB333F;
+  text-decoration: none;
+  -webkit-transition: all .2s ease-out;
+  transition: all .2s ease-out;
+  border: 3px solid #CB333F;
+  border-radius: 5px;
+  -webkit-radius: 5px;
+  -moz-radius: 5px;
+  box-shadow:0 3px rgba(0,0,0,0.1);
+}
 
 /* results */
 #map { 
@@ -39,60 +172,14 @@
 }
 
 .navbar-brand{
-  font-family: 'Changa One', cursive;
+  font-family: 'Slabo 27px', serif;
   color: #EA8825;
   /*text-shadow: 1px 1px 1px #aaa;*/
   /*font-weight: 800;*/
-}
-
-.event-time, .event-utc{
-  display: none;
-}
-
-.activity a{
-  font-weight: bold;
-}
-
-.external-events .activity{
-}
-
-.google{
-  background-color: #D14130;
-}
-
-.google:hover,
-.google:active {
-    color: #fff;
-    background: #E43E59;
-    text-decoration: none;
-    -webkit-transition: all .2s ease-out;
-    transition: all .2s ease-out;
-}
-
-.event-time, .event-utc{
-  display: none;
 }
 
 .notice{
   padding-bottom: 10px;
   font-weight: bold;
   color: #D14130;
-}
-
-.remove-events{
-  border: none;
-  font-size: 10px;
-  cursor: pointer;
-  padding: 5px 10px;
-  display: inline-block;
-  margin-top: 10px;
-  text-decoration: none;
-  font-weight: 400;
-  outline: none;
-  position: relative;
-  background: #EA8825;
-  color: #fff;
-  border-radius: 5px;
-  -webkit-transition: all .2s ease-out;
-  transition: all .2s ease-out;
 }

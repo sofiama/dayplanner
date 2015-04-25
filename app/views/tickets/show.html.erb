@@ -1,5 +1,5 @@
- <section id="testimonials" class="parallax-bg light-typo padding-top-bottom" data-parallax-background="<%= image_path "clock-bg-dark.jpg"%>" data-stellar-background-ratio=".5">
-    
+ <!-- <section id="testimonials" class="parallax-bg padding-top-bottom" data-parallax-background="<%#= image_path "light-abstract.jpg"%>" data-stellar-background-ratio=".5"> -->
+<section id="testimonials" class="color-bg light-typo cta">
       <div class="container">
       
         <h1 class="section-title scrollimation fade-up">Your Ticketed Event</h1>
@@ -7,35 +7,34 @@
         <div class="row scrollimation fade-in">
         
           <div class="col-sm-10 col-sm-offset-1">
-          
-            <div id="testimonials-slider" class="flexslider">
+
+            <div class="col-sm-6 scrollimation fade-right">
             
-              <ul class="slides">
-                <!--Single Testimonial-->
-                <li>
-                  <div class="media">
-                    <div class="pull-left">
-                      <%= image_tag "#{@ticket.img_url}", class:"img-responsive client-iamge image-circle", alt:"" %>
-                    </div>
-                    
-                    <div class="media-body">
-                      <p class="testimonial">
-                        <span class='event-name'><%= @ticket.title %></span><spanr/>
-                        <br/>
-                        <span class='event-date'><%= @ticket.date_display %></span> at <span><%= @ticket.time %></span>
-                        <span class='event-time'><%= @ticket.time_display %></span><span class='event-utc'><%=@ticket.date %></span><p>
-                      </p>
-                      <p class="client">
-                        <span><%= @ticket.address.split('/')[0] %></span>
-                        <br/>
-                        <span><%= @ticket.address.split('/')[1] %></span>
-                      </p>
-                      <a class="btn btn-quattro scrollto" href="#services"><i class="fa fa-angle-double-down"></i>See what's there to do nearby!</a>
-                    </div>
-                  </div>
-              </ul>
-          
-        </div><!-- End slider -->
+              <%= image_tag "#{@ticket.img_url}", class:"img-responsive image-center", alt:"" %>
+              
+            </div>
+            
+            <div class="col-sm-6 scrollimation fade-left d1">
+              <p class='large-title'><strong><span class='event-name'><%= @ticket.title %></span></strong></p>
+              
+              <p class='large-text ticketed-event-info'><span class='event-date'><%= @ticket.date_display %></span> at <span><%= @ticket.time %></span></p>
+              <span class='event-time'><%= @ticket.time_display %></span>
+              <span class='event-utc'><%=@ticket.date %></span>
+
+              <p class='large-text ticketed-event-info'>
+                <span><%= @ticket.address.split('/')[0] %></span><br/>
+                <span><%= @ticket.address.split('/')[1] %></span>
+              </p>
+
+              <a class="btn btn-quattro more scrollto" href="#services">Check Out Nearby Activities <i class="fa fa-angle-double-down"></i></a>
+
+            </div>
+          </div>
+
+          <div class="col-sm-10 col-sm-offset-1 scrollimation fade-left text-center">
+              
+
+            </div>
         
       </div><!-- End col -->
       
@@ -47,108 +46,112 @@
 
 <section id="services" class="white-bg padding-top-bottom">
 
-  <div class="container features">
+  <div class="container">
 
     <h1 class="section-title">Nearby Activities</h1>
-    <p class="section-description">Drag and Drop activities into the Calendar to build your Schedule!</p>
-
-    <div id="filter-works">
-      <ul>
-        <li class="active scrollimation fade-right d1">
-          <a href="#" data-filter="*">All</a>
-        </li>
-        <li class="scrollimation fade-right">
-          <a href="#" data-filter="food">Restaurants</a>
-        </li>
-        <li class="scrollimation fade-left">
-          <a href="#" data-filter="night">Nightlife</a>
-        </li>
-        <li class="scrollimation fade-left d1">
-          <a href="#" data-filter="sight">Sights</a>
-        </li>
-      </ul>
-    </div>
+    <p class="section-description">Drag and drop activities into the calendar to build your schedule!</p>
 
     <div class="row">
+      <div class='col-md-8'>
+        <h2 class='text-center'>Draggable Activities</h2>
+        
+        <% if @food.count > 0 %>
+          <div class="col-md-4 item text-center scrollimation fade-right activities" data-cat='food'>
+              <h3 class='yelp1'>Restaurants</h3>
+              <div class='external-events'>
+                <% i = 1 %>
+                <% @food.each do |activity| %>
 
-    <div class='col-md-8'>
-  
-      <div class="col-md-4 item text-center scrollimation fade-right activities" data-cat='food'>
-        <h3 class='yelp1'>Restaurants</h3>
-        <div class='external-events'>
-          <% i = 1 %>
-          <% @food.each do |f| %>
+                  <div id='n<%= i %>' class='activity fc-event ui-draggable ui-draggable-handle' data-event='{"title":"<%= activity[:name] %>"}'>
 
-            <div id='n<%= i %>' class='activity fc-event ui-draggable ui-draggable-handle' data-event='{"title":"<%= f[:name] %>"}'>
-
-            <span class='title'><%= f[:name] %></span>
-            <br/>
-            <%= f[:address].split('/')[0] %><br/>
-            <%#= f[:address].split('/')[1] %><br/>
-            <%= link_to 'YELP', f[:url], :target => "_blank"%> <i class="fa fa-yelp"></i>
-
+                  <span class='title'><%= activity[:name] %></span>
+                  <br/>
+                  <%= activity[:address].split('/')[0] %><br/>
+                  <%#= activity[:address].split('/')[1] %><br/>
+                  <div class='yelp'>
+                    <%= link_to 'YELP <i class="fa fa-yelp"></i>'.html_safe, activity[:url], :target => "_blank"%> 
+                  </div>
+                  </div>
+                <% i += 1 %><br/>
+              <% end %>
             </div>
-          <% i += 1 %><br/>
-        <% end %>
-        </div>
-      </div>
-
-      <div class="col-md-4 item text-center scrollimation fade-right activities" data-cat='night'>
-        <h3 class='yelp2'>Nightlife</h3>
-        <div class='external-events'>
-          <% i = 1 %>
-          <% @night.each do |f| %>
-
-            <div id='n<%= i %>' class='activity fc-event ui-draggable ui-draggable-handle' data-event='{"title":"<%= f[:name] %>"}'>
-
-            <b class='title'><%= f[:name] %></b><br/>
-            <%= f[:address].split('/')[0] %><br/>
-            <%#= f[:address].split('/')[1] %><br/>
-            <%= link_to 'YELP', f[:url], :target => "_blank"%> <i class="fa fa-yelp"></i>
-
-            </div>
-          <% i += 1 %><br/>
-        <% end %>
-        </div>
-      </div>
-
-      <div class="col-md-4 item text-center scrollimation fade-left activities" data-cat='sight'>
-          <h3 class='foursquare'>Sights</h3>
-          <div class='external-events'>
-          <% i = 1 %>
-          <% @sights.each do |f| %>
-
-            <div id="s<%= i %>" class='activity fc-event ui-draggable ui-draggable-handle sights' data-event='{"title":"<%= f[:name] %>"}'>
-
-              <b class='title'><%= f[:name] %></b><br/>
-              <%= f[:address].split('/')[0] %><br/>
-              <%#= f[:address].split('/')[1] %><br/>
-              <i class="fa fa-foursquare"></i> <%= link_to 'FourSquare', f[:url], :target => "_blank" %>
-
-            </div>
-            <% i += 1 %><br/>
-          <% end %>
-        </div>
-    </div>
-    </div>
-
-      <div class="col-md-4 item text-center scrollimation fade-left d1">
-
-
-        <div id='calendar'></div>
-        <button class='remove-events' type="button">Remove Activities</button>
-        <%= form_tag '/auth/google_oauth2', :method => 'get', :class => 'google-form' do |f| %>
-        <%= button_tag :type =>'submit', :class => 'btn btn-quattro google' do %>
-          <i class='fa fa-google'></i>Add to Google Calendar
-          <% end %>
+          </div>
         <% end %>
 
-      </div>
+        <% if @night.count > 0 %>
+          <div class="col-md-4 item text-center scrollimation fade-right activities" data-cat='night'>
+            <h3 class='yelp2'>Nightlife</h3>
+            <div class='external-events'>
+              <% i = 1 %>
+              <% @night.each do |activity| %>
+
+                <div id='n<%= i %>' class='activity fc-event ui-draggable ui-draggable-handle' data-event='{"title":"<%= activity[:name] %>"}'>
+
+                <b class='title'><%= activity[:name] %></b><br/>
+                <%= activity[:address].split('/')[0] %><br/>
+                <%#= activity[:address].split('/')[1] %><br/>
+
+                <div class='yelp'>
+                  <%= link_to 'YELP <i class="fa fa-yelp"></i>'.html_safe, activity[:url], :target => "_blank"%>
+                </div>
+
+                </div>
+              <% i += 1 %><br/>
+            <% end %>
+            </div>
+          </div>
+        <% end %>
+
+        <% if @sights.count > 0 %>
+          <div class="col-md-4 item text-center scrollimation fade-left activities" data-cat='sight'>
+              <h3 class='foursquare'>Sights</h3>
+              <div class='external-events'>
+              <% i = 1 %>
+              <% @sights.each do |activity| %>
+
+                <div id="s<%= i %>" class='activity fc-event ui-draggable ui-draggable-handle sights' data-event='{"title":"<%= activity[:name] %>"}'>
+
+                  <b class='title'><%= activity[:name] %></b><br/>
+                  <%= activity[:address].split('/')[0] %><br/>
+                  <%#= activity[:address].split('/')[1] %><br/>
+
+                  <div class='foursquare'>
+                    <%= link_to '<i class="fa fa-foursquare"></i> FourSquare'.html_safe, activity[:url], :target => "_blank" %>
+                  </div>
+                </div>
+                <% i += 1 %><br/>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+    </div>
+
+    <div class="col-md-4 item text-center scrollimation fade-left d1">
+      <div id='calendar'></div>
+      
+      <br/>
+
+      <%= button_tag :type => 'button', :class => 'btn remove-events pull-left' do %>
+        <i class='fa fa-trash-o'> Clear Calendar</i>
+      <% end %>
+      
+      <%= form_tag '/auth/google_oauth2', :method => 'get', :class => 'google-form pull-right' do |f| %>
+        <%= button_tag :type =>'submit', :class => 'btn google' do %>
+          <i class='fa fa-google'></i> Add to Google Calendar
+        <% end %>
+      <% end %>
 
     </div>
+  </div>
 
   <div class ="row">
-    <p class="text-center"><a class="btn btn-quattro scrollto" href="#map-section"><i class="fa fa-angle-double-down"></i> See where everything is!</a></p>
+    <div class='col-md-8'>
+      <p class="text-center"><a class="btn btn-quattro scrollto" href="#map-section">See it on the Map <i class="fa fa-angle-double-down"></i></a></p>
+    </div>
+
+    <div class="col-md-4">
+      
+    </div>
   </div>
 
 </section>
@@ -172,14 +175,18 @@
                   )
                 %>
             </div>
+
             <%= content_tag :div, class: "ticket-info", data: {temp: @ticket} do %>
-          <% end %>
+            <% end %>
             <%= content_tag :div, class: "food-info", data: {temp: @food} do %>
-          <% end %>
-          <%= content_tag :div, class: "night-info", data: {temp: @night} do %>
-          <% end %>
-          <%= content_tag :div, class: "sight-info", data: {temp: @sights} do %>
-          <% end %>
+            <% end %>
+            <%= content_tag :div, class: "night-info", data: {temp: @night} do %>
+            <% end %>
+            <%= content_tag :div, class: "sight-info", data: {temp: @sights} do %>
+            <% end %>
+            
+            <br/>
+            <p class="section-description">Map centered on <%= @ticket.address.split('/')[0] %>, <%= @ticket.address.split('/')[1] %></p>
           </div>
           <div class="col-md-1 item text-center scrollimation fade-up">
           </div>

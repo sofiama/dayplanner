@@ -30,7 +30,7 @@ class Event < ActiveRecord::Base
 
   def get_seatgeek_results
     self.get_seatgeek_info["events"].each do |e|
-      if e['venue']['country'] == 'US'
+      # if e['venue']['country'] == 'US'
         self.tickets.create(
           :title =>  e["title"],
           :url => e["url"],
@@ -42,7 +42,7 @@ class Event < ActiveRecord::Base
           :lat => e["venue"]["location"]["lat"],
           :long => e["venue"]["location"]["lon"]
           )
-      end
+      # end
     end
   end
 
