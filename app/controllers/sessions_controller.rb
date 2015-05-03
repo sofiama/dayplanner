@@ -21,6 +21,7 @@ class SessionsController < ApplicationController
         )
 
       @event = Event.find(@origin.split('/')[4])
+      @ticket = Ticket.find(@origin.split('/')[6])
       @event.user_id = @user.id
 
       if @event.save
@@ -33,7 +34,7 @@ class SessionsController < ApplicationController
           :api_method => service.events.quick_add,
           :parameters =>
             { 'calendarId' => 'primary',
-              'text' => "#{@event.name} on #{@event.date_display} #{@event.time}"}
+              'text' => "#{@ticket.title} on #{@ticket.date_display} #{@ticket.time}"}
         }
 
         # client.execute(main_event)
@@ -45,13 +46,13 @@ class SessionsController < ApplicationController
             :api_method => service.events.quick_add,
             :parameters => {
               'calendarId' => 'primary',
-              'text' => "#{name} on #{@event.date_display} #{time}"
+              'text' => "#{name} on #{@ticket.date_display} #{time}"
             }
           }
           client.execute(activity)
         end
 
-        short_name = @event.name.downcase[0..4]
+        short_name = @ticket.title.downcase[0..4]
         if !@params.has_key?(short_name)
           client.execute(main_event)
         end
