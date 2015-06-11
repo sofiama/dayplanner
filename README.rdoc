@@ -18,3 +18,5 @@ Technologies used:
 * Google Calendar API
 * FullCalendar.js
 * Leaflet.js
+
+note - project was demoed with the before-update branch, to see its changes to the master branch, read here[https://medium.com/@eatsleepcoderepeat/plan4me-before-and-after-32ed15c982aa]
